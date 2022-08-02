@@ -4,4 +4,6 @@
 [![Swift](https://img.shields.io/badge/Swift-5-orange)]()
 [![UIKit](https://img.shields.io/badge/UIKit-Interface-lightgrey)]()
 
+[Расписание, задания, лекции и дополнительные материалы](https://github.com/lexonerus/SurfSummerSchool2022/blob/main/README.md)
+
 This is a test project for implementation homework and pass through summer school.
