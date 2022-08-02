@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // 3
     func applicationDidBecomeActive(_ application: UIApplication) {
-        print("App goes in Foreground")
+        print("App goes in foreground")
     }
     
     // 4
