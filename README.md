@@ -15,4 +15,3 @@ This is a test project for implementation homework and pass through summer schoo
 ![Home](/Pictures/Home.png)
 ![Favorite](/Pictures/Favorite.png)
 ![Profile](/Pictures/Profile.png)
-![Splash](/Pictures/Splash.png)
