@@ -12,6 +12,11 @@ class ViewController: UIViewController {
     // MARK: View lifecycle
     
     // 1
+    override func loadView() {
+        super.loadView()
+        print("Load view")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View loaded")

@@ -24,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print("App initialization")
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let initialViewController = ViewController()
-        window.rootViewController = initialViewController
+        let initialViewController = MainViewController()
+        let navi = UINavigationController(rootViewController: initialViewController)
+        window.rootViewController = navi
         window.makeKeyAndVisible()
         self.window = window
         return true
