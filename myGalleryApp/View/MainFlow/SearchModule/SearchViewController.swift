@@ -13,6 +13,8 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.titleView = searchBar
+        self.navigationController?.navigationBar.topItem?.title = ""
         searchBar.placeholder = "Поиск"
 
     }
