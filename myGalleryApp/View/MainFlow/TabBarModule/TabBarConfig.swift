@@ -48,9 +48,11 @@ private extension TabBarConfig {
             return mainNavigationController
         case .favorite:
             let favoriteNavigationController = UINavigationController.init(rootViewController: FavoriteViewController())
+            favoriteNavigationController.navigationBar.tintColor = .black
             return favoriteNavigationController
         case .profile:
             let profileNavigationController = UINavigationController.init(rootViewController: ProfileViewController())
+            profileNavigationController.navigationBar.tintColor = .black
             return profileNavigationController
         }
     }

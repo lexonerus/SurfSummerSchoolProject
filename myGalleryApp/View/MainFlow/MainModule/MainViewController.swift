@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
     }
     
     @objc func searchButtonTapped() {
-        
+        navigationController?.pushViewController(SearchViewController(), animated: true)
     }
 
 }

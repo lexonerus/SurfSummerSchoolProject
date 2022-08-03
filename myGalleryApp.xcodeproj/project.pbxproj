@@ -15,6 +15,8 @@
 		560142EA289A720A001F8C55 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560142E8289A720A001F8C55 /* FavoriteViewController.xib */; };
 		560142ED289A72C9001F8C55 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142EC289A72C9001F8C55 /* TabBarModel.swift */; };
 		560142EF289A7458001F8C55 /* TabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142EE289A7458001F8C55 /* TabBarConfig.swift */; };
+		560142F3289AB672001F8C55 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142F1289AB672001F8C55 /* SearchViewController.swift */; };
+		560142F4289AB672001F8C55 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560142F2289AB672001F8C55 /* SearchViewController.xib */; };
 		56ABCBD0289953830057D7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ABCBCF289953830057D7AB /* AppDelegate.swift */; };
 		56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBD8289953850057D7AB /* Assets.xcassets */; };
 		56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBDA289953850057D7AB /* LaunchScreen.storyboard */; };
@@ -29,6 +31,8 @@
 		560142E8289A720A001F8C55 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
 		560142EC289A72C9001F8C55 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		560142EE289A7458001F8C55 /* TabBarConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarConfig.swift; sourceTree = "<group>"; };
+		560142F1289AB672001F8C55 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		560142F2289AB672001F8C55 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		56ABCBCC289953830057D7AB /* myGalleryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myGalleryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56ABCBCF289953830057D7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56ABCBD8289953850057D7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +54,8 @@
 		560142E2289A71A2001F8C55 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
-				560142EB289A7273001F8C55 /* TabBar */,
+				560142F0289AB63C001F8C55 /* SearchModule */,
+				560142EB289A7273001F8C55 /* TabBarModule */,
 				560142E4289A71CA001F8C55 /* MainModule */,
 				560142E6289A71F9001F8C55 /* FavoriteModule */,
 				560142E5289A71D6001F8C55 /* ProfileModule */,
@@ -85,13 +90,22 @@
 			path = FavoriteModule;
 			sourceTree = "<group>";
 		};
-		560142EB289A7273001F8C55 /* TabBar */ = {
+		560142EB289A7273001F8C55 /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
 				560142EC289A72C9001F8C55 /* TabBarModel.swift */,
 				560142EE289A7458001F8C55 /* TabBarConfig.swift */,
 			);
-			path = TabBar;
+			path = TabBarModule;
+			sourceTree = "<group>";
+		};
+		560142F0289AB63C001F8C55 /* SearchModule */ = {
+			isa = PBXGroup;
+			children = (
+				560142F1289AB672001F8C55 /* SearchViewController.swift */,
+				560142F2289AB672001F8C55 /* SearchViewController.xib */,
+			);
+			path = SearchModule;
 			sourceTree = "<group>";
 		};
 		56ABCBC3289953830057D7AB = {
@@ -214,6 +228,7 @@
 			files = (
 				56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */,
 				560142DB289A6897001F8C55 /* MainViewController.xib in Resources */,
+				560142F4289AB672001F8C55 /* SearchViewController.xib in Resources */,
 				560142DF289A6A77001F8C55 /* ProfileViewController.xib in Resources */,
 				560142EA289A720A001F8C55 /* FavoriteViewController.xib in Resources */,
 				56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */,
@@ -228,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				560142EF289A7458001F8C55 /* TabBarConfig.swift in Sources */,
+				560142F3289AB672001F8C55 /* SearchViewController.swift in Sources */,
 				560142DA289A6897001F8C55 /* MainViewController.swift in Sources */,
 				560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */,
 				560142ED289A72C9001F8C55 /* TabBarModel.swift in Sources */,
