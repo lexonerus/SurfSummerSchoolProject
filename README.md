@@ -6,4 +6,6 @@
 
 [Schedule, assignments, lectures and additional materials](https://github.com/lexonerus/SurfSummerSchool2022/blob/main/README.md)
 
+[Design](https://www.figma.com/file/6eLvnZ89LeHIxHc283Uoe8/Surf-education-iOS-(Copy))
+
 This is a test project for implementation homework and pass through summer school.
