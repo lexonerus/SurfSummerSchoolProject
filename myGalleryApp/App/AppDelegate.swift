@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     // MARK: Flow setup
-    func runMainFlow() {
+    func runMainFlow() {        
         self.window?.rootViewController = TabBarConfig().configure()
     }
     

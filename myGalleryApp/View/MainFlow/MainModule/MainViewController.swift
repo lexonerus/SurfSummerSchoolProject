@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View loaded")
+        title = "Главная"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "item-search"), style: .plain, target: self, action: #selector(searchButtonTapped))
     }
     override func viewWillAppear(_ animated: Bool) {
         print("View will appear")
@@ -28,6 +30,10 @@ class MainViewController: UIViewController {
     }
     override func didReceiveMemoryWarning() {
         print("iOS memory is not enough!")
+    }
+    
+    @objc func searchButtonTapped() {
+        
     }
 
 }

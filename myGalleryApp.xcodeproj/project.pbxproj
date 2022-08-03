@@ -51,9 +51,9 @@
 			isa = PBXGroup;
 			children = (
 				560142EB289A7273001F8C55 /* TabBar */,
+				560142E4289A71CA001F8C55 /* MainModule */,
 				560142E6289A71F9001F8C55 /* FavoriteModule */,
 				560142E5289A71D6001F8C55 /* ProfileModule */,
-				560142E4289A71CA001F8C55 /* MainModule */,
 			);
 			path = MainFlow;
 			sourceTree = "<group>";
