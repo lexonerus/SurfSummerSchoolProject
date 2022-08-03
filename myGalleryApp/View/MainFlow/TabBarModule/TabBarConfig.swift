@@ -43,18 +43,18 @@ private extension TabBarConfig {
     func getCurrentViewController(tab: TabBarModel) -> UIViewController {
         switch tab {
         case .main:
-            let mainNavigationController = UINavigationController.init(rootViewController: MainViewController())
-            mainNavigationController.navigationBar.tintColor = .black
-            return mainNavigationController
+            return setupNaviController(rootViewController: MainViewController())
         case .favorite:
-            let favoriteNavigationController = UINavigationController.init(rootViewController: FavoriteViewController())
-            favoriteNavigationController.navigationBar.tintColor = .black
-            return favoriteNavigationController
+            return setupNaviController(rootViewController: FavoriteViewController())
         case .profile:
-            let profileNavigationController = UINavigationController.init(rootViewController: ProfileViewController())
-            profileNavigationController.navigationBar.tintColor = .black
-            return profileNavigationController
+            return setupNaviController(rootViewController: ProfileViewController())
         }
+    }
+    
+    func setupNaviController(rootViewController: UIViewController) -> UIViewController {
+        let navigationController = UINavigationController.init(rootViewController: rootViewController)
+        navigationController.navigationBar.tintColor = #colorLiteral(red: 0.07681330293, green: 0.07681333274, blue: 0.07681330293, alpha: 1)
+        return navigationController
     }
 
 }
