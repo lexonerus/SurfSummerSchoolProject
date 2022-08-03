@@ -9,3 +9,10 @@
 [Design](https://www.figma.com/file/6eLvnZ89LeHIxHc283Uoe8/Surf-education-iOS-(Copy))
 
 This is a test project for implementation homework and pass through summer school.
+
+## How App would look like
+![Login](/Pictures/Login.png)
+![Home](/Pictures/Home.png)
+![Favorite](/Pictures/Favorite.png)
+![Profile](/Pictures/Profile.png)
+![Splash](/Pictures/Splash.png)
