@@ -8,47 +8,38 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    
+    // MARK: IB outlets
     @IBOutlet var searchBar: UISearchBar!
-    
+    // MARK: properties
     weak private var viewOutputDelegate: SearchViewOutputDelegate?
     private let presenter = SearchPresenter()
     
+    // MARK: view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.viewOutputDelegate = presenter
         presenter.setViewInputDelegate(viewInputDelegate: self)
-        
         navigationItem.titleView = searchBar
         navigationController?.navigationBar.topItem?.title = ""
         searchBar.placeholder = "Поиск"
-
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         sleep(2)
         viewOutputDelegate?.getDataFromModel()
     }
-
-
-
 }
 
+// MARK: SearchPresenter delegate methods
 extension SearchViewController: SearchViewInputDelegate {
     func setupInitialState() {
         print("initial setup")
     }
-    
     func setupData() {
         print("data setting up")
     }
-    
     func displayData(data: String) {
         searchBar.text = data
         print("data displayed")
     }
-    
-    
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    // MARK: View lifecycle
+    // MARK: view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View loaded")
@@ -32,6 +32,7 @@ class MainViewController: UIViewController {
         print("iOS memory is not enough!")
     }
     
+    // MARK: UI events
     @objc func searchButtonTapped() {
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }

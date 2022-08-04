@@ -148,7 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				56ABCBE3289956430057D7AB /* App */,
-				56ABCBE4289956490057D7AB /* View */,
+				56ABCBE5289956570057D7AB /* LaunchScreen */,
+				560142E2289A71A2001F8C55 /* MainFlow */,
 				56ABCBE72899566A0057D7AB /* Assets */,
 			);
 			path = myGalleryApp;
@@ -161,15 +162,6 @@
 				56ABCBDD289953850057D7AB /* Info.plist */,
 			);
 			path = App;
-			sourceTree = "<group>";
-		};
-		56ABCBE4289956490057D7AB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				560142E2289A71A2001F8C55 /* MainFlow */,
-				56ABCBE5289956570057D7AB /* LaunchScreen */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		56ABCBE5289956570057D7AB /* LaunchScreen */ = {

@@ -9,11 +9,12 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    // MARK: view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         title = "Профиль"
     }
 
