@@ -18,11 +18,9 @@ class SearchViewController: UIViewController {
     // MARK: SearchViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewOutputDelegate                                 = presenter
+        self.viewOutputDelegate  = presenter
+        navigationItem.titleView = searchBar
         presenter.setViewInputDelegate(viewInputDelegate: self)
-        navigationItem.titleView                                = searchBar
-        navigationController?.navigationBar.topItem?.title      = ""
-        searchBar.placeholder                                   = "Поиск"
         viewOutputDelegate?.initialSetup()
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -36,6 +34,8 @@ class SearchViewController: UIViewController {
 extension SearchViewController: SearchViewInputDelegate {
     func setupInitialState() {
         print("initial setup")
+        navigationController?.navigationBar.topItem?.title  = ""
+        searchBar.placeholder                               = "Поиск"
     }
     func setupData() {
         print("data setting up")
