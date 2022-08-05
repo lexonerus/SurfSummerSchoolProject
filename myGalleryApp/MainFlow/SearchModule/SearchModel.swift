@@ -8,7 +8,7 @@
 import Foundation
 
 class SearchModel {
-    
+    // MARK: Methods
     func getData() -> String {
         return "Data from model"
     }

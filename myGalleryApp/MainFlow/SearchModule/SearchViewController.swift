@@ -8,20 +8,22 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    // MARK: IB outlets
+    // MARK: Views
     @IBOutlet var searchBar: UISearchBar!
-    // MARK: properties
+    
+    // MARK: Properties
     weak private var viewOutputDelegate: SearchViewOutputDelegate?
     private let presenter = SearchPresenter()
     
-    // MARK: view lifecycle
+    // MARK: SearchViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewOutputDelegate = presenter
+        self.viewOutputDelegate                                 = presenter
         presenter.setViewInputDelegate(viewInputDelegate: self)
-        navigationItem.titleView = searchBar
-        navigationController?.navigationBar.topItem?.title = ""
-        searchBar.placeholder = "Поиск"
+        navigationItem.titleView                                = searchBar
+        navigationController?.navigationBar.topItem?.title      = ""
+        searchBar.placeholder                                   = "Поиск"
+        viewOutputDelegate?.initialSetup()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -40,6 +42,6 @@ extension SearchViewController: SearchViewInputDelegate {
     }
     func displayData(data: String) {
         searchBar.text = data
-        print("data displayed")
+        //print("data displayed")
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class FavoriteViewController: UIViewController {
 
-    // MARK: view lifecycle
+    // MARK: FavoriteViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "item-search"), style: .plain, target: self, action: #selector(searchButtonTapped))
@@ -19,7 +19,7 @@ class FavoriteViewController: UIViewController {
         title = "Избранное"
     }
     
-    // MARK: UI events
+    // MARK: Actions
     @objc func searchButtonTapped() {
         navigationController?.pushViewController(SearchViewController(), animated: true)
     }

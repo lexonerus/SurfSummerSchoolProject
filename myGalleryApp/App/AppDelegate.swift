@@ -18,17 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: App lifecycle
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        print("App first launch")
-        return true
-    }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        print("App initialization")
+        //print("App initialization")
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         self.window = window
         runMainFlow()
         return true
+    }
+    /*
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+     //print("App first launch")
+     return true
     }
     func applicationDidBecomeActive(_ application: UIApplication) {
         print("App goes in foreground")
@@ -42,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         print("App terminated")
     }
+    */
     
 }
 
