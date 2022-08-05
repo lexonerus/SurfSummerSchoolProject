@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="myGalleryApp" customModuleProvider="target">
             <connections>
+                <outlet property="mainCollectionView" destination="5rQ-m1-GxZ" id="ooL-qa-bUQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,25 +19,31 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fj6-u7-X6E">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5rQ-m1-GxZ">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <color key="backgroundColor" systemColor="systemTealColor"/>
-                </view>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fmd-pK-pW4">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Fj6-u7-X6E" secondAttribute="bottom" id="9vw-pM-9yq"/>
-                <constraint firstItem="Fj6-u7-X6E" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AS4-cb-A2H"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Fj6-u7-X6E" secondAttribute="trailing" id="Ode-HU-S0F"/>
-                <constraint firstItem="Fj6-u7-X6E" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="mKP-Xv-0oO"/>
+                <constraint firstItem="5rQ-m1-GxZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2Cf-CA-bNd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5rQ-m1-GxZ" secondAttribute="bottom" id="4uq-4B-EdE"/>
+                <constraint firstItem="5rQ-m1-GxZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5nH-br-fPK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5rQ-m1-GxZ" secondAttribute="trailing" id="lxn-go-PHE"/>
             </constraints>
-            <point key="canvasLocation" x="130.40000000000001" y="93.103448275862078"/>
+            <point key="canvasLocation" x="128.98550724637681" y="93.080357142857139"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

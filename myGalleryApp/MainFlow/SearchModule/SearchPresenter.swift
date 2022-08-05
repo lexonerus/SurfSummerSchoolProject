@@ -8,10 +8,11 @@
 import Foundation
 
 class SearchPresenter {
-    // MARK: properties
+    // MARK: Properties
     private let model = SearchModel()
     weak private var viewInputDelegate: SearchViewInputDelegate?
-    // MARK: methods
+    
+    // MARK: Methods
     func setViewInputDelegate(viewInputDelegate: SearchViewInputDelegate?) {
         self.viewInputDelegate = viewInputDelegate
     }
@@ -19,10 +20,18 @@ class SearchPresenter {
 
 // MARK: SearchViewController delegate methods
 extension SearchPresenter: SearchViewOutputDelegate {
+    
+    func initialSetup() {
+        viewInputDelegate?.setupInitialState()
+        
+    }
+    
     func getDataFromModel() {
         let data = model.getData()
+        viewInputDelegate?.setupData()
         viewInputDelegate?.displayData(data: data)
     }
+    
     func saveDataToModel() {
         print("save data")
     }

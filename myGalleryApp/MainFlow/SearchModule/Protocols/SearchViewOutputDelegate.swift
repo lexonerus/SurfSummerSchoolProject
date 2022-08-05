@@ -8,6 +8,7 @@
 import Foundation
 
 protocol SearchViewOutputDelegate: AnyObject {
+    func initialSetup() 
     func getDataFromModel()
     func saveDataToModel()
 }
