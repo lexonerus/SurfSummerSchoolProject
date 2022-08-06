@@ -96,6 +96,10 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         
         return Constants.spaceBetweenElements
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailViewController = DetailTableViewController()
+        detailViewController.model = model.items[indexPath.row]
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
     
 }

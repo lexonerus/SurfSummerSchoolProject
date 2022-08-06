@@ -27,6 +27,15 @@
 		56ABCBD0289953830057D7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ABCBCF289953830057D7AB /* AppDelegate.swift */; };
 		56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBD8289953850057D7AB /* Assets.xcassets */; };
 		56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBDA289953850057D7AB /* LaunchScreen.storyboard */; };
+		56B77644289EAC37000F2E2E /* DetailItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B77643289EAC37000F2E2E /* DetailItemModel.swift */; };
+		56E6B8D6289DC5FF00FC7650 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8D4289DC5FF00FC7650 /* DetailTableViewController.swift */; };
+		56E6B8D7289DC5FF00FC7650 /* DetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E6B8D5289DC5FF00FC7650 /* DetailTableViewController.xib */; };
+		56E6B8DB289DC68A00FC7650 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8D9289DC68A00FC7650 /* ImageTableViewCell.swift */; };
+		56E6B8DC289DC68A00FC7650 /* ImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E6B8DA289DC68A00FC7650 /* ImageTableViewCell.xib */; };
+		56E6B8E2289DC6C600FC7650 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8E0289DC6C600FC7650 /* LabelTableViewCell.swift */; };
+		56E6B8E3289DC6C600FC7650 /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E6B8E1289DC6C600FC7650 /* LabelTableViewCell.xib */; };
+		56E6B8E6289DC6D500FC7650 /* TextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8E4289DC6D500FC7650 /* TextTableViewCell.swift */; };
+		56E6B8E7289DC6D500FC7650 /* TextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E6B8E5289DC6D500FC7650 /* TextTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +61,15 @@
 		56ABCBD8289953850057D7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56ABCBDB289953850057D7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56ABCBDD289953850057D7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56B77643289EAC37000F2E2E /* DetailItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemModel.swift; sourceTree = "<group>"; };
+		56E6B8D4289DC5FF00FC7650 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		56E6B8D5289DC5FF00FC7650 /* DetailTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewController.xib; sourceTree = "<group>"; };
+		56E6B8D9289DC68A00FC7650 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		56E6B8DA289DC68A00FC7650 /* ImageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageTableViewCell.xib; sourceTree = "<group>"; };
+		56E6B8E0289DC6C600FC7650 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		56E6B8E1289DC6C600FC7650 /* LabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
+		56E6B8E4289DC6D500FC7650 /* TextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableViewCell.swift; sourceTree = "<group>"; };
+		56E6B8E5289DC6D500FC7650 /* TextTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +86,11 @@
 		560142E2289A71A2001F8C55 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				56E6B8D3289DC5A600FC7650 /* ProfileFlow */,
+				56E6B8D2289DC59E00FC7650 /* FavoriteFlow */,
+				56E6B8D1289DC56D00FC7650 /* HomeFlow */,
 				560142F0289AB63C001F8C55 /* SearchModule */,
 				560142EB289A7273001F8C55 /* TabBarModule */,
-				560142E4289A71CA001F8C55 /* MainModule */,
-				560142E6289A71F9001F8C55 /* FavoriteModule */,
-				560142E5289A71D6001F8C55 /* ProfileModule */,
 			);
 			path = MainFlow;
 			sourceTree = "<group>";
@@ -197,6 +215,79 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		56E6B8D0289DC53600FC7650 /* DetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				56E6B8D8289DC66900FC7650 /* Cells */,
+				56B77643289EAC37000F2E2E /* DetailItemModel.swift */,
+				56E6B8D4289DC5FF00FC7650 /* DetailTableViewController.swift */,
+				56E6B8D5289DC5FF00FC7650 /* DetailTableViewController.xib */,
+			);
+			path = DetailModule;
+			sourceTree = "<group>";
+		};
+		56E6B8D1289DC56D00FC7650 /* HomeFlow */ = {
+			isa = PBXGroup;
+			children = (
+				560142E4289A71CA001F8C55 /* MainModule */,
+				56E6B8D0289DC53600FC7650 /* DetailModule */,
+			);
+			path = HomeFlow;
+			sourceTree = "<group>";
+		};
+		56E6B8D2289DC59E00FC7650 /* FavoriteFlow */ = {
+			isa = PBXGroup;
+			children = (
+				560142E6289A71F9001F8C55 /* FavoriteModule */,
+			);
+			path = FavoriteFlow;
+			sourceTree = "<group>";
+		};
+		56E6B8D3289DC5A600FC7650 /* ProfileFlow */ = {
+			isa = PBXGroup;
+			children = (
+				560142E5289A71D6001F8C55 /* ProfileModule */,
+			);
+			path = ProfileFlow;
+			sourceTree = "<group>";
+		};
+		56E6B8D8289DC66900FC7650 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				56E6B8DD289DC69300FC7650 /* Image */,
+				56E6B8DE289DC69B00FC7650 /* Label */,
+				56E6B8DF289DC6A300FC7650 /* Text */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		56E6B8DD289DC69300FC7650 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				56E6B8D9289DC68A00FC7650 /* ImageTableViewCell.swift */,
+				56E6B8DA289DC68A00FC7650 /* ImageTableViewCell.xib */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		56E6B8DE289DC69B00FC7650 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				56E6B8E0289DC6C600FC7650 /* LabelTableViewCell.swift */,
+				56E6B8E1289DC6C600FC7650 /* LabelTableViewCell.xib */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		56E6B8DF289DC6A300FC7650 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				56E6B8E4289DC6D500FC7650 /* TextTableViewCell.swift */,
+				56E6B8E5289DC6D500FC7650 /* TextTableViewCell.xib */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -255,10 +346,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E6B8DC289DC68A00FC7650 /* ImageTableViewCell.xib in Resources */,
+				56E6B8D7289DC5FF00FC7650 /* DetailTableViewController.xib in Resources */,
 				56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */,
+				56E6B8E7289DC6D500FC7650 /* TextTableViewCell.xib in Resources */,
 				560142DB289A6897001F8C55 /* MainViewController.xib in Resources */,
 				560142F4289AB672001F8C55 /* SearchViewController.xib in Resources */,
 				560142DF289A6A77001F8C55 /* ProfileViewController.xib in Resources */,
+				56E6B8E3289DC6C600FC7650 /* LabelTableViewCell.xib in Resources */,
 				560142EA289A720A001F8C55 /* FavoriteViewController.xib in Resources */,
 				5607D6B7289D72E00078C03C /* MainCollectionViewCell.xib in Resources */,
 				56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */,
@@ -272,17 +367,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56E6B8D6289DC5FF00FC7650 /* DetailTableViewController.swift in Sources */,
 				5662CFE0289C31AA00269BAD /* SearchViewInputDelegate.swift in Sources */,
 				560142EF289A7458001F8C55 /* TabBarConfig.swift in Sources */,
 				5662CFE2289C31BD00269BAD /* SearchViewOutputDelegate.swift in Sources */,
 				560142F3289AB672001F8C55 /* SearchViewController.swift in Sources */,
 				5662CFDD289C312400269BAD /* SearchPresenter.swift in Sources */,
+				56E6B8E2289DC6C600FC7650 /* LabelTableViewCell.swift in Sources */,
 				5607D6B6289D72E00078C03C /* MainCollectionViewCell.swift in Sources */,
 				560142DA289A6897001F8C55 /* MainViewController.swift in Sources */,
+				56B77644289EAC37000F2E2E /* DetailItemModel.swift in Sources */,
 				5662CFDB289C310B00269BAD /* SearchModel.swift in Sources */,
 				560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */,
 				5607D6B2289D6D7A0078C03C /* MainModel.swift in Sources */,
 				560142ED289A72C9001F8C55 /* TabBarModel.swift in Sources */,
+				56E6B8E6289DC6D500FC7650 /* TextTableViewCell.swift in Sources */,
+				56E6B8DB289DC68A00FC7650 /* ImageTableViewCell.swift in Sources */,
 				56ABCBD0289953830057D7AB /* AppDelegate.swift in Sources */,
 				560142E9289A720A001F8C55 /* FavoriteViewController.swift in Sources */,
 			);
