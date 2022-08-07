@@ -12,10 +12,14 @@ class FavoriteViewController: UIViewController {
     // MARK: Views
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: Properties
+    private let model = FavoriteModel.init()
+    
     // MARK: FavoriteViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAppearance()
+        model.getFavoritePosts()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -39,13 +43,14 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(FavoriteViewCell.self)")
+        let item = model.items[indexPath.row]
         
         if let cell = cell as? FavoriteViewCell {
-            cell.image = UIImage(named: "cup-of-tea")
-            cell.isFavorite = true
-            cell.title = "Первыq день в Surf"
-            cell.date = "07.08.2022"
-            cell.shortDesc = "Ультра короткое описание в одну строчку чтобы она не влезла"
+            cell.image = item.image
+            cell.isFavorite = item.isFavorite
+            cell.title = item.title
+            cell.date = item.dateCreate
+            cell.shortDesc = item.content
         }
         
         return cell ?? UITableViewCell()

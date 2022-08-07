@@ -26,6 +26,8 @@
 		566662F2289FE5A000BF395C /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 566662F0289FE5A000BF395C /* FavoriteViewController.xib */; };
 		566662F6289FEB1B00BF395C /* FavoriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566662F4289FEB1B00BF395C /* FavoriteViewCell.swift */; };
 		566662F7289FEB1B00BF395C /* FavoriteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 566662F5289FEB1B00BF395C /* FavoriteViewCell.xib */; };
+		5683982828A00938009529BA /* FavoriteItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683982728A00938009529BA /* FavoriteItemModel.swift */; };
+		5683982A28A00A6B009529BA /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5683982928A00A6B009529BA /* FavoriteModel.swift */; };
 		56ABCBD0289953830057D7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ABCBCF289953830057D7AB /* AppDelegate.swift */; };
 		56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBD8289953850057D7AB /* Assets.xcassets */; };
 		56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBDA289953850057D7AB /* LaunchScreen.storyboard */; };
@@ -60,6 +62,8 @@
 		566662F0289FE5A000BF395C /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
 		566662F4289FEB1B00BF395C /* FavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewCell.swift; sourceTree = "<group>"; };
 		566662F5289FEB1B00BF395C /* FavoriteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewCell.xib; sourceTree = "<group>"; };
+		5683982728A00938009529BA /* FavoriteItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemModel.swift; sourceTree = "<group>"; };
+		5683982928A00A6B009529BA /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		56ABCBCC289953830057D7AB /* myGalleryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myGalleryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56ABCBCF289953830057D7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56ABCBD8289953850057D7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 			children = (
 				5607D6B3289D72C40078C03C /* Cells */,
 				5607D6B1289D6D7A0078C03C /* MainModel.swift */,
+				56B77643289EAC37000F2E2E /* DetailItemModel.swift */,
 				560142D8289A6897001F8C55 /* MainViewController.swift */,
 				560142D9289A6897001F8C55 /* MainViewController.xib */,
 			);
@@ -123,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				566662F3289FEB0100BF395C /* Cells */,
+				5683982728A00938009529BA /* FavoriteItemModel.swift */,
+				5683982928A00A6B009529BA /* FavoriteModel.swift */,
 				566662EF289FE5A000BF395C /* FavoriteViewController.swift */,
 				566662F0289FE5A000BF395C /* FavoriteViewController.xib */,
 			);
@@ -233,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				56E6B8D8289DC66900FC7650 /* Cells */,
-				56B77643289EAC37000F2E2E /* DetailItemModel.swift */,
 				56E6B8D4289DC5FF00FC7650 /* DetailTableViewController.swift */,
 				56E6B8D5289DC5FF00FC7650 /* DetailTableViewController.xib */,
 			);
@@ -385,6 +391,7 @@
 				56E6B8D6289DC5FF00FC7650 /* DetailTableViewController.swift in Sources */,
 				5662CFE0289C31AA00269BAD /* SearchViewInputDelegate.swift in Sources */,
 				560142EF289A7458001F8C55 /* TabBarConfig.swift in Sources */,
+				5683982A28A00A6B009529BA /* FavoriteModel.swift in Sources */,
 				5662CFE2289C31BD00269BAD /* SearchViewOutputDelegate.swift in Sources */,
 				566662F1289FE5A000BF395C /* FavoriteViewController.swift in Sources */,
 				566662F6289FEB1B00BF395C /* FavoriteViewCell.swift in Sources */,
@@ -396,6 +403,7 @@
 				56B77644289EAC37000F2E2E /* DetailItemModel.swift in Sources */,
 				5662CFDB289C310B00269BAD /* SearchModel.swift in Sources */,
 				560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */,
+				5683982828A00938009529BA /* FavoriteItemModel.swift in Sources */,
 				5607D6B2289D6D7A0078C03C /* MainModel.swift in Sources */,
 				560142ED289A72C9001F8C55 /* TabBarModel.swift in Sources */,
 				56E6B8E6289DC6D500FC7650 /* TextTableViewCell.swift in Sources */,
