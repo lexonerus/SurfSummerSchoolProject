@@ -11,8 +11,6 @@
 		560142DB289A6897001F8C55 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560142D9289A6897001F8C55 /* MainViewController.xib */; };
 		560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142DC289A6A77001F8C55 /* ProfileViewController.swift */; };
 		560142DF289A6A77001F8C55 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560142DD289A6A77001F8C55 /* ProfileViewController.xib */; };
-		560142E9289A720A001F8C55 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142E7289A720A001F8C55 /* FavoriteViewController.swift */; };
-		560142EA289A720A001F8C55 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560142E8289A720A001F8C55 /* FavoriteViewController.xib */; };
 		560142ED289A72C9001F8C55 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142EC289A72C9001F8C55 /* TabBarModel.swift */; };
 		560142EF289A7458001F8C55 /* TabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142EE289A7458001F8C55 /* TabBarConfig.swift */; };
 		560142F3289AB672001F8C55 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142F1289AB672001F8C55 /* SearchViewController.swift */; };
@@ -24,6 +22,10 @@
 		5662CFDD289C312400269BAD /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5662CFDC289C312400269BAD /* SearchPresenter.swift */; };
 		5662CFE0289C31AA00269BAD /* SearchViewInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5662CFDF289C31AA00269BAD /* SearchViewInputDelegate.swift */; };
 		5662CFE2289C31BD00269BAD /* SearchViewOutputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5662CFE1289C31BD00269BAD /* SearchViewOutputDelegate.swift */; };
+		566662F1289FE5A000BF395C /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566662EF289FE5A000BF395C /* FavoriteViewController.swift */; };
+		566662F2289FE5A000BF395C /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 566662F0289FE5A000BF395C /* FavoriteViewController.xib */; };
+		566662F6289FEB1B00BF395C /* FavoriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566662F4289FEB1B00BF395C /* FavoriteViewCell.swift */; };
+		566662F7289FEB1B00BF395C /* FavoriteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 566662F5289FEB1B00BF395C /* FavoriteViewCell.xib */; };
 		56ABCBD0289953830057D7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ABCBCF289953830057D7AB /* AppDelegate.swift */; };
 		56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBD8289953850057D7AB /* Assets.xcassets */; };
 		56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBDA289953850057D7AB /* LaunchScreen.storyboard */; };
@@ -43,8 +45,6 @@
 		560142D9289A6897001F8C55 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		560142DC289A6A77001F8C55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		560142DD289A6A77001F8C55 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
-		560142E7289A720A001F8C55 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		560142E8289A720A001F8C55 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
 		560142EC289A72C9001F8C55 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
 		560142EE289A7458001F8C55 /* TabBarConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarConfig.swift; sourceTree = "<group>"; };
 		560142F1289AB672001F8C55 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +56,10 @@
 		5662CFDC289C312400269BAD /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		5662CFDF289C31AA00269BAD /* SearchViewInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInputDelegate.swift; sourceTree = "<group>"; };
 		5662CFE1289C31BD00269BAD /* SearchViewOutputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewOutputDelegate.swift; sourceTree = "<group>"; };
+		566662EF289FE5A000BF395C /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		566662F0289FE5A000BF395C /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
+		566662F4289FEB1B00BF395C /* FavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewCell.swift; sourceTree = "<group>"; };
+		566662F5289FEB1B00BF395C /* FavoriteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewCell.xib; sourceTree = "<group>"; };
 		56ABCBCC289953830057D7AB /* myGalleryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myGalleryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56ABCBCF289953830057D7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56ABCBD8289953850057D7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,8 +122,9 @@
 		560142E6289A71F9001F8C55 /* FavoriteModule */ = {
 			isa = PBXGroup;
 			children = (
-				560142E7289A720A001F8C55 /* FavoriteViewController.swift */,
-				560142E8289A720A001F8C55 /* FavoriteViewController.xib */,
+				566662F3289FEB0100BF395C /* Cells */,
+				566662EF289FE5A000BF395C /* FavoriteViewController.swift */,
+				566662F0289FE5A000BF395C /* FavoriteViewController.xib */,
 			);
 			path = FavoriteModule;
 			sourceTree = "<group>";
@@ -161,6 +166,15 @@
 				5662CFE1289C31BD00269BAD /* SearchViewOutputDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		566662F3289FEB0100BF395C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				566662F4289FEB1B00BF395C /* FavoriteViewCell.swift */,
+				566662F5289FEB1B00BF395C /* FavoriteViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		56ABCBC3289953830057D7AB = {
@@ -346,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				566662F7289FEB1B00BF395C /* FavoriteViewCell.xib in Resources */,
 				56E6B8DC289DC68A00FC7650 /* ImageTableViewCell.xib in Resources */,
 				56E6B8D7289DC5FF00FC7650 /* DetailTableViewController.xib in Resources */,
 				56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */,
@@ -353,8 +368,8 @@
 				560142DB289A6897001F8C55 /* MainViewController.xib in Resources */,
 				560142F4289AB672001F8C55 /* SearchViewController.xib in Resources */,
 				560142DF289A6A77001F8C55 /* ProfileViewController.xib in Resources */,
+				566662F2289FE5A000BF395C /* FavoriteViewController.xib in Resources */,
 				56E6B8E3289DC6C600FC7650 /* LabelTableViewCell.xib in Resources */,
-				560142EA289A720A001F8C55 /* FavoriteViewController.xib in Resources */,
 				5607D6B7289D72E00078C03C /* MainCollectionViewCell.xib in Resources */,
 				56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */,
 			);
@@ -371,6 +386,8 @@
 				5662CFE0289C31AA00269BAD /* SearchViewInputDelegate.swift in Sources */,
 				560142EF289A7458001F8C55 /* TabBarConfig.swift in Sources */,
 				5662CFE2289C31BD00269BAD /* SearchViewOutputDelegate.swift in Sources */,
+				566662F1289FE5A000BF395C /* FavoriteViewController.swift in Sources */,
+				566662F6289FEB1B00BF395C /* FavoriteViewCell.swift in Sources */,
 				560142F3289AB672001F8C55 /* SearchViewController.swift in Sources */,
 				5662CFDD289C312400269BAD /* SearchPresenter.swift in Sources */,
 				56E6B8E2289DC6C600FC7650 /* LabelTableViewCell.swift in Sources */,
@@ -384,7 +401,6 @@
 				56E6B8E6289DC6D500FC7650 /* TextTableViewCell.swift in Sources */,
 				56E6B8DB289DC68A00FC7650 /* ImageTableViewCell.swift in Sources */,
 				56ABCBD0289953830057D7AB /* AppDelegate.swift in Sources */,
-				560142E9289A720A001F8C55 /* FavoriteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,7 +41,8 @@ class MainViewController: UIViewController {
 
     // MARK: Actions
     @objc func searchButtonTapped() {
-        navigationController?.pushViewController(SearchViewController(), animated: true)
+        let vc = SearchViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

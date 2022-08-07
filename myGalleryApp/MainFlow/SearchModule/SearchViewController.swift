@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: Views
     @IBOutlet var searchBar: UISearchBar!
     
@@ -23,9 +23,13 @@ class SearchViewController: UIViewController {
         presenter.setViewInputDelegate(viewInputDelegate: self)
         viewOutputDelegate?.initialSetup()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationBar()
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        sleep(2)
+        sleep(1)
         viewOutputDelegate?.getDataFromModel()
     }
 }
@@ -34,8 +38,7 @@ class SearchViewController: UIViewController {
 extension SearchViewController: SearchViewInputDelegate {
     func setupInitialState() {
         print("initial setup")
-        navigationController?.navigationBar.topItem?.title  = ""
-        searchBar.placeholder                               = "Поиск"
+        searchBar.placeholder = "Поиск"
     }
     func setupData() {
         print("data setting up")
@@ -43,5 +46,19 @@ extension SearchViewController: SearchViewInputDelegate {
     func displayData(data: String) {
         searchBar.text = data
         //print("data displayed")
+    }
+}
+
+// MARK: Private methods
+private extension SearchViewController {
+    func configureNavigationBar() {
+        navigationItem.title = ""
+        let backButton = UIBarButtonItem(image: UIImage(named: "arrow-right-line"),
+                                         style: .plain,
+                                         target: navigationController,
+                                         action: #selector(UINavigationController.popViewController(animated:)))
+        navigationItem.leftBarButtonItem = backButton
+        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 }

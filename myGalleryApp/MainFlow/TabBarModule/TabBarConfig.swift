@@ -36,7 +36,7 @@ private extension TabBarConfig {
         allTab.forEach { tab in
             let controller = getCurrentViewController(tab: tab)
             let navigationView = UINavigationController(rootViewController: controller)
-            navigationView.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            navigationView.navigationBar.tintColor = .black
             let tabBarItem = UITabBarItem(title: tab.title, image: tab.image, selectedImage: tab.selectedImage)
             controller.tabBarItem = tabBarItem
             viewControllers.append(navigationView)

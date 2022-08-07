@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="542" id="KGk-i7-Jjw" customClass="FavoriteViewCell" customModule="myGalleryApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="482" height="542"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="482" height="542"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dwr-H0-UCe">
+                        <rect key="frame" x="16" y="24" width="450" height="427.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Dwr-H0-UCe" secondAttribute="height" multiplier="343:326" id="VLA-xu-a8N"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SpR-Fi-dVh">
+                        <rect key="frame" x="16" y="467.5" width="42" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="750" constant="24" id="S3b-T7-ItZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh9-kQ-nJY">
+                        <rect key="frame" x="413" y="472.5" width="42" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="Ehl-Bn-hi4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpG-uq-hsT">
+                        <rect key="frame" x="16" y="499.5" width="435" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="750" constant="24" id="Az3-p1-yNC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7l-hG-2qr">
+                        <rect key="frame" x="434" y="32" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="3bc-8F-PeI"/>
+                            <constraint firstAttribute="width" constant="24" id="bx2-a5-6Un"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="heart-line"/>
+                        <connections>
+                            <action selector="heartButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="u1u-Ik-s7b"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Dwr-H0-UCe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="45q-Ns-p1q"/>
+                    <constraint firstItem="dpG-uq-hsT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="6aY-fX-VYX"/>
+                    <constraint firstItem="SpR-Fi-dVh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="7qb-sI-3cK"/>
+                    <constraint firstItem="mh9-kQ-nJY" firstAttribute="top" secondItem="Dwr-H0-UCe" secondAttribute="bottom" constant="21" id="8oe-pd-9dg"/>
+                    <constraint firstItem="dpG-uq-hsT" firstAttribute="top" secondItem="SpR-Fi-dVh" secondAttribute="bottom" constant="8" id="ADD-km-rIL"/>
+                    <constraint firstItem="Dwr-H0-UCe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="DXu-Sc-HQG"/>
+                    <constraint firstAttribute="trailing" secondItem="T7l-hG-2qr" secondAttribute="trailing" constant="24" id="GzW-JP-bgO"/>
+                    <constraint firstItem="T7l-hG-2qr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="J3j-Y0-km7"/>
+                    <constraint firstItem="SpR-Fi-dVh" firstAttribute="top" secondItem="Dwr-H0-UCe" secondAttribute="bottom" constant="16" id="JfQ-6F-DuX"/>
+                    <constraint firstAttribute="trailing" secondItem="Dwr-H0-UCe" secondAttribute="trailing" constant="16" id="PaN-fk-yu4"/>
+                    <constraint firstAttribute="trailing" secondItem="dpG-uq-hsT" secondAttribute="trailing" constant="31" id="PtM-W5-nNK"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dpG-uq-hsT" secondAttribute="bottom" constant="8" id="nzU-nJ-r5s"/>
+                    <constraint firstAttribute="trailing" secondItem="mh9-kQ-nJY" secondAttribute="trailing" constant="27" id="yeF-Fc-mb3"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="favButton" destination="T7l-hG-2qr" id="I2N-eU-jIx"/>
+                <outlet property="favDate" destination="mh9-kQ-nJY" id="5n9-km-xoo"/>
+                <outlet property="favImage" destination="Dwr-H0-UCe" id="oxG-K5-r8m"/>
+                <outlet property="favShortDescription" destination="dpG-uq-hsT" id="u0t-Sn-toM"/>
+                <outlet property="favTitle" destination="SpR-Fi-dVh" id="VDW-r8-9P4"/>
+            </connections>
+            <point key="canvasLocation" x="249.27536231884059" y="249.10714285714283"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="heart-line" width="24" height="24"/>
+    </resources>
+</document>

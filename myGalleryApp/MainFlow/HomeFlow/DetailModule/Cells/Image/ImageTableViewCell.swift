@@ -22,7 +22,6 @@ class ImageTableViewCell: UITableViewCell {
     // MARK: ImageTableViewCell lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .none
         configureAppearance()
     }
 
@@ -34,6 +33,7 @@ private extension ImageTableViewCell {
     func configureAppearance() {
         postImage.layer.cornerRadius = 12
         postImage.contentMode = .scaleAspectFill
+        selectionStyle = .none
         
     }
 }
