@@ -37,7 +37,7 @@ class DetailTableViewController: UITableViewController, UIGestureRecognizerDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(ImageTableViewCell.self)")
             
             if let cell = cell as? ImageTableViewCell {
-                cell.image = model?.image
+                cell.imageUrlInString = model?.imageUrlInString ?? ""
             }
             return cell ?? UITableViewCell()
         
