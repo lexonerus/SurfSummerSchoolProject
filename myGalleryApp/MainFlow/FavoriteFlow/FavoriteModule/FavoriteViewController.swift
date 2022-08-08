@@ -65,7 +65,6 @@ private extension FavoriteViewController {
     func configureAppearance() {
         configureNavigationBar()
         configureTableView()
-        
     }
     
     func configureTableView() {
