@@ -20,7 +20,8 @@ class MainViewController: UIViewController {
     private let model: MainModel = .init()
     
     // MARK: Views
-    @IBOutlet private var mainCollectionView: UICollectionView!
+    @IBOutlet private weak var mainCollectionView: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: MainViewController lifecycle
     override func viewDidLoad() {
@@ -33,7 +34,14 @@ class MainViewController: UIViewController {
         )
         configureAppearance()
         configureModel()
-        model.getPosts()
+
+        model.getPosts {
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                self.mainCollectionView.isHidden = false
+            }
+        }
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +59,11 @@ class MainViewController: UIViewController {
 // MARK: Private Methods
 private extension MainViewController {
     func configureAppearance() {
+        mainCollectionView.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+        
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
         // регистрация ячейки:

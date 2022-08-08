@@ -24,20 +24,22 @@ final class MainModel {
     let pictureService = PictureService()
     
     // MARK: Methods
-    func getPosts() {
+    func getPosts(wheCompleted: @escaping () -> Void) {
         pictureService.loadPictures { [weak self] result in
             switch result {
             case .success(let pictures):
                 self?.items = pictures.map { pictureModel in
-                    DetailItemModel(
+                    let result = DetailItemModel(
                         imageUrlInString: pictureModel.photoUrl,
                         title: pictureModel.title,
                         isFavorite: false, // TODO FavoriteService
                         content: pictureModel.content,
                         dateCreate: pictureModel.date
                     )
+                    wheCompleted()
+                    return result
                 }
-            case .failure(let error):
+            case .failure(_):
                 // TODO ErrorState
                 break
             }
