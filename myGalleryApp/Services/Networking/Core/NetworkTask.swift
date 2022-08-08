@@ -9,6 +9,7 @@ import Foundation
 
 protocol NetworkTask {
     
+    // MARK: Properties
     associatedtype Input: Encodable
     associatedtype Output: Decodable
     
@@ -17,8 +18,9 @@ protocol NetworkTask {
     var completedURL: URL? { get }
     var method: NetworkMethod { get }
     
-    func performRequest(_ input: Input,
-                        _ onResponceWasReceived: (_ result: Result<Output, Error>) -> Void
+    // MARK: Methods
+    func performRequest(input: Input,
+                        _ onResponceWasReceived: @escaping (_ result: Result<Output, Error>) -> Void
                         )
     
 }

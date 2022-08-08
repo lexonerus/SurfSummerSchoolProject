@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="463" height="472"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="2UC-5k-xxh">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="260" verticalHuggingPriority="260" translatesAutoresizingMaskIntoConstraints="NO" id="2UC-5k-xxh">
                         <rect key="frame" x="16" y="16" width="431" height="409.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="2UC-5k-xxh" secondAttribute="height" multiplier="343:326" id="5jl-Sx-JQ6"/>
@@ -27,7 +27,7 @@
                     <constraint firstItem="2UC-5k-xxh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="RzW-jb-C9Y"/>
                     <constraint firstItem="2UC-5k-xxh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="drk-YK-0k0"/>
                     <constraint firstAttribute="trailing" secondItem="2UC-5k-xxh" secondAttribute="trailing" constant="16" id="fMh-NC-lrj"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2UC-5k-xxh" secondAttribute="bottom" priority="750" constant="8" id="fZb-Tm-UdU"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2UC-5k-xxh" secondAttribute="bottom" constant="8" id="fZb-Tm-UdU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

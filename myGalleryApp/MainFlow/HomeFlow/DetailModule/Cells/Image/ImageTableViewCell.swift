@@ -13,9 +13,12 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet private var postImage: UIImageView!
         
     // MARK: Properties
-    var image: UIImage? {
+    var imageUrlInString: String = "" {
         didSet {
-            postImage.image = image
+            guard let url = URL(string: imageUrlInString) else {
+                return
+            }
+            postImage.loadImage(from: url)
         }
     }
     
@@ -32,7 +35,6 @@ class ImageTableViewCell: UITableViewCell {
 private extension ImageTableViewCell {
     func configureAppearance() {
         postImage.layer.cornerRadius = 12
-        postImage.contentMode = .scaleAspectFill
         selectionStyle = .none
         
     }

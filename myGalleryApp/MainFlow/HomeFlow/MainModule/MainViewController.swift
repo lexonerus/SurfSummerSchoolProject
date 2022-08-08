@@ -34,6 +34,7 @@ class MainViewController: UIViewController {
         configureAppearance()
         configureModel()
         model.getPosts()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         title = "Главная"
@@ -59,7 +60,10 @@ private extension MainViewController {
     
     func configureModel() {
         model.didItemsUpdated = { [weak self] in
-            self?.mainCollectionView.reloadData()
+            DispatchQueue.main.async {
+                self?.mainCollectionView.reloadData()
+            }
+            
         }
     }
 }
@@ -77,7 +81,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             let item = model.items[indexPath.item]
             cell.title      = item.title
             cell.isFavorite = item.isFavorite
-            cell.image      = item.image
+            cell.imageUrlInString = item.imageUrlInString
         }
         return cell
     }
