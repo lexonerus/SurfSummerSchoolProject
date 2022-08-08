@@ -1,4 +1,2 @@
 .DS_Store
-myGalleryApp.xcodeproj/project.xcworkspace/xcuserdata/lexone01.xcuserdatad/UserInterfaceState.xcuserstate
-*.xcuserstate
-myGalleryApp.xcodeproj/project.pbxproj
+*.DS_Store
