@@ -26,6 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         runMainFlow()
         return true
     }
+    
+    func startApplicationProcess() {
+        runLaunchScreen()
+    }
+    
+    func runLaunchScreen() {
+        let launchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: .main)
+            .instantiateInitialViewController()
+        window?.rootViewController = launchScreenViewController
+    }
+    
     /*
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
      //print("App first launch")

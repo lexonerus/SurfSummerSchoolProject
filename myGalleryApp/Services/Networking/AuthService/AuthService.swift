@@ -14,7 +14,7 @@ struct AuthService {
         path: "auth/login"
     )
     
-    func performLoginRequest(
+    func performLoginRequestAndSaveToken(
         credentials: AuthRequestModel,
         _ onResponceWasReceived: @escaping (_ result: Result<AuthResponceModel, Error>) -> Void
     ) {
