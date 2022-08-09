@@ -24,7 +24,7 @@ final class MainModel {
     let pictureService = PictureService()
     
     // MARK: Methods
-    func getPosts(wheCompleted: @escaping () -> Void) {
+    func getPosts(completionHandler: @escaping (Bool) -> Void) {
         pictureService.loadPictures { [weak self] result in
             switch result {
             case .success(let pictures):
@@ -36,11 +36,12 @@ final class MainModel {
                         content: pictureModel.content,
                         dateCreate: pictureModel.date
                     )
-                    wheCompleted()
+                    completionHandler(true)
                     return result
                 }
             case .failure(_):
                 // TODO ErrorState
+                completionHandler(false)
                 break
             }
         }

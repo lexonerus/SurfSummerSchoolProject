@@ -23,6 +23,11 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var failedView: UIView!
+    @IBOutlet weak var failLabel: UILabel!
+    @IBOutlet weak var failImage: UIImageView!
+    @IBOutlet weak var failButton: UIButton!
+    
     // MARK: MainViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +39,8 @@ class MainViewController: UIViewController {
         )
         configureAppearance()
         configureModel()
+        getData()
 
-        model.getPosts {
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
-                self.mainCollectionView.isHidden = false
-            }
-        }
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -53,11 +52,40 @@ class MainViewController: UIViewController {
         let vc = SearchViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    @IBAction func failButtonPressed(_ sender: Any) {
+        getData()
+    }
+    
 
 }
 
 // MARK: Private Methods
 private extension MainViewController {
+    func getData() {
+        model.getPosts { doneWorking in
+            if doneWorking {
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.mainCollectionView.isHidden = false
+                }
+            } else {
+                print("Error")
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.failedView.isHidden = false
+                    self.failLabel.text = """
+                    Не удалось загрузить ленту
+                    Обновите экран или попробуqте позже
+                    """
+                }
+                
+            }
+
+        }
+    }
+    
     func configureAppearance() {
         mainCollectionView.isHidden = true
         activityIndicator.isHidden = false

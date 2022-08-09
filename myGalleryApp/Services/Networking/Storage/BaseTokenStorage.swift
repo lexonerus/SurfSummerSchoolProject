@@ -9,7 +9,9 @@ import Foundation
 
 struct BaseTokenStorage: TokenStorage {
     func getToken() throws -> TokenContainer {
-        TokenContainer(token: "13dafde943a580620627b934bb12a39ed589514ef42b479e82a56b15451460fc")
+        // Вечный токен, чтобы обойти авторизацию
+        TokenContainer(token: "595d9f58b8ac34689b1326e2cf4ef803882995c267a00ce34c6220f4a6d8ed6a")
+        //TokenContainer(token: "")
     }
     
     func set(newToken: TokenContainer) throws { }
