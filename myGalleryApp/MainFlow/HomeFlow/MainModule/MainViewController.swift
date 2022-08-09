@@ -101,7 +101,7 @@ private extension MainViewController {
     
     func configureModel() {
         model.didItemsUpdated = { [weak self] in
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self?.mainCollectionView.reloadData()
             }
             

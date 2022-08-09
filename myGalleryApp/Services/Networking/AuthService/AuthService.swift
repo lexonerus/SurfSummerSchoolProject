@@ -18,6 +18,15 @@ struct AuthService {
         credentials: AuthRequestModel,
         _ onResponceWasReceived: @escaping (_ result: Result<AuthResponceModel, Error>) -> Void
     ) {
-        dataTask.performRequest(input: credentials, onResponceWasReceived)
+        dataTask.performRequest(input: credentials) { result in
+            if case let .success(responceModel) = result {
+                do {
+                try dataTask.tokenStorage.set(newToken: TokenContainer(token: responceModel.token, receivingDate: .now))
+            } catch {
+                // TODO: Error if token was not received
+            }
+        }
+        onResponceWasReceived(result)
+        }
     }
 }

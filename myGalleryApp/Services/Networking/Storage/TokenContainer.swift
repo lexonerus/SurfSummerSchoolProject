@@ -15,7 +15,7 @@ struct TokenContainer {
     }
     var isExpired: Bool {
         let now = Date()
-        if receivingDate.addingTimeInterval(tokenExpiringTime) < now {
+        if receivingDate.addingTimeInterval(tokenExpiringTime) > now {
             return false
         } else {
             return true
