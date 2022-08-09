@@ -45,8 +45,6 @@
 		56ABCBD0289953830057D7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ABCBCF289953830057D7AB /* AppDelegate.swift */; };
 		56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBD8289953850057D7AB /* Assets.xcassets */; };
 		56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBDA289953850057D7AB /* LaunchScreen.storyboard */; };
-		56B4237928A23620004A195C /* EmptyStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4237728A23620004A195C /* EmptyStateViewController.swift */; };
-		56B4237A28A23620004A195C /* EmptyStateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B4237828A23620004A195C /* EmptyStateViewController.xib */; };
 		56B77644289EAC37000F2E2E /* DetailItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B77643289EAC37000F2E2E /* DetailItemModel.swift */; };
 		56E6B8D6289DC5FF00FC7650 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8D4289DC5FF00FC7650 /* DetailTableViewController.swift */; };
 		56E6B8D7289DC5FF00FC7650 /* DetailTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E6B8D5289DC5FF00FC7650 /* DetailTableViewController.xib */; };
@@ -99,8 +97,6 @@
 		56ABCBD8289953850057D7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56ABCBDB289953850057D7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56ABCBDD289953850057D7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		56B4237728A23620004A195C /* EmptyStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateViewController.swift; sourceTree = "<group>"; };
-		56B4237828A23620004A195C /* EmptyStateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateViewController.xib; sourceTree = "<group>"; };
 		56B77643289EAC37000F2E2E /* DetailItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemModel.swift; sourceTree = "<group>"; };
 		56E6B8D4289DC5FF00FC7650 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		56E6B8D5289DC5FF00FC7650 /* DetailTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewController.xib; sourceTree = "<group>"; };
@@ -338,15 +334,6 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		56B4237628A235FA004A195C /* EmptyStateModule */ = {
-			isa = PBXGroup;
-			children = (
-				56B4237728A23620004A195C /* EmptyStateViewController.swift */,
-				56B4237828A23620004A195C /* EmptyStateViewController.xib */,
-			);
-			path = EmptyStateModule;
-			sourceTree = "<group>";
-		};
 		56E6B8D0289DC53600FC7650 /* DetailModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,7 +347,6 @@
 		56E6B8D1289DC56D00FC7650 /* HomeFlow */ = {
 			isa = PBXGroup;
 			children = (
-				56B4237628A235FA004A195C /* EmptyStateModule */,
 				560142E4289A71CA001F8C55 /* MainModule */,
 				56E6B8D0289DC53600FC7650 /* DetailModule */,
 			);
@@ -479,7 +465,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				566662F7289FEB1B00BF395C /* FavoriteViewCell.xib in Resources */,
-				56B4237A28A23620004A195C /* EmptyStateViewController.xib in Resources */,
 				56E6B8DC289DC68A00FC7650 /* ImageTableViewCell.xib in Resources */,
 				56E6B8D7289DC5FF00FC7650 /* DetailTableViewController.xib in Resources */,
 				56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */,
@@ -517,7 +502,6 @@
 				56E6B8E2289DC6C600FC7650 /* LabelTableViewCell.swift in Sources */,
 				5607D6B6289D72E00078C03C /* MainCollectionViewCell.swift in Sources */,
 				560142DA289A6897001F8C55 /* MainViewController.swift in Sources */,
-				56B4237928A23620004A195C /* EmptyStateViewController.swift in Sources */,
 				56B77644289EAC37000F2E2E /* DetailItemModel.swift in Sources */,
 				5607683A28A186600010B977 /* TokenStorage.swift in Sources */,
 				5662CFDB289C310B00269BAD /* SearchModel.swift in Sources */,
