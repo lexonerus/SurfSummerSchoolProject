@@ -30,13 +30,14 @@ final class MainModel {
             case .success(let pictures):
                 self?.items = pictures.map { pictureModel in
                     let result = DetailItemModel(
+                        id: Int(pictureModel.id)!,
                         imageUrlInString: pictureModel.photoUrl,
                         title: pictureModel.title,
                         isFavorite: false, // TODO FavoriteService
                         content: pictureModel.content,
                         dateCreate: pictureModel.date
                     )
-                    completionHandler(true)
+                    
                     return result
                 }
             case .failure(_):
@@ -46,6 +47,7 @@ final class MainModel {
             }
         }
         //items = Array(repeating: DetailItemModel.createDefault(), count: 50)
+        completionHandler(true)
     }
 }
 

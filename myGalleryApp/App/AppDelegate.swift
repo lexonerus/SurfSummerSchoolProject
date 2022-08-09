@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
             runMainFlow()
         } else {
-            let tempCredentials = AuthRequestModel(phone: "+79876543219", password: "qwerty")
+            let tempCredentials = AuthRequestModel(phone: "+71234567890", password: "qwerty")
             AuthService()
                 .performLoginRequestAndSaveToken(credentials: tempCredentials) { [weak self] result in
                     switch result {

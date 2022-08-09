@@ -32,6 +32,8 @@
 		5607D6B2289D6D7A0078C03C /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5607D6B1289D6D7A0078C03C /* MainModel.swift */; };
 		5607D6B6289D72E00078C03C /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5607D6B4289D72E00078C03C /* MainCollectionViewCell.swift */; };
 		5607D6B7289D72E00078C03C /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5607D6B5289D72E00078C03C /* MainCollectionViewCell.xib */; };
+		56275C3028A2DE6800FFCF18 /* ApiExample.JSON in Resources */ = {isa = PBXBuildFile; fileRef = 56275C2F28A2DE6800FFCF18 /* ApiExample.JSON */; };
+		56275C3228A2DEC100FFCF18 /* ServerHowTo.md in Resources */ = {isa = PBXBuildFile; fileRef = 56275C3128A2DEC100FFCF18 /* ServerHowTo.md */; };
 		5662CFDB289C310B00269BAD /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5662CFDA289C310B00269BAD /* SearchModel.swift */; };
 		5662CFDD289C312400269BAD /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5662CFDC289C312400269BAD /* SearchPresenter.swift */; };
 		5662CFE0289C31AA00269BAD /* SearchViewInputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5662CFDF289C31AA00269BAD /* SearchViewInputDelegate.swift */; };
@@ -82,6 +84,8 @@
 		5607D6B1289D6D7A0078C03C /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		5607D6B4289D72E00078C03C /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		5607D6B5289D72E00078C03C /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
+		56275C2F28A2DE6800FFCF18 /* ApiExample.JSON */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ApiExample.JSON; sourceTree = "<group>"; };
+		56275C3128A2DEC100FFCF18 /* ServerHowTo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ServerHowTo.md; sourceTree = "<group>"; };
 		5662CFDA289C310B00269BAD /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		5662CFDC289C312400269BAD /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		5662CFDF289C31AA00269BAD /* SearchViewInputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInputDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +267,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		56275C2E28A2DE1200FFCF18 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				56275C2F28A2DE6800FFCF18 /* ApiExample.JSON */,
+				56275C3128A2DEC100FFCF18 /* ServerHowTo.md */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		5662CFDE289C319300269BAD /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,8 +313,9 @@
 		56ABCBCE289953830057D7AB /* myGalleryApp */ = {
 			isa = PBXGroup;
 			children = (
-				5607681828A186600010B977 /* Services */,
+				56275C2E28A2DE1200FFCF18 /* Helpers */,
 				56ABCBE3289956430057D7AB /* App */,
+				5607681828A186600010B977 /* Services */,
 				56ABCBE5289956570057D7AB /* LaunchScreen */,
 				560142E2289A71A2001F8C55 /* MainFlow */,
 				56ABCBE72899566A0057D7AB /* Assets */,
@@ -464,8 +478,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56275C3028A2DE6800FFCF18 /* ApiExample.JSON in Resources */,
 				566662F7289FEB1B00BF395C /* FavoriteViewCell.xib in Resources */,
 				56E6B8DC289DC68A00FC7650 /* ImageTableViewCell.xib in Resources */,
+				56275C3228A2DEC100FFCF18 /* ServerHowTo.md in Resources */,
 				56E6B8D7289DC5FF00FC7650 /* DetailTableViewController.xib in Resources */,
 				56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */,
 				56E6B8E7289DC6D500FC7650 /* TextTableViewCell.xib in Resources */,

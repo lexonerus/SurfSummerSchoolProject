@@ -38,13 +38,13 @@ class MainViewController: UIViewController {
             action: #selector(searchButtonTapped)
         )
         configureAppearance()
-        configureModel()
         getData()
 
         
     }
     override func viewWillAppear(_ animated: Bool) {
         title = "Главная"
+        self.configureModel()
     }
 
     // MARK: Actions
@@ -68,6 +68,7 @@ private extension MainViewController {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     self.mainCollectionView.isHidden = false
+                    
                 }
             } else {
                 print("Error")
@@ -101,7 +102,7 @@ private extension MainViewController {
     
     func configureModel() {
         model.didItemsUpdated = { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            DispatchQueue.main.async() {
                 self?.mainCollectionView.reloadData()
             }
             
@@ -123,6 +124,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.title      = item.title
             cell.isFavorite = item.isFavorite
             cell.imageUrlInString = item.imageUrlInString
+            print(item.id)
         }
         return cell
     }
@@ -143,6 +145,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         return Constants.spaceBetweenElements
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //print(model.items[indexPath.item].)
         let detailViewController = DetailTableViewController()
         detailViewController.model = model.items[indexPath.row]
         navigationController?.pushViewController(detailViewController, animated: true)
