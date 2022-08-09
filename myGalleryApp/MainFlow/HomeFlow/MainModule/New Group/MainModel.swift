@@ -14,7 +14,7 @@ final class MainModel {
     var didItemsUpdated: (() -> Void)?
     
     // MARK: Properties
-    var items = [DetailItemModel]() {
+    var items = [Picture]() {
         // при инициализации не сработает
         // вызовется, когда новое значение будет присвоено items
         didSet {
@@ -29,7 +29,7 @@ final class MainModel {
             switch result {
             case .success(let pictures):
                 self?.items = pictures.map { pictureModel in
-                    let result = DetailItemModel(
+                    let result = Picture(
                         id: Int(pictureModel.id)!,
                         imageUrlInString: pictureModel.photoUrl,
                         title: pictureModel.title,

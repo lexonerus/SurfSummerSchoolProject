@@ -52,6 +52,12 @@ class MainViewController: UIViewController {
         let vc = SearchViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func favoriteButtonTapped(sender: UIButton) {
+        print(sender.tag)
+
+    }
+    
     @IBAction func failButtonPressed(_ sender: Any) {
         getData()
     }
@@ -124,7 +130,8 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.title      = item.title
             cell.isFavorite = item.isFavorite
             cell.imageUrlInString = item.imageUrlInString
-            print(item.id)
+            cell.heartButton.tag = item.id
+            cell.heartButton.addTarget(self, action: #selector(favoriteButtonTapped(sender:)), for: .touchUpInside)
         }
         return cell
     }
@@ -145,7 +152,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         return Constants.spaceBetweenElements
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print(model.items[indexPath.item].)
         let detailViewController = DetailTableViewController()
         detailViewController.model = model.items[indexPath.row]
         navigationController?.pushViewController(detailViewController, animated: true)
