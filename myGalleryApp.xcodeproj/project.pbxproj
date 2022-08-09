@@ -247,9 +247,9 @@
 		5607682928A186600010B977 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				5607682A28A186600010B977 /* BaseTokenStorage.swift */,
 				5607682B28A186600010B977 /* TokenContainer.swift */,
 				5607682C28A186600010B977 /* TokenStorage.swift */,
+				5607682A28A186600010B977 /* BaseTokenStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";

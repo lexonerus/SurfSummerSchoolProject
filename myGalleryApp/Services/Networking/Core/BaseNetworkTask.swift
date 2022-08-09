@@ -22,6 +22,9 @@ struct BaseNetworkTask<AbstractInput: Encodable, AbstractOutput: Decodable>: Net
     let method: NetworkMethod
     let session: URLSession = URLSession(configuration: .default)
     let isNeedToken: Bool
+    var urlCache: URLCache {
+        URLCache.shared
+    }
     
     var tokenStorage: TokenStorage {
         BaseTokenStorage()
@@ -42,12 +45,20 @@ struct BaseNetworkTask<AbstractInput: Encodable, AbstractOutput: Decodable>: Net
             _ onResponceWasReceived: @escaping (_ result: Result<AbstractOutput, Error>) -> Void) {
         do {
             let request = try getRequest(with: input)
+            
+            if let cachedResponse = getCachedResponceFromCache(by: request) {
+                let mappedModel = try JSONDecoder().decode(AbstractOutput.self, from: cachedResponse.data)
+                onResponceWasReceived(.success(mappedModel))
+                return
+            }
+            
             session.dataTask(with: request) { data, responce, error in
                 if let error = error {
                     onResponceWasReceived(.failure(error))
                 } else if let data = data {
                     do {
                         let mappedModel = try JSONDecoder().decode(AbstractOutput.self, from: data)
+                        saveResponceToCache(responce, cachedData: data, by: request)
                         onResponceWasReceived(.success(mappedModel))
                     } catch {
                         onResponceWasReceived(.failure(error))
@@ -70,6 +81,23 @@ extension BaseNetworkTask where Input == EmptyModel {
     
     func performRequest(_ onResponceWasReceived: @escaping (_ result: Result<AbstractOutput, Error>) -> Void) {
         performRequest(input: EmptyModel(), onResponceWasReceived)
+    }
+}
+
+// MARK: Cache logic
+private extension BaseNetworkTask {
+    
+    func getCachedResponceFromCache(by request: URLRequest) -> CachedURLResponse? {
+        return urlCache.cachedResponse(for: request)
+    }
+    
+    func saveResponceToCache(_ response: URLResponse?, cachedData: Data?, by request: URLRequest) {
+        guard let response = response, let cachedData = cachedData else {
+            return
+        }
+        let cachedUrlResponce = CachedURLResponse(response: response, data: cachedData)
+        urlCache.storeCachedResponse(cachedUrlResponce, for: request)
+
     }
 }
 
