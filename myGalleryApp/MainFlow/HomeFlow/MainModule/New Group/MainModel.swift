@@ -8,12 +8,13 @@
 import Foundation
 import UIKit.UIImage
 
-final class MainModel {
+class MainModel {
     
     // MARK: Events
     var didItemsUpdated: (() -> Void)?
     
     // MARK: Properties
+    static let shared = MainModel.init()
     var items = [Picture]() {
         // при инициализации не сработает
         // вызовется, когда новое значение будет присвоено items
@@ -21,8 +22,8 @@ final class MainModel {
             didItemsUpdated?()
         }
     }
-    let pictureService = PictureService()
-    let favoriteService = FavoriteService.shared
+    private let pictureService = PictureService()
+    private let favoriteService = FavoriteService.shared
     
     // MARK: Methods
     func getPosts(completionHandler: @escaping (Bool) -> Void) {
@@ -35,7 +36,7 @@ final class MainModel {
                         id: Int(pictureModel.id)!,
                         imageUrlInString: pictureModel.photoUrl,
                         title: pictureModel.title,
-                        isFavorite: (self?.favoriteService.checkIsFavorite(id: Int(pictureModel.id)!))!, // TODO FavoriteService
+                        isFavorite: (self?.favoriteService.checkIsFavorite(id: Int(pictureModel.id)!))!,
                         content: pictureModel.content,
                         dateCreate: pictureModel.date
                     )
@@ -48,7 +49,6 @@ final class MainModel {
                 break
             }
         }
-        //items = Array(repeating: DetailItemModel.createDefault(), count: 50)
         completionHandler(true)
     }
 }

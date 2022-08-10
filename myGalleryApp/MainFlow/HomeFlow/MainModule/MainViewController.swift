@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: Properties
-    private let model: MainModel = .init()
+    private let model: MainModel = MainModel.shared
     private let favoriteService = FavoriteService.shared
     
     // MARK: Views
@@ -38,15 +38,16 @@ class MainViewController: UIViewController {
             target: self,
             action: #selector(searchButtonTapped)
         )
-        getData()
         configureAppearance()
+        getData()
+        configureModel()
         
 
         
     }
     override func viewWillAppear(_ animated: Bool) {
         title = "Главная"
-        configureModel()
+        //configureModel()
     }
 
     // MARK: Actions
@@ -56,17 +57,14 @@ class MainViewController: UIViewController {
     }
     
     @objc func favoriteButtonTapped(sender: UIButton) {
-        /*
-        var item = findItemInModel(id: sender.tag)
-        item?.isFavorite = true
-        favoriteService.dataModel.items.append(item!)
-        print(favoriteService.dataModel.items)
-        */
         let item = findItemInModel(id: sender.tag)
+
         if item?.isFavorite == false {
             favoriteService.savePictureToFavorite(id: item!.id)
+            model.items.filter {$0.id == sender.tag}.first?.isFavorite = true
         } else {
             favoriteService.deletePictureFromFavorite(id: item!.id)
+            model.items.filter {$0.id == sender.tag}.first?.isFavorite = false
         }
         print(favoriteService.favoritePictures)
         
@@ -94,9 +92,9 @@ private extension MainViewController {
     
     func getData() {
         model.getPosts { doneWorking in
+            /*
             if doneWorking {
                 DispatchQueue.main.async {
-                    sleep(2)
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     self.mainCollectionView.isHidden = false
@@ -105,7 +103,6 @@ private extension MainViewController {
             } else {
                 print("Error")
                 DispatchQueue.main.async {
-                   sleep(2)
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     self.failedView.isHidden = false
@@ -114,18 +111,15 @@ private extension MainViewController {
                     Обновите экран или попробуqте позже
                     """
                 }
-                
             }
-
+            */
         }
     }
     
     func configureAppearance() {
-        mainCollectionView.isHidden = true
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
-        
-        
+        mainCollectionView.isHidden = false
+        activityIndicator.isHidden = true
+        //activityIndicator.startAnimating()
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
         // регистрация ячейки:
@@ -135,9 +129,11 @@ private extension MainViewController {
     
     func configureModel() {
         model.didItemsUpdated = { [weak self] in
-            DispatchQueue.main.async() {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self?.mainCollectionView.reloadData()
             }
+            
             
         }
     }

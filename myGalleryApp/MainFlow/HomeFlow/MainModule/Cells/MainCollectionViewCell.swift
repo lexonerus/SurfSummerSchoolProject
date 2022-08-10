@@ -48,6 +48,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         } else {
             isFavorite = false
         }
+        
     }
     
     // MARK: MainCollectionViewCell lifecycle

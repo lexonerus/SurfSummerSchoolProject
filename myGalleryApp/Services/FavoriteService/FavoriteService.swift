@@ -10,7 +10,7 @@ import Foundation
 class FavoriteService {
     
     // MARK: Properties
-    let dataModel = FavoriteModelMain()
+
     let defaults = UserDefaults.standard
     static let shared = FavoriteService()
     var favoritePictures = Set<Int>()
