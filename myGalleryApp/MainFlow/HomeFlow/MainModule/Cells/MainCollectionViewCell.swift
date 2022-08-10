@@ -17,7 +17,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     // MARK: Views
     @IBOutlet private var imageView:    UIImageView!
-    @IBOutlet private var heartButton:  UIButton!
+    @IBOutlet var heartButton:  UIButton!
     @IBOutlet private var cellLabel:    UILabel!
     
     // MARK: Properties
@@ -48,6 +48,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         } else {
             isFavorite = false
         }
+        
     }
     
     // MARK: MainCollectionViewCell lifecycle

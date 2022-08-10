@@ -8,35 +8,39 @@
 import Foundation
 import UIKit.UIImage
 
-final class MainModel {
+class MainModel {
     
     // MARK: Events
     var didItemsUpdated: (() -> Void)?
     
     // MARK: Properties
-    var items = [DetailItemModel]() {
+    static let shared = MainModel.init()
+    var items = [Picture]() {
         // при инициализации не сработает
         // вызовется, когда новое значение будет присвоено items
         didSet {
             didItemsUpdated?()
         }
     }
-    let pictureService = PictureService()
+    private let pictureService = PictureService()
+    private let favoriteService = FavoriteService.shared
     
     // MARK: Methods
     func getPosts(completionHandler: @escaping (Bool) -> Void) {
         pictureService.loadPictures { [weak self] result in
             switch result {
             case .success(let pictures):
-                self?.items = pictures.map { pictureModel in
-                    let result = DetailItemModel(
+                self?.items = pictures.map { [weak self] pictureModel in
+                    
+                    let result = Picture(
+                        id: Int(pictureModel.id)!,
                         imageUrlInString: pictureModel.photoUrl,
                         title: pictureModel.title,
-                        isFavorite: false, // TODO FavoriteService
+                        isFavorite: (self?.favoriteService.checkIsFavorite(id: Int(pictureModel.id)!))!,
                         content: pictureModel.content,
                         dateCreate: pictureModel.date
                     )
-                    completionHandler(true)
+
                     return result
                 }
             case .failure(_):
@@ -45,7 +49,7 @@ final class MainModel {
                 break
             }
         }
-        //items = Array(repeating: DetailItemModel.createDefault(), count: 50)
+        completionHandler(true)
     }
 }
 

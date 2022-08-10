@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var tokenStorage: TokenStorage {
         BaseTokenStorage()
     }
+    let service = FavoriteService.shared
     
     // MARK: Flow setup
     func runMainFlow() {        
@@ -29,8 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         self.window = window
+        service.loadDataFromUserDefaults()
         startApplicationProcess()
         return true
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("App will terminated")
+        service.saveDataToUserDefaults()
     }
     
     func startApplicationProcess() {
@@ -39,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
             runMainFlow()
         } else {
-            let tempCredentials = AuthRequestModel(phone: "+79876543219", password: "qwerty")
+            let tempCredentials = AuthRequestModel(phone: "+71234567890", password: "qwerty")
             AuthService()
                 .performLoginRequestAndSaveToken(credentials: tempCredentials) { [weak self] result in
                     switch result {
@@ -73,10 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         print("App moves from backround to foreground but not active")
     }
-    func applicationWillTerminate(_ application: UIApplication) {
-        print("App terminated")
-    }
     */
+    
+
+    
     
 }
 

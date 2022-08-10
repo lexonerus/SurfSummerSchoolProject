@@ -17,7 +17,8 @@ class MainViewController: UIViewController {
     }
     
     // MARK: Properties
-    private let model: MainModel = .init()
+    private let model: MainModel = MainModel.shared
+    private let favoriteService = FavoriteService.shared
     
     // MARK: Views
     @IBOutlet private weak var mainCollectionView: UICollectionView!
@@ -38,13 +39,15 @@ class MainViewController: UIViewController {
             action: #selector(searchButtonTapped)
         )
         configureAppearance()
-        configureModel()
         getData()
+        configureModel()
+        
 
         
     }
     override func viewWillAppear(_ animated: Bool) {
         title = "Главная"
+        //configureModel()
     }
 
     // MARK: Actions
@@ -52,6 +55,21 @@ class MainViewController: UIViewController {
         let vc = SearchViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func favoriteButtonTapped(sender: UIButton) {
+        let item = findItemInModel(id: sender.tag)
+
+        if item?.isFavorite == false {
+            favoriteService.savePictureToFavorite(id: item!.id)
+            model.items.filter {$0.id == sender.tag}.first?.isFavorite = true
+        } else {
+            favoriteService.deletePictureFromFavorite(id: item!.id)
+            model.items.filter {$0.id == sender.tag}.first?.isFavorite = false
+        }
+        print(favoriteService.favoritePictures)
+        
+    }
+    
     @IBAction func failButtonPressed(_ sender: Any) {
         getData()
     }
@@ -61,13 +79,26 @@ class MainViewController: UIViewController {
 
 // MARK: Private Methods
 private extension MainViewController {
+    
+    func findItemInModel(id: Int) -> Picture? {
+        if let item = model.items.first(where: { $0.id == id }) {
+            print(item)
+            return item
+        } else {
+            print("This item doesnt exist")
+            return nil
+        }
+    }
+    
     func getData() {
         model.getPosts { doneWorking in
+            /*
             if doneWorking {
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     self.mainCollectionView.isHidden = false
+                    
                 }
             } else {
                 print("Error")
@@ -80,18 +111,15 @@ private extension MainViewController {
                     Обновите экран или попробуqте позже
                     """
                 }
-                
             }
-
+            */
         }
     }
     
     func configureAppearance() {
-        mainCollectionView.isHidden = true
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
-        
-        
+        mainCollectionView.isHidden = false
+        activityIndicator.isHidden = true
+        //activityIndicator.startAnimating()
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
         // регистрация ячейки:
@@ -101,9 +129,11 @@ private extension MainViewController {
     
     func configureModel() {
         model.didItemsUpdated = { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 self?.mainCollectionView.reloadData()
             }
+            
             
         }
     }
@@ -123,6 +153,8 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             cell.title      = item.title
             cell.isFavorite = item.isFavorite
             cell.imageUrlInString = item.imageUrlInString
+            cell.heartButton.tag = item.id
+            cell.heartButton.addTarget(self, action: #selector(favoriteButtonTapped(sender:)), for: .touchUpInside)
         }
         return cell
     }

@@ -10,7 +10,7 @@ import UIKit
 class DetailTableViewController: UITableViewController, UIGestureRecognizerDelegate {
         
     // MARK: Properties
-    var model: DetailItemModel?
+    var model: Picture?
     
     // MARK: DetailTableViewController lifecycle
     override func viewDidLoad() {
