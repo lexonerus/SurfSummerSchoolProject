@@ -60,6 +60,12 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
 
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailViewController = DetailTableViewController()
+        detailViewController.model = model.items[indexPath.row]
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
     
 }
 
@@ -81,4 +87,5 @@ private extension FavoriteViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "item-search"), style: .plain, target: self, action: #selector(searchButtonTapped))
     }
     
+
 }
