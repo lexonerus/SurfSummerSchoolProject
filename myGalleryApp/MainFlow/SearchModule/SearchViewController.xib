@@ -4,11 +4,13 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="myGalleryApp" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="PEx-Sm-9Uc" id="dmY-zP-1cq"/>
                 <outlet property="searchBar" destination="QJW-ii-j71" id="23l-Co-Y1S"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,15 +24,34 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="PEx-Sm-9Uc">
+                    <rect key="frame" x="0.0" y="24" width="375" height="643"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R5t-MI-6x6">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="PEx-Sm-9Uc" secondAttribute="bottom" id="27b-Xb-ZjW"/>
                 <constraint firstItem="QJW-ii-j71" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="3pg-Sd-3Ob"/>
+                <constraint firstItem="PEx-Sm-9Uc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XGw-a2-JgT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PEx-Sm-9Uc" secondAttribute="trailing" id="kyA-fR-Oay"/>
                 <constraint firstItem="QJW-ii-j71" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qzo-qB-gfY"/>
                 <constraint firstItem="QJW-ii-j71" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vc8-wx-KTf"/>
+                <constraint firstItem="PEx-Sm-9Uc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="z5d-WN-Doo"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="82"/>
+            <point key="canvasLocation" x="132" y="81.409295352323838"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -53,6 +53,7 @@ class MainViewController: UIViewController {
     // MARK: Actions
     @objc func searchButtonTapped() {
         let vc = SearchViewController()
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -92,7 +93,7 @@ private extension MainViewController {
     
     func getData() {
         model.getPosts { doneWorking in
-            /*
+            
             if doneWorking {
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
@@ -112,14 +113,14 @@ private extension MainViewController {
                     """
                 }
             }
-            */
+            
         }
     }
     
     func configureAppearance() {
-        mainCollectionView.isHidden = false
-        activityIndicator.isHidden = true
-        //activityIndicator.startAnimating()
+        mainCollectionView.isHidden = true
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
         // регистрация ячейки:
