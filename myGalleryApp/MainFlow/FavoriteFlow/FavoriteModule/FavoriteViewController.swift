@@ -31,7 +31,9 @@ class FavoriteViewController: UIViewController {
         
     // MARK: Actions
     @objc func searchButtonTapped() {
-        navigationController?.pushViewController(SearchViewController(), animated: true)
+        let vc = SearchViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     @objc func favoriteButtonTapped(sender: UIButton) {
         print(sender.tag)
