@@ -25,6 +25,7 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: Properties
     private var filteredData = [Picture]()
     private var model: MainModel = MainModel.shared
+    private let favoriteService = FavoriteService.shared
     private var isSearching = false
 
     
@@ -33,21 +34,44 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         navigationItem.titleView = searchBar
         configureAppearance()
-        print(model.items)
+        configureModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar()
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
 
+
+    }
+    
+    // MARK: Actions
+    @objc func favoriteButtonTapped(sender: UIButton) {
+        let item = findItemInModel(id: sender.tag)
+
+        if item?.isFavorite == false {
+            favoriteService.savePictureToFavorite(id: item!.id)
+            model.items.filter {$0.id == sender.tag}.first?.isFavorite = true
+        } else {
+            favoriteService.deletePictureFromFavorite(id: item!.id)
+            model.items.filter {$0.id == sender.tag}.first?.isFavorite = false
+        }
+        print(favoriteService.favoritePictures)
+        
     }
 
 }
 
 // MARK: Private methods
 private extension SearchViewController {
+    func findItemInModel(id: Int) -> Picture? {
+        if let item = model.items.first(where: { $0.id == id }) {
+            print(item)
+            return item
+        } else {
+            print("This item doesnt exist")
+            return nil
+        }
+    }
+    
     func configureNavigationBar() {
         navigationItem.title = ""
         let backButton = UIBarButtonItem(image: UIImage(named: "arrow-right-line"),
@@ -68,6 +92,14 @@ private extension SearchViewController {
         collectionView.register(UINib(nibName: "\(MainCollectionViewCell.self)", bundle: .main), forCellWithReuseIdentifier: "\(MainCollectionViewCell.self)")
         collectionView.contentInset = .init(top: 10, left: 16, bottom: 10, right: 16)
 
+    }
+    func configureModel() {
+        model.didItemsUpdated = { [weak self] in
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self?.collectionView.reloadData()
+            }
+        }
     }
     
 }
@@ -120,7 +152,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             cell.isFavorite = item.isFavorite
             cell.imageUrlInString = item.imageUrlInString
             cell.heartButton.tag = item.id
-            //cell.heartButton.addTarget(self, action: #selector(favoriteButtonTapped(sender:)), for: .touchUpInside)
+            cell.heartButton.addTarget(self, action: #selector(favoriteButtonTapped(sender:)), for: .touchUpInside)
         }
         return cell
     }
@@ -140,13 +172,13 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         
         return Constants.spaceBetweenElements
     }
-    /*
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailViewController = DetailTableViewController()
-        detailViewController.model = model.items[indexPath.row]
+        detailViewController.model = filteredData[indexPath.row]
         navigationController?.pushViewController(detailViewController, animated: true)
     }
-    */
+    
     
 }
 
