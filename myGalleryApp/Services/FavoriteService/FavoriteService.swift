@@ -13,24 +13,51 @@ class FavoriteService {
     let dataModel = FavoriteModelMain()
     let defaults = UserDefaults.standard
     static let shared = FavoriteService()
+    var favoritePictures = Set<Int>()
+    
+    var favoriteItems = Set<Int>() {
+        didSet {
+            self.favoritePictures = favoriteItems
+        }
+    }
     
     // MARK: Methods
     func savePictureToFavorite(id: Int) {
-        
+        favoritePictures.insert(id)
     }
     
     func deletePictureFromFavorite(id: Int) {
+        favoritePictures.remove(id)
+    }
+    
+    func saveDataToUserDefaults() {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(favoritePictures)
+            defaults.set(data, forKey: "favorite")
+        } catch {
+            print(error)
+        }
+    }
+    
+    func loadDataFromUserDefaults() {
+        if let data = defaults.data(forKey: "favorite") {
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode(Set<Int>.self, from: data)
+                self.favoriteItems = result
+            } catch {
+                print(error)
+            }
+        }
         
     }
     
-    func saveDataToUserDefaults(favoriteArray: [Picture]) {
-        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: favoriteArray)
-        defaults.set(encodedData, forKey: "Favorite")
-    }
-    
-    func loadDataFromUserDefaults() -> [Picture] {
-        let decodedData = defaults.data(forKey: "Favorite")
-        let result = NSKeyedUnarchiver.unarchiveObject(with: decodedData!) as! [Picture]
-        return result
+    func checkIsFavorite(id: Int) -> Bool {
+        if favoritePictures.contains(id) {
+            return true
+        } else {
+            return false
+        }
     }
 }

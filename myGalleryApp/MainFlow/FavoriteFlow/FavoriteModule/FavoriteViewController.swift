@@ -13,23 +13,27 @@ class FavoriteViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
-    private let model = FavoriteService.shared.dataModel
+    private let model = MainModel.init()
+    let service = FavoriteService.shared
 
     // MARK: FavoriteViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAppearance()
+        getData()
         //model.getFavoritePosts()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         title = "Избранное"
-        DispatchQueue.main.async {
+        //configureModel()
+        getData()
+        DispatchQueue.main.async() {
             self.tableView.reloadData()
         }
     }
-    
+        
     // MARK: Actions
     @objc func searchButtonTapped() {
         navigationController?.pushViewController(SearchViewController(), animated: true)
@@ -40,20 +44,22 @@ class FavoriteViewController: UIViewController {
 // MARK: TableView delegate and dataSource
 extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.items.count
+        return service.favoritePictures.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(FavoriteViewCell.self)")
-        let item = model.items[indexPath.row]
-        
-        if let cell = cell as? FavoriteViewCell {
-            cell.imageUrlInString = item.imageUrlInString
-            cell.isFavorite = item.isFavorite
-            cell.title = item.title
-            cell.date = item.dateCreate
-            cell.shortDesc = item.content
+        let ids = Array(service.favoritePictures)
+        let item = findItemInModel(id: ids[indexPath.row])
+        if item!.isFavorite == true {
+            if let cell = cell as? FavoriteViewCell {
+                cell.imageUrlInString = item!.imageUrlInString
+                cell.isFavorite = item!.isFavorite
+                cell.title = item!.title
+                cell.date = item!.dateCreate
+                cell.shortDesc = item!.content
+            }
         }
         
         return cell ?? UITableViewCell()
@@ -61,8 +67,10 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let ids = Array(service.favoritePictures)
+        let item = findItemInModel(id: ids[indexPath.row])
         let detailViewController = DetailTableViewController()
-        detailViewController.model = model.items[indexPath.row]
+        detailViewController.model = item
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     
@@ -71,6 +79,34 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: Private methods
 private extension FavoriteViewController {
+    func findItemInModel(id: Int) -> Picture? {
+        if let item = model.items.first(where: { $0.id == id }) {
+            print(item)
+            return item
+        } else {
+            print("This item doesnt exist")
+            return nil
+        }
+    }
+    
+    func getData() {
+        model.getPosts { doneWorking in
+            print("data loaded")
+            DispatchQueue.main.async() {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func configureModel() {
+        model.didItemsUpdated = { [weak self] in
+            DispatchQueue.main.async() {
+                self?.tableView.reloadData()
+            }
+            
+        }
+    }
+    
     func configureAppearance() {
         configureNavigationBar()
         configureTableView()

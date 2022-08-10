@@ -22,18 +22,20 @@ final class MainModel {
         }
     }
     let pictureService = PictureService()
+    let favoriteService = FavoriteService.shared
     
     // MARK: Methods
     func getPosts(completionHandler: @escaping (Bool) -> Void) {
         pictureService.loadPictures { [weak self] result in
             switch result {
             case .success(let pictures):
-                self?.items = pictures.map { pictureModel in
+                self?.items = pictures.map { [weak self] pictureModel in
+                    
                     let result = Picture(
                         id: Int(pictureModel.id)!,
                         imageUrlInString: pictureModel.photoUrl,
                         title: pictureModel.title,
-                        isFavorite: false, // TODO FavoriteService
+                        isFavorite: (self?.favoriteService.checkIsFavorite(id: Int(pictureModel.id)!))!, // TODO FavoriteService
                         content: pictureModel.content,
                         dateCreate: pictureModel.date
                     )

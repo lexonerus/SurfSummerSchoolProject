@@ -46,7 +46,7 @@ class MainViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         title = "Главная"
-        self.configureModel()
+        configureModel()
     }
 
     // MARK: Actions
@@ -56,10 +56,19 @@ class MainViewController: UIViewController {
     }
     
     @objc func favoriteButtonTapped(sender: UIButton) {
+        /*
         var item = findItemInModel(id: sender.tag)
         item?.isFavorite = true
         favoriteService.dataModel.items.append(item!)
         print(favoriteService.dataModel.items)
+        */
+        let item = findItemInModel(id: sender.tag)
+        if item?.isFavorite == false {
+            favoriteService.savePictureToFavorite(id: item!.id)
+        } else {
+            favoriteService.deletePictureFromFavorite(id: item!.id)
+        }
+        print(favoriteService.favoritePictures)
         
     }
     
@@ -72,6 +81,7 @@ class MainViewController: UIViewController {
 
 // MARK: Private Methods
 private extension MainViewController {
+    
     func findItemInModel(id: Int) -> Picture? {
         if let item = model.items.first(where: { $0.id == id }) {
             print(item)
