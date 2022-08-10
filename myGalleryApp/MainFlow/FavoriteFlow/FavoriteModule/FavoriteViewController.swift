@@ -26,9 +26,7 @@ class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         title = "Избранное"
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        updateTable()
     }
         
     // MARK: Actions
@@ -39,6 +37,7 @@ class FavoriteViewController: UIViewController {
         print(sender.tag)
         service.deletePictureFromFavorite(id: sender.tag)
         model.items.filter {$0.id == sender.tag}.first?.isFavorite = false
+        updateTable()
     }
 
 }
@@ -81,6 +80,12 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: Private methods
 private extension FavoriteViewController {
+    func updateTable() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     func findItemInModel(id: Int) -> Picture? {
         if let item = model.items.first(where: { $0.id == id }) {
             print(item)
