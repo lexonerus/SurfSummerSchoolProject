@@ -37,7 +37,7 @@ final class MainModel {
                         content: pictureModel.content,
                         dateCreate: pictureModel.date
                     )
-                    
+
                     return result
                 }
             case .failure(_):

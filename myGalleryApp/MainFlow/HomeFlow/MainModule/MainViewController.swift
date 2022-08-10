@@ -38,8 +38,9 @@ class MainViewController: UIViewController {
             target: self,
             action: #selector(searchButtonTapped)
         )
-        configureAppearance()
         getData()
+        configureAppearance()
+        
 
         
     }
@@ -85,6 +86,7 @@ private extension MainViewController {
         model.getPosts { doneWorking in
             if doneWorking {
                 DispatchQueue.main.async {
+                    sleep(2)
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     self.mainCollectionView.isHidden = false
@@ -93,6 +95,7 @@ private extension MainViewController {
             } else {
                 print("Error")
                 DispatchQueue.main.async {
+                   sleep(2)
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     self.failedView.isHidden = false
