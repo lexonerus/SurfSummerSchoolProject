@@ -13,18 +13,21 @@ class FavoriteViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
-    private let model = FavoriteModel.init()
-    
+    private let model = FavoriteService.shared.dataModel
+
     // MARK: FavoriteViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAppearance()
-        model.getFavoritePosts()
+        //model.getFavoritePosts()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         title = "Избранное"
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: Actions
@@ -37,7 +40,7 @@ class FavoriteViewController: UIViewController {
 // MARK: TableView delegate and dataSource
 extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        return model.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,7 +49,7 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
         let item = model.items[indexPath.row]
         
         if let cell = cell as? FavoriteViewCell {
-            cell.image = item.image
+            cell.imageUrlInString = item.imageUrlInString
             cell.isFavorite = item.isFavorite
             cell.title = item.title
             cell.date = item.dateCreate

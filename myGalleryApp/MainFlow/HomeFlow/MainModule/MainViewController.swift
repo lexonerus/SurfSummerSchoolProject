@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     
     // MARK: Properties
     private let model: MainModel = .init()
+    private let favoriteService = FavoriteService.shared
     
     // MARK: Views
     @IBOutlet private weak var mainCollectionView: UICollectionView!
@@ -54,8 +55,11 @@ class MainViewController: UIViewController {
     }
     
     @objc func favoriteButtonTapped(sender: UIButton) {
-        print(sender.tag)
-
+        var item = findItemInModel(id: sender.tag)
+        item?.isFavorite = true
+        favoriteService.dataModel.items.append(item!)
+        print(favoriteService.dataModel.items)
+        
     }
     
     @IBAction func failButtonPressed(_ sender: Any) {
@@ -67,6 +71,16 @@ class MainViewController: UIViewController {
 
 // MARK: Private Methods
 private extension MainViewController {
+    func findItemInModel(id: Int) -> Picture? {
+        if let item = model.items.first(where: { $0.id == id }) {
+            print(item)
+            return item
+        } else {
+            print("This item doesnt exist")
+            return nil
+        }
+    }
+    
     func getData() {
         model.getPosts { doneWorking in
             if doneWorking {

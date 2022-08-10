@@ -14,7 +14,7 @@ struct Picture {
     let id: Int
     let imageUrlInString: String
     let title: String
-    let isFavorite: Bool
+    var isFavorite: Bool
     let dateCreate: String
     let content: String
     
