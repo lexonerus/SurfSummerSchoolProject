@@ -10,7 +10,7 @@ import UIKit
 
 class TabBarConfig {
     // MARK: Properties
-    private let allTab: [TabBarModel] = [.main, .favorite, .profile]
+    private let allTab: [TabBarPage] = [.main, .favorite, .profile]
     // MARK: Methods
     func configure() -> UITabBarController {
         return getTabBarController()
@@ -44,7 +44,7 @@ private extension TabBarConfig {
         return viewControllers
     }
                         
-    func getCurrentViewController(tab: TabBarModel) -> UIViewController {
+    func getCurrentViewController(tab: TabBarPage) -> UIViewController {
         switch tab {
         case .main:
             return MainViewController()

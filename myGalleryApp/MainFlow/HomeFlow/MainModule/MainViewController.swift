@@ -41,10 +41,8 @@ class MainViewController: UIViewController {
         configureAppearance()
         getData()
         configureModel()
-        
-
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         title = "Главная"
         //configureModel()
@@ -99,7 +97,6 @@ private extension MainViewController {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     self.mainCollectionView.isHidden = false
-                    
                 }
             } else {
                 print("Error")

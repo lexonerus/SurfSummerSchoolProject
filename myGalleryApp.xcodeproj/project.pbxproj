@@ -11,7 +11,7 @@
 		560142DB289A6897001F8C55 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560142D9289A6897001F8C55 /* MainViewController.xib */; };
 		560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142DC289A6A77001F8C55 /* ProfileViewController.swift */; };
 		560142DF289A6A77001F8C55 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560142DD289A6A77001F8C55 /* ProfileViewController.xib */; };
-		560142ED289A72C9001F8C55 /* TabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142EC289A72C9001F8C55 /* TabBarModel.swift */; };
+		560142ED289A72C9001F8C55 /* TabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142EC289A72C9001F8C55 /* TabBarPage.swift */; };
 		560142EF289A7458001F8C55 /* TabBarConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142EE289A7458001F8C55 /* TabBarConfig.swift */; };
 		560142F3289AB672001F8C55 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560142F1289AB672001F8C55 /* SearchViewController.swift */; };
 		560142F4289AB672001F8C55 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560142F2289AB672001F8C55 /* SearchViewController.xib */; };
@@ -32,6 +32,11 @@
 		5607D6B2289D6D7A0078C03C /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5607D6B1289D6D7A0078C03C /* MainModel.swift */; };
 		5607D6B6289D72E00078C03C /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5607D6B4289D72E00078C03C /* MainCollectionViewCell.swift */; };
 		5607D6B7289D72E00078C03C /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5607D6B5289D72E00078C03C /* MainCollectionViewCell.xib */; };
+		56177BE128A64F1E00739343 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BE028A64F1E00739343 /* TabBarCoordinator.swift */; };
+		56177BE528A6505800739343 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BE428A6505800739343 /* Coordinator.swift */; };
+		56177BED28A663CB00739343 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BEC28A663CB00739343 /* TabCoordinator.swift */; };
+		56177BEF28A6655200739343 /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BEE28A6655200739343 /* CoordinatorType.swift */; };
+		56177BF128A6A03C00739343 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BF028A6A03C00739343 /* AppCoordinator.swift */; };
 		56275C3028A2DE6800FFCF18 /* ApiExample.JSON in Resources */ = {isa = PBXBuildFile; fileRef = 56275C2F28A2DE6800FFCF18 /* ApiExample.JSON */; };
 		56275C3228A2DEC100FFCF18 /* ServerHowTo.md in Resources */ = {isa = PBXBuildFile; fileRef = 56275C3128A2DEC100FFCF18 /* ServerHowTo.md */; };
 		56275C3A28A2E8C200FFCF18 /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56275C3928A2E8C200FFCF18 /* FavoriteService.swift */; };
@@ -58,7 +63,7 @@
 		560142D9289A6897001F8C55 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		560142DC289A6A77001F8C55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		560142DD289A6A77001F8C55 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
-		560142EC289A72C9001F8C55 /* TabBarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarModel.swift; sourceTree = "<group>"; };
+		560142EC289A72C9001F8C55 /* TabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
 		560142EE289A7458001F8C55 /* TabBarConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarConfig.swift; sourceTree = "<group>"; };
 		560142F1289AB672001F8C55 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		560142F2289AB672001F8C55 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -79,6 +84,11 @@
 		5607D6B1289D6D7A0078C03C /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainModel.swift; path = "../New Group/MainModel.swift"; sourceTree = "<group>"; };
 		5607D6B4289D72E00078C03C /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		5607D6B5289D72E00078C03C /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
+		56177BE028A64F1E00739343 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		56177BE428A6505800739343 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		56177BEC28A663CB00739343 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
+		56177BEE28A6655200739343 /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
+		56177BF028A6A03C00739343 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		56275C2F28A2DE6800FFCF18 /* ApiExample.JSON */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ApiExample.JSON; sourceTree = "<group>"; };
 		56275C3128A2DEC100FFCF18 /* ServerHowTo.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ServerHowTo.md; sourceTree = "<group>"; };
 		56275C3928A2E8C200FFCF18 /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
@@ -116,6 +126,7 @@
 		560142E2289A71A2001F8C55 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				56177BE228A64FFF00739343 /* MainFlowCoordinator */,
 				56E6B8D3289DC5A600FC7650 /* ProfileFlow */,
 				56E6B8D2289DC59E00FC7650 /* FavoriteFlow */,
 				56E6B8D1289DC56D00FC7650 /* HomeFlow */,
@@ -158,7 +169,7 @@
 		560142EB289A7273001F8C55 /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
-				560142EC289A72C9001F8C55 /* TabBarModel.swift */,
+				560142EC289A72C9001F8C55 /* TabBarPage.swift */,
 				560142EE289A7458001F8C55 /* TabBarConfig.swift */,
 			);
 			path = TabBarModule;
@@ -252,6 +263,41 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		56177BE228A64FFF00739343 /* MainFlowCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				56177BEA28A661D400739343 /* Protocols */,
+				56177BEC28A663CB00739343 /* TabCoordinator.swift */,
+			);
+			path = MainFlowCoordinator;
+			sourceTree = "<group>";
+		};
+		56177BE328A6500F00739343 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				56177BE428A6505800739343 /* Coordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		56177BEA28A661D400739343 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				56177BE028A64F1E00739343 /* TabBarCoordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		56177BEB28A661FC00739343 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				56177BE328A6500F00739343 /* Protocols */,
+				56177BEE28A6655200739343 /* CoordinatorType.swift */,
+				56177BF028A6A03C00739343 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		56275C2E28A2DE1200FFCF18 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +365,7 @@
 		56ABCBE3289956430057D7AB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				56177BEB28A661FC00739343 /* Coordinator */,
 				56ABCBCF289953830057D7AB /* AppDelegate.swift */,
 				56ABCBDD289953850057D7AB /* Info.plist */,
 			);
@@ -502,6 +549,7 @@
 				560142EF289A7458001F8C55 /* TabBarConfig.swift in Sources */,
 				56275C3A28A2E8C200FFCF18 /* FavoriteService.swift in Sources */,
 				566662F1289FE5A000BF395C /* FavoriteViewController.swift in Sources */,
+				56177BED28A663CB00739343 /* TabCoordinator.swift in Sources */,
 				566662F6289FEB1B00BF395C /* FavoriteViewCell.swift in Sources */,
 				560142F3289AB672001F8C55 /* SearchViewController.swift in Sources */,
 				5607683328A186600010B977 /* NetworkTask.swift in Sources */,
@@ -511,14 +559,18 @@
 				56B77644289EAC37000F2E2E /* Picture.swift in Sources */,
 				5607683A28A186600010B977 /* TokenStorage.swift in Sources */,
 				5607682F28A186600010B977 /* AuthService.swift in Sources */,
+				56177BE528A6505800739343 /* Coordinator.swift in Sources */,
+				56177BEF28A6655200739343 /* CoordinatorType.swift in Sources */,
 				560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */,
 				5607683128A186600010B977 /* EmptyModel.swift in Sources */,
 				5607D6B2289D6D7A0078C03C /* MainModel.swift in Sources */,
-				560142ED289A72C9001F8C55 /* TabBarModel.swift in Sources */,
+				560142ED289A72C9001F8C55 /* TabBarPage.swift in Sources */,
 				5607683028A186600010B977 /* BaseNetworkTask.swift in Sources */,
 				56E6B8E6289DC6D500FC7650 /* TextTableViewCell.swift in Sources */,
 				5607683628A186600010B977 /* PictureResponceModel.swift in Sources */,
 				5607683828A186600010B977 /* BaseTokenStorage.swift in Sources */,
+				56177BF128A6A03C00739343 /* AppCoordinator.swift in Sources */,
+				56177BE128A64F1E00739343 /* TabBarCoordinator.swift in Sources */,
 				5607682E28A186600010B977 /* AuthResponceModel.swift in Sources */,
 				56E6B8DB289DC68A00FC7650 /* ImageTableViewCell.swift in Sources */,
 				5607683728A186600010B977 /* PictureService.swift in Sources */,

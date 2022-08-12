@@ -11,27 +11,34 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var coordinator: AppCoordinator?
+    
     var tokenStorage: TokenStorage {
         BaseTokenStorage()
     }
     let service = FavoriteService.shared
     
+    
     // MARK: Flow setup
     func runMainFlow() {        
-        //self.window?.rootViewController = TabBarConfig().configure()
-        DispatchQueue.main.async {
-            self.window?.rootViewController = TabBarConfig().configure()
-        }
+        //self.window?.rootViewController = coordinator.start()
+        coordinator?.start()
     }
     
     // MARK: App lifecycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //print("App initialization")
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.makeKeyAndVisible()
-        self.window = window
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let navigationController = UINavigationController()
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+        
+        coordinator = AppCoordinator(navigationController)
+        
         service.loadDataFromUserDefaults()
         startApplicationProcess()
+        
         return true
     }
     
@@ -41,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func startApplicationProcess() {
-        runLaunchScreen()
+        //runLaunchScreen()
         
         if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
             runMainFlow()
