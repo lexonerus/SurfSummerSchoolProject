@@ -8,7 +8,7 @@
 import Foundation
 import UIKit.UIImage
 
-class MainModel {
+final class MainModel {
     
     // MARK: Events
     var didItemsUpdated: (() -> Void)?
@@ -16,8 +16,6 @@ class MainModel {
     // MARK: Properties
     static let shared = MainModel.init()
     var items = [Picture]() {
-        // при инициализации не сработает
-        // вызовется, когда новое значение будет присвоено items
         didSet {
             didItemsUpdated?()
         }
