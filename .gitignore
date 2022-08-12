@@ -14,3 +14,9 @@ xcuserdata/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 **/.DS_Store
+*.xccheckout
+*.moved-aside
+*.hmap
+*.ipa
+*.xcworkspace
+*.xcuserstate 
