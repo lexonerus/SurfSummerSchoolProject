@@ -11,10 +11,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="myGalleryApp" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="ZbR-zQ-LRA" id="NPh-1q-5YY"/>
-                <outlet property="failButton" destination="3Dq-Uv-L1f" id="JZE-SN-9sv"/>
-                <outlet property="failImage" destination="rWw-M5-WwI" id="reB-ia-CSL"/>
-                <outlet property="failLabel" destination="YUb-xV-xKs" id="970-3P-Xfn"/>
-                <outlet property="failedView" destination="hxU-IM-4zu" id="65c-E6-jZJ"/>
                 <outlet property="mainCollectionView" destination="5rQ-m1-GxZ" id="ooL-qa-bUQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -41,52 +37,6 @@
                         <constraint firstAttribute="height" constant="32" id="D3e-zq-UM2"/>
                     </constraints>
                 </activityIndicatorView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hxU-IM-4zu">
-                    <rect key="frame" x="16" y="371.5" width="382" height="153"/>
-                    <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emotion-unhappy-line" translatesAutoresizingMaskIntoConstraints="NO" id="rWw-M5-WwI">
-                            <rect key="frame" x="175" y="0.0" width="32" height="32"/>
-                            <color key="tintColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="32" id="dGZ-rH-p8p"/>
-                                <constraint firstAttribute="width" constant="32" id="mH1-Ux-HRy"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Не удалось загрузить ленту Обновите экран или попробуqте позже" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUb-xV-xKs">
-                            <rect key="frame" x="0.0" y="44" width="382" height="33.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Dq-Uv-L1f">
-                            <rect key="frame" x="0.0" y="101.5" width="382" height="51.5"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Обновить" cornerStyle="fixed">
-                                <backgroundConfiguration key="background" cornerRadius="0.0">
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </backgroundConfiguration>
-                                <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
-                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </buttonConfiguration>
-                            <connections>
-                                <action selector="failButtonPressed:" destination="-1" eventType="touchUpInside" id="DrR-hQ-FQY"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="trailing" secondItem="3Dq-Uv-L1f" secondAttribute="trailing" id="0mx-54-17P"/>
-                        <constraint firstItem="rWw-M5-WwI" firstAttribute="centerX" secondItem="hxU-IM-4zu" secondAttribute="centerX" id="4pE-lH-V6Z"/>
-                        <constraint firstItem="rWw-M5-WwI" firstAttribute="top" secondItem="hxU-IM-4zu" secondAttribute="top" id="9yR-Y1-kcG"/>
-                        <constraint firstAttribute="height" constant="153" id="BIz-1d-gQb"/>
-                        <constraint firstItem="YUb-xV-xKs" firstAttribute="top" secondItem="rWw-M5-WwI" secondAttribute="bottom" constant="12" id="EW7-k3-umu"/>
-                        <constraint firstAttribute="bottom" secondItem="3Dq-Uv-L1f" secondAttribute="bottom" id="N1n-yi-7cD"/>
-                        <constraint firstAttribute="trailing" secondItem="YUb-xV-xKs" secondAttribute="trailing" id="Nqp-rd-tDZ"/>
-                        <constraint firstItem="3Dq-Uv-L1f" firstAttribute="leading" secondItem="hxU-IM-4zu" secondAttribute="leading" id="Wbf-Hn-GVX"/>
-                        <constraint firstItem="3Dq-Uv-L1f" firstAttribute="top" secondItem="YUb-xV-xKs" secondAttribute="bottom" constant="24" id="gdf-bR-6Dr"/>
-                        <constraint firstItem="YUb-xV-xKs" firstAttribute="leading" secondItem="hxU-IM-4zu" secondAttribute="leading" id="idx-Lz-y5d"/>
-                    </constraints>
-                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,19 +44,14 @@
                 <constraint firstItem="5rQ-m1-GxZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="2Cf-CA-bNd"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5rQ-m1-GxZ" secondAttribute="bottom" id="4uq-4B-EdE"/>
                 <constraint firstItem="5rQ-m1-GxZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5nH-br-fPK"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hxU-IM-4zu" secondAttribute="trailing" constant="16" id="Mx4-Mp-xzZ"/>
-                <constraint firstItem="hxU-IM-4zu" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QcG-rs-S8G"/>
                 <constraint firstItem="ZbR-zQ-LRA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WHq-th-TxU"/>
-                <constraint firstItem="hxU-IM-4zu" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="jfQ-lO-fxl"/>
                 <constraint firstItem="ZbR-zQ-LRA" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="lVE-cA-Q2W"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5rQ-m1-GxZ" secondAttribute="trailing" id="lxn-go-PHE"/>
-                <constraint firstItem="hxU-IM-4zu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="oor-C0-v17"/>
             </constraints>
             <point key="canvasLocation" x="128.98550724637681" y="93.080357142857139"/>
         </view>
     </objects>
     <resources>
-        <image name="emotion-unhappy-line" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

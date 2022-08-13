@@ -25,11 +25,6 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var failedView: UIView!
-    @IBOutlet weak var failLabel: UILabel!
-    @IBOutlet weak var failImage: UIImageView!
-    @IBOutlet weak var failButton: UIButton!
-    
     // MARK: MainViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +39,7 @@ class MainViewController: UIViewController {
         configureAppearance()
         viewOutput?.activateActivityIndicator()
         viewOutput?.reloadData()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         title = "Главная"
@@ -117,6 +113,11 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 // MARK: MainViewInput delegate
 extension MainViewController: MainViewInput {
+    func showErrorState() {
+        let errorState = UINib(nibName: "\(ErrorStateView.self)", bundle: .main).instantiate(withOwner: nil, options: nil).first as! UIView
+        errorState.frame = self.view.bounds
+        self.view.addSubview(errorState)
+    }
     func updateCollection() {
         DispatchQueue.main.async() {
             self.mainCollectionView.reloadData()
@@ -138,3 +139,5 @@ extension MainViewController: MainViewInput {
     }
     
 }
+
+

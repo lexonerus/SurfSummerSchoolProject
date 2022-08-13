@@ -48,6 +48,8 @@
 		568BDF1D28A7C69300080E3F /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1C28A7C69300080E3F /* CoordinatorDelegate.swift */; };
 		568BDF2128A7C7E100080E3F /* MainViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF2028A7C7E100080E3F /* MainViewInput.swift */; };
 		568BDF2328A7CAB000080E3F /* MainViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF2228A7CAB000080E3F /* MainViewOutput.swift */; };
+		568BDF2828A7EB9800080E3F /* ErrorStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568BDF2728A7EB9800080E3F /* ErrorStateView.xib */; };
+		568BDF2A28A7EBCD00080E3F /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF2928A7EBCD00080E3F /* ErrorStateView.swift */; };
 		56ABCBD0289953830057D7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ABCBCF289953830057D7AB /* AppDelegate.swift */; };
 		56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBD8289953850057D7AB /* Assets.xcassets */; };
 		56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBDA289953850057D7AB /* LaunchScreen.storyboard */; };
@@ -104,6 +106,8 @@
 		568BDF1C28A7C69300080E3F /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
 		568BDF2028A7C7E100080E3F /* MainViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewInput.swift; sourceTree = "<group>"; };
 		568BDF2228A7CAB000080E3F /* MainViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewOutput.swift; sourceTree = "<group>"; };
+		568BDF2728A7EB9800080E3F /* ErrorStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorStateView.xib; sourceTree = "<group>"; };
+		568BDF2928A7EBCD00080E3F /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
 		56ABCBCC289953830057D7AB /* myGalleryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myGalleryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56ABCBCF289953830057D7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56ABCBD8289953850057D7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,6 +150,7 @@
 		560142E4289A71CA001F8C55 /* MainModule */ = {
 			isa = PBXGroup;
 			children = (
+				568BDF2428A7EB2100080E3F /* States */,
 				568BDF1F28A7C73B00080E3F /* Protocols */,
 				56275C3328A2DFF000FFCF18 /* Model */,
 				5607D6B3289D72C40078C03C /* Cells */,
@@ -344,6 +349,31 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		568BDF2428A7EB2100080E3F /* States */ = {
+			isa = PBXGroup;
+			children = (
+				568BDF2628A7EB3000080E3F /* ErrorState */,
+				568BDF2528A7EB2700080E3F /* LoadingState */,
+			);
+			path = States;
+			sourceTree = "<group>";
+		};
+		568BDF2528A7EB2700080E3F /* LoadingState */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoadingState;
+			sourceTree = "<group>";
+		};
+		568BDF2628A7EB3000080E3F /* ErrorState */ = {
+			isa = PBXGroup;
+			children = (
+				568BDF2728A7EB9800080E3F /* ErrorStateView.xib */,
+				568BDF2928A7EBCD00080E3F /* ErrorStateView.swift */,
+			);
+			path = ErrorState;
+			sourceTree = "<group>";
+		};
 		56ABCBC3289953830057D7AB = {
 			isa = PBXGroup;
 			children = (
@@ -533,6 +563,7 @@
 				56275C3028A2DE6800FFCF18 /* ApiExample.JSON in Resources */,
 				566662F7289FEB1B00BF395C /* FavoriteViewCell.xib in Resources */,
 				56E6B8DC289DC68A00FC7650 /* ImageTableViewCell.xib in Resources */,
+				568BDF2828A7EB9800080E3F /* ErrorStateView.xib in Resources */,
 				56275C3228A2DEC100FFCF18 /* ServerHowTo.md in Resources */,
 				56E6B8D7289DC5FF00FC7650 /* DetailTableViewController.xib in Resources */,
 				56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */,
@@ -583,6 +614,7 @@
 				56E6B8E6289DC6D500FC7650 /* TextTableViewCell.swift in Sources */,
 				568BDF2128A7C7E100080E3F /* MainViewInput.swift in Sources */,
 				5607683628A186600010B977 /* PictureResponceModel.swift in Sources */,
+				568BDF2A28A7EBCD00080E3F /* ErrorStateView.swift in Sources */,
 				568BDF1928A779E200080E3F /* MainViewPresenter.swift in Sources */,
 				5607683828A186600010B977 /* BaseTokenStorage.swift in Sources */,
 				56177BF128A6A03C00739343 /* AppCoordinator.swift in Sources */,

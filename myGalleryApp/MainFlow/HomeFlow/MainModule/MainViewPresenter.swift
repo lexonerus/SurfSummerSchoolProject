@@ -82,6 +82,7 @@ extension MainViewPresenter: MainViewOutput {
                 self.viewInput?.stopLoading()
             } else {
                 print("No connection")
+                self.viewInput?.showErrorState()
             }
             
         }
