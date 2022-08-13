@@ -19,17 +19,11 @@ class MainViewController: UIViewController {
     // MARK: Properties
     var presenter: MainViewPresenter!
     weak var coordinator: CoordinatorDelegate?
-    
     weak var viewOutput: MainViewOutput?
     
     // MARK: Views
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
-    
-    @IBOutlet weak var failedView: UIView!
-    @IBOutlet weak var failLabel: UILabel!
-    @IBOutlet weak var failImage: UIImageView!
-    @IBOutlet weak var failButton: UIButton!
     
     // MARK: MainViewController lifecycle
     override func viewDidLoad() {
@@ -43,8 +37,9 @@ class MainViewController: UIViewController {
         presenter.setViewInput(viewInput: self)
         self.viewOutput = presenter
         configureAppearance()
-
+        viewOutput?.activateActivityIndicator()
         viewOutput?.reloadData()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         title = "Главная"
@@ -70,14 +65,14 @@ class MainViewController: UIViewController {
 // MARK: Private Methods
 private extension MainViewController {
     func configureAppearance() {
-        mainCollectionView.isHidden = false
-        activityIndicator.isHidden = true
-        //activityIndicator.startAnimating()
-        mainCollectionView.dataSource = self
-        mainCollectionView.delegate = self
-        // регистрация ячейки:
-        mainCollectionView.register(UINib(nibName: "\(MainCollectionViewCell.self)", bundle: .main), forCellWithReuseIdentifier: "\(MainCollectionViewCell.self)")
-        mainCollectionView.contentInset = .init(top: 10, left: 16, bottom: 10, right: 16)
+        DispatchQueue.main.async { [weak self] in
+            self?.mainCollectionView.isHidden = true
+            self?.mainCollectionView.dataSource = self
+            self?.mainCollectionView.delegate = self
+            // регистрация ячейки:
+            self?.mainCollectionView.register(UINib(nibName: "\(MainCollectionViewCell.self)", bundle: .main), forCellWithReuseIdentifier: "\(MainCollectionViewCell.self)")
+            self?.mainCollectionView.contentInset = .init(top: 10, left: 16, bottom: 10, right: 16)
+        }
     }
 }
 
@@ -88,14 +83,16 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MainCollectionViewCell.self)", for: indexPath)
+        
         if let cell = cell as? MainCollectionViewCell {
             let item = viewOutput!.presentPicture(index: indexPath.item)
-            cell.title      = item.title
-            cell.isFavorite = item.isFavorite
-            cell.imageUrlInString = item.imageUrlInString
-            cell.heartButton.tag = item.id
-            cell.heartButton.addTarget(self, action: #selector(favoriteButtonTapped(sender:)), for: .touchUpInside)
+                cell.title      = item.title
+                cell.isFavorite = item.isFavorite
+                cell.imageUrlInString = item.imageUrlInString
+                cell.heartButton.tag = item.id
+                cell.heartButton.addTarget(self, action: #selector(self.favoriteButtonTapped(sender:)), for: .touchUpInside)
         }
+
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -116,10 +113,33 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     
 }
 
+// MARK: MainViewInput delegate
 extension MainViewController: MainViewInput {
+    func showErrorState() {
+        let errorState = UINib(nibName: "\(ErrorStateView.self)", bundle: .main).instantiate(withOwner: nil, options: nil).first as! UIView
+        errorState.frame = self.view.bounds
+        self.view.addSubview(errorState)
+    }
     func updateCollection() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.async() {
             self.mainCollectionView.reloadData()
         }
-    }    
+    }
+    func startLoading() {
+        DispatchQueue.main.async {
+            self.mainCollectionView.isHidden = true
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+    }
+    func stopLoading() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.mainCollectionView.isHidden = false
+        }
+    }
+    
 }
+
+

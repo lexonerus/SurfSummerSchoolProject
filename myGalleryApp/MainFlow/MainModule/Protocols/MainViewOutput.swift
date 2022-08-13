@@ -8,6 +8,9 @@
 import Foundation
 
 protocol MainViewOutput: AnyObject {
+    
+    func activateActivityIndicator()
+    func deActivateActivityIndicator()
     func updateFavorite(index: Int)
     func findItem(index: Int) -> Picture
     func presentPicture(index: Int) -> Picture
