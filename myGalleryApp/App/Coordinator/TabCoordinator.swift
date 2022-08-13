@@ -55,9 +55,14 @@ class TabCoordinator: NSObject, TabBarCoordinator {
    
 }
 
-extension TabCoordinator: MainViewPresenterDelegate {
+extension TabCoordinator: CoordinatorDelegate {
     func showDetails(navigation: UINavigationController, item: Picture) {
         showDetailsScene(navigation: navigation, item: item)
+    }
+    func showSearch(navigation: UINavigationController) {
+        let vc = SearchViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigation.pushViewController(vc, animated: true)
     }
 }
 

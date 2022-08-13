@@ -9,12 +9,13 @@ import Foundation
 import UIKit
 
 struct TabViewFactory {
-    static func makeMainScene(delegate: MainViewPresenterDelegate?) -> MainViewController {
+    static func makeMainScene(delegate: CoordinatorDelegate?) -> MainViewController {
         let controller = MainViewController()
         let service = FavoriteService.shared
         let model = MainModel.shared
-        let presenter = MainViewPresenter(view: controller, model: model, service: service, coordinatorDelegate: delegate!)
+        let presenter = MainViewPresenter(view: controller, model: model, service: service)
         controller.presenter = presenter
+        controller.coordinator = delegate
         return controller
     }
 }
