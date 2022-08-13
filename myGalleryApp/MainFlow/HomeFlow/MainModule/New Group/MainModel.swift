@@ -49,6 +49,18 @@ final class MainModel {
         }
         completionHandler(true)
     }
+    
+    func findItemInModel(id: Int) -> Picture? {
+        if let item = items.first(where: { $0.id == id }) {
+            print(item)
+            return item
+        } else {
+            print("This item doesnt exist")
+            return nil
+        }
+    }
+    
+
 }
 
 
