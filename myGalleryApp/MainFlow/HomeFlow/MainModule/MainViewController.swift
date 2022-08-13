@@ -17,8 +17,9 @@ class MainViewController: UIViewController {
     }
     
     // MARK: Properties
-    private let model: MainModel = MainModel.shared
-    private let favoriteService = FavoriteService.shared
+    var model = MainModel.shared
+    var favoriteService = FavoriteService.shared
+    var presenter: MainViewPresenter!
     
     // MARK: Views
     @IBOutlet private weak var mainCollectionView: UICollectionView!
@@ -173,9 +174,12 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         return Constants.spaceBetweenElements
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        /*
         let detailViewController = DetailTableViewController()
         detailViewController.model = model.items[indexPath.row]
         navigationController?.pushViewController(detailViewController, animated: true)
+        */
+        presenter.itemSelected(navigation: navigationController!, item: model.items[indexPath.row])
     }
     
 }

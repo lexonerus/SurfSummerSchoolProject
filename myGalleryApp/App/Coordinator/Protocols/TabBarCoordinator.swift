@@ -11,9 +11,6 @@ import UIKit
 protocol TabBarCoordinator: Coordinator {
     
     // MARK: Properties
-    var tabBarController: UITabBarController { get set }
-    
-    // MARK: Methods
-    func start()
+    var tabBarController: UITabBarController? { get set }
     
 }

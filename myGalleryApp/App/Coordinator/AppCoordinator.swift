@@ -27,6 +27,7 @@ class AppCoordinator: Coordinator {
     }
 }
 
+// MARK: Private methods
 private extension AppCoordinator {
     func showLoginFlow() {
         print("Starting login flow")

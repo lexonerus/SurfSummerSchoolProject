@@ -19,12 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let service = FavoriteService.shared
     
     
-    // MARK: Flow setup
-    func runMainFlow() {        
-        //self.window?.rootViewController = coordinator.start()
-        coordinator?.start()
-    }
-    
     // MARK: App lifecycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -47,9 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         service.saveDataToUserDefaults()
     }
     
-    func startApplicationProcess() {
-        //runLaunchScreen()
-        
+    func startApplicationProcess() {        
         if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
             runMainFlow()
         } else {
@@ -67,30 +59,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func runLaunchScreen() {
-        let launchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: .main)
-            .instantiateInitialViewController()
-        window?.rootViewController = launchScreenViewController
+    // MARK: Flow setup
+    func runMainFlow() {
+        coordinator?.start()
     }
-    
-    /*
-    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-     //print("App first launch")
-     return true
-    }
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        print("App goes in foreground")
-    }
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        print("App running in background and may suspend")
-    }
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        print("App moves from backround to foreground but not active")
-    }
-    */
-    
 
-    
-    
 }
 
