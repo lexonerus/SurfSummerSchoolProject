@@ -65,12 +65,14 @@ class MainViewController: UIViewController {
 // MARK: Private Methods
 private extension MainViewController {
     func configureAppearance() {
-        mainCollectionView.isHidden = true
-        mainCollectionView.dataSource = self
-        mainCollectionView.delegate = self
-        // регистрация ячейки:
-        mainCollectionView.register(UINib(nibName: "\(MainCollectionViewCell.self)", bundle: .main), forCellWithReuseIdentifier: "\(MainCollectionViewCell.self)")
-        mainCollectionView.contentInset = .init(top: 10, left: 16, bottom: 10, right: 16)
+        DispatchQueue.main.async { [weak self] in
+            self?.mainCollectionView.isHidden = true
+            self?.mainCollectionView.dataSource = self
+            self?.mainCollectionView.delegate = self
+            // регистрация ячейки:
+            self?.mainCollectionView.register(UINib(nibName: "\(MainCollectionViewCell.self)", bundle: .main), forCellWithReuseIdentifier: "\(MainCollectionViewCell.self)")
+            self?.mainCollectionView.contentInset = .init(top: 10, left: 16, bottom: 10, right: 16)
+        }
     }
 }
 
