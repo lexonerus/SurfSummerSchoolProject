@@ -9,4 +9,6 @@ import Foundation
 
 protocol MainViewInput: AnyObject {
     func updateCollection()
+    func startLoading()
+    func stopLoading()
 }

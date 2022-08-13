@@ -31,9 +31,21 @@ class MainViewPresenter {
         }
     }
     
+
+    
 }
 
+// MARK: MainViewOutput delegate
 extension MainViewPresenter: MainViewOutput {
+    
+    func activateActivityIndicator() {
+        viewInput?.startLoading()
+    }
+    
+    func deActivateActivityIndicator() {
+        viewInput?.stopLoading()
+    }
+    
     func updateFavorite(index: Int) {
         let item = model.findItemInModel(id: index)
 
@@ -63,8 +75,15 @@ extension MainViewPresenter: MainViewOutput {
     
     func reloadData() {
         model.getPosts { done in
-            print("Data loaded from presenter")
-            self.updateCollection()
+
+            if done {
+                print("Data successfully loaded")
+                self.updateCollection()
+                self.viewInput?.stopLoading()
+            } else {
+                print("No connection")
+            }
+            
         }
     }
 

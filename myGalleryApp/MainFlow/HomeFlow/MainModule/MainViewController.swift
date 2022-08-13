@@ -19,7 +19,6 @@ class MainViewController: UIViewController {
     // MARK: Properties
     var presenter: MainViewPresenter!
     weak var coordinator: CoordinatorDelegate?
-    
     weak var viewOutput: MainViewOutput?
     
     // MARK: Views
@@ -43,7 +42,7 @@ class MainViewController: UIViewController {
         presenter.setViewInput(viewInput: self)
         self.viewOutput = presenter
         configureAppearance()
-
+        viewOutput?.activateActivityIndicator()
         viewOutput?.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -70,9 +69,7 @@ class MainViewController: UIViewController {
 // MARK: Private Methods
 private extension MainViewController {
     func configureAppearance() {
-        mainCollectionView.isHidden = false
-        activityIndicator.isHidden = true
-        //activityIndicator.startAnimating()
+        mainCollectionView.isHidden = true
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
         // регистрация ячейки:
@@ -88,14 +85,16 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MainCollectionViewCell.self)", for: indexPath)
+        
         if let cell = cell as? MainCollectionViewCell {
             let item = viewOutput!.presentPicture(index: indexPath.item)
-            cell.title      = item.title
-            cell.isFavorite = item.isFavorite
-            cell.imageUrlInString = item.imageUrlInString
-            cell.heartButton.tag = item.id
-            cell.heartButton.addTarget(self, action: #selector(favoriteButtonTapped(sender:)), for: .touchUpInside)
+                cell.title      = item.title
+                cell.isFavorite = item.isFavorite
+                cell.imageUrlInString = item.imageUrlInString
+                cell.heartButton.tag = item.id
+                cell.heartButton.addTarget(self, action: #selector(self.favoriteButtonTapped(sender:)), for: .touchUpInside)
         }
+
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -116,10 +115,26 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     
 }
 
+// MARK: MainViewInput delegate
 extension MainViewController: MainViewInput {
     func updateCollection() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.async() {
             self.mainCollectionView.reloadData()
         }
-    }    
+    }
+    func startLoading() {
+        DispatchQueue.main.async {
+            self.mainCollectionView.isHidden = true
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+    }
+    func stopLoading() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.isHidden = true
+            self.mainCollectionView.isHidden = false
+        }
+    }
+    
 }
