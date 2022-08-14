@@ -79,6 +79,7 @@ extension MainViewPresenter: MainViewOutput {
             if done {
                 print("Data successfully loaded")
                 self.updateCollection()
+                self.viewInput?.updateCollection()
                 self.viewInput?.stopLoading()
             } else {
                 print("No connection")
