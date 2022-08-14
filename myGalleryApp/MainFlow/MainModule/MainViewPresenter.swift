@@ -67,7 +67,6 @@ extension MainViewPresenter: MainViewOutput {
             service.deletePictureFromFavorite(id: item!.id)
             model.items.filter {$0.id == index}.first?.isFavorite = false
         }
-        print(service.favoritePictures)
         
     }
     func findItem(index: Int) -> Picture {

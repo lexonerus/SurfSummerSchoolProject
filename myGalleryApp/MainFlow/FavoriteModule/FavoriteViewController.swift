@@ -24,8 +24,6 @@ class FavoriteViewController: UIViewController {
         self.viewOutput = presenter
         configureAppearance()
         viewOutput!.configureModel()
-
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

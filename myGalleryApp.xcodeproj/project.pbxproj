@@ -294,9 +294,9 @@
 		56177BE328A6500F00739343 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				56177BE028A64F1E00739343 /* TabBarCoordinator.swift */,
 				56177BE428A6505800739343 /* Coordinator.swift */,
 				568BDF1C28A7C69300080E3F /* CoordinatorDelegate.swift */,
+				56177BE028A64F1E00739343 /* TabBarCoordinator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";

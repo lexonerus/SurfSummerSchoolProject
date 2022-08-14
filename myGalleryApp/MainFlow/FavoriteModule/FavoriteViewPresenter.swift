@@ -44,7 +44,6 @@ extension FavoriteViewPresenter: FavoriteViewOutput {
     
     func findItemInModel(id: Int) -> Picture? {
         if let item = model.items.first(where: { $0.id == id }) {
-            print(item)
             return item
         } else {
             print("This item doesnt exist")

@@ -54,7 +54,6 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
             favoriteService.deletePictureFromFavorite(id: item!.id)
             model.items.filter {$0.id == sender.tag}.first?.isFavorite = false
         }
-        print(favoriteService.favoritePictures)
         
     }
 
@@ -64,7 +63,6 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
 private extension SearchViewController {
     func findItemInModel(id: Int) -> Picture? {
         if let item = model.items.first(where: { $0.id == id }) {
-            print(item)
             return item
         } else {
             print("This item doesnt exist")
@@ -119,8 +117,6 @@ extension SearchViewController: UISearchBarDelegate {
             let isArrayContain = item.title.lowercased().range(of: text)
             
             if isArrayContain != nil {
-                //print("Search complete")
-                print(item.title)
                 filteredData.append(item)
             }
         }
