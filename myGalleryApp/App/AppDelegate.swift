@@ -21,14 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: App lifecycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController()
-        
-        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        
-        coordinator = AppCoordinator(navigationController)
         
         service.loadDataFromUserDefaults()
         startApplicationProcess()
@@ -41,9 +35,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         service.saveDataToUserDefaults()
     }
     
-    func startApplicationProcess() {        
+    func startApplicationProcess() {
+        runLaunchScreen()
+        
         if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
-            runMainFlow()
+            self.runMainFlow()
+            
         } else {
             let tempCredentials = AuthRequestModel(phone: "+71234567890", password: "qwerty")
             AuthService()
@@ -59,9 +56,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func runLaunchScreen() {
+        let lauchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: .main)
+            .instantiateInitialViewController()
+
+        window?.rootViewController = lauchScreenViewController
+    }
+    
     // MARK: Flow setup
     func runMainFlow() {
-        coordinator?.start()
+        DispatchQueue.main.async {
+            let navigationController = UINavigationController()
+            self.window?.rootViewController = navigationController
+            self.coordinator = AppCoordinator(navigationController)
+            self.coordinator?.start()
+        }
+
     }
 
 }

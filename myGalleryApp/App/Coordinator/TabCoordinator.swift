@@ -29,8 +29,8 @@ class TabCoordinator: NSObject, TabBarCoordinator {
     }
     
     func start() {
-        self.tabBarController = configure()
-        navigationController.viewControllers = [tabBarController!]
+        tabBarController = self.configure()
+        navigationController.viewControllers = [self.tabBarController!]
         showMainTab()
     }
     
