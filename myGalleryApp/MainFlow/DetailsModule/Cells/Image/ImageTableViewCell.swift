@@ -13,12 +13,9 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet private var postImage: UIImageView!
         
     // MARK: Properties
-    var imageUrlInString: String = "" {
+    var itemImage = UIImage(named: "placeholder") {
         didSet {
-            guard let url = URL(string: imageUrlInString) else {
-                return
-            }
-            postImage.loadImage(from: url)
+            postImage.image = itemImage
         }
     }
     
