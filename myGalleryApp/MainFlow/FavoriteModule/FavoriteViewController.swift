@@ -73,8 +73,8 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let ids = Array(service.favoritePictures)
         let item = findItemInModel(id: ids[indexPath.row])
-        let detailViewController = DetailTableViewController()
-        detailViewController.model = item
+        let detailViewController = DetailsViewController()
+        //detailViewController.model = item
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     

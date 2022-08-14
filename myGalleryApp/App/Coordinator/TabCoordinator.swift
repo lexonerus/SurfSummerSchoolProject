@@ -35,8 +35,9 @@ class TabCoordinator: NSObject, TabBarCoordinator {
     }
     
     func showDetailsScene(navigation: UINavigationController, item: Picture) {
-        let detailsScene = DetailTableViewController()
-        detailsScene.model = item
+//        let detailsScene = DetailsViewController()
+//        detailsScene.model = item
+        let detailsScene = TabViewFactory.makeDetailsScene(delegate: self, item: item)
         navigation.pushViewController(detailsScene, animated: true)
     }
     

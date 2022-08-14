@@ -174,8 +174,8 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = DetailTableViewController()
-        detailViewController.model = filteredData[indexPath.row]
+        let detailViewController = DetailsViewController()
+        //detailViewController.model = filteredData[indexPath.row]
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     

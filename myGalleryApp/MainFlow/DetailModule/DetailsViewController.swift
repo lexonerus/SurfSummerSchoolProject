@@ -7,37 +7,35 @@
 
 import UIKit
 
-class DetailTableViewController: UITableViewController, UIGestureRecognizerDelegate {
+class DetailsViewController: UITableViewController, UIGestureRecognizerDelegate {
         
     // MARK: Properties
-    var model: Picture?
+    var presenter: DetailsViewPresenter?
+    weak var coordinator: CoordinatorDelegate?
+    weak var viewOutput: DetailsViewOutput?
     
     // MARK: DetailTableViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.setViewInput(viewInput: self)
+        self.viewOutput = presenter
         configureAppearance()
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         configureNavigationBar()
     }
-
     
     // MARK: Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // TODO: refactor logic below
         return 3
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        // TODO: refactor logic below
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(ImageTableViewCell.self)")
             
             if let cell = cell as? ImageTableViewCell {
-                cell.imageUrlInString = model?.imageUrlInString ?? ""
+                cell.itemImage = viewOutput?.presentItem().itemImage
             }
             return cell ?? UITableViewCell()
         
@@ -45,8 +43,8 @@ class DetailTableViewController: UITableViewController, UIGestureRecognizerDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(LabelTableViewCell.self)")
 
             if let cell = cell as? LabelTableViewCell {
-                cell.title = model?.title ?? "title"
-                cell.date  = model?.dateCreate ?? "date"
+                cell.title = viewOutput?.presentItem().title ?? "title"
+                cell.date  = viewOutput?.presentItem().dateCreate ?? "date"
             }
             
             return cell ?? UITableViewCell()
@@ -54,7 +52,7 @@ class DetailTableViewController: UITableViewController, UIGestureRecognizerDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(TextTableViewCell.self)")
             
             if let cell = cell as? TextTableViewCell {
-                cell.post = model?.content ?? "no description"
+                cell.post = viewOutput?.presentItem().content ?? "no description"
             }
             
             return cell ?? UITableViewCell()
@@ -65,15 +63,14 @@ class DetailTableViewController: UITableViewController, UIGestureRecognizerDeleg
     }
 }
 
-
 // MARK: Private methods
-private extension DetailTableViewController {
+private extension DetailsViewController {
     func configureAppearance() {
         configureTableView()
     }
     
     func configureNavigationBar() {
-        navigationItem.title = model?.title
+        navigationItem.title = viewOutput?.presentItem().title
         let backButton = UIBarButtonItem(image: UIImage(named: "arrow-right-line"),
                                          style: .plain,
                                          target: navigationController,
@@ -90,4 +87,13 @@ private extension DetailTableViewController {
         tableView.separatorStyle = .none
     }
 
+}
+
+// MARK: DetailsViewInput methods
+extension DetailsViewController: DetailsViewInput {
+    func updateTable() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
