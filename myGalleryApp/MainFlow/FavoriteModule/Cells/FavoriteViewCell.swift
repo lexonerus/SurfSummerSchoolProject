@@ -23,12 +23,9 @@ class FavoriteViewCell: UITableViewCell {
     }
     
     // MARK: Properties
-    var imageUrlInString: String = "" {
+    var itemImage = UIImage(named: "placeholder") {
         didSet {
-            guard let url = URL(string: imageUrlInString) else {
-                return
-            }
-            favImage.loadImage(from: url)
+            favImage.image = itemImage
         }
     }
     var isFavorite: Bool = false {

@@ -26,4 +26,13 @@ struct TabViewFactory {
         viewController.coordinator = delegate
         return viewController
     }
+    static func makeFavoriteScene(delegate: CoordinatorDelegate?) -> FavoriteViewController {
+        let viewController = FavoriteViewController()
+        let service = FavoriteService.shared
+        let model = MainModel.shared
+        let presenter = FavoriteViewPresenter(view: viewController, model: model, service: service)
+        viewController.presenter = presenter
+        viewController.coordinator = delegate
+        return viewController
+    }
 }

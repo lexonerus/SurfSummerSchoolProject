@@ -63,7 +63,7 @@ class MainViewController: UIViewController {
         coordinator?.showSearch(navigation: navigationController!)
     }
     @objc func favoriteButtonTapped(sender: UIButton) {
-        viewOutput!.updateFavorite(index: sender.tag)
+        viewOutput!.toggleFavorite(index: sender.tag)
     }
     @IBAction func failButtonPressed(_ sender: Any) {
         viewOutput?.reloadData()

@@ -57,7 +57,7 @@ extension MainViewPresenter: MainViewOutput {
     func deActivateActivityIndicator() {
         viewInput?.stopLoading()
     }
-    func updateFavorite(index: Int) {
+    func toggleFavorite(index: Int) {
         let item = model.findItemInModel(id: index)
 
         if item?.isFavorite == false {

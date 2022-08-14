@@ -35,10 +35,7 @@ class TabCoordinator: NSObject, TabBarCoordinator {
     }
     
     func showDetailsScene(navigation: UINavigationController, item: Picture) {
-//        let detailsScene = DetailsViewController()
-//        detailsScene.model = item
-        let detailsScene = TabViewFactory.makeDetailsScene(delegate: self, item: item)
-        navigation.pushViewController(detailsScene, animated: true)
+
     }
     
     func showMainTab() {
@@ -57,8 +54,14 @@ class TabCoordinator: NSObject, TabBarCoordinator {
 }
 
 extension TabCoordinator: CoordinatorDelegate {
+    func showFavorite(navigation: UINavigationController) {
+        let favoriteScene = TabViewFactory.makeFavoriteScene(delegate: self)
+        navigation.pushViewController(favoriteScene, animated: true)
+    }
+    
     func showDetails(navigation: UINavigationController, item: Picture) {
-        showDetailsScene(navigation: navigation, item: item)
+        let detailsScene = TabViewFactory.makeDetailsScene(delegate: self, item: item)
+        navigation.pushViewController(detailsScene, animated: true)
     }
     func showSearch(navigation: UINavigationController) {
         let vc = SearchViewController()
@@ -100,7 +103,7 @@ private extension TabCoordinator {
         case .main:
             return TabViewFactory.makeMainScene(delegate: self)
         case .favorite:
-            return FavoriteViewController()
+            return TabViewFactory.makeFavoriteScene(delegate: self)
         case .profile:
             return ProfileViewController()
         }
