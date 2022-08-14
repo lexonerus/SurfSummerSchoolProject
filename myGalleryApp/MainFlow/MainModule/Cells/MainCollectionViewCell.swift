@@ -26,6 +26,12 @@ class MainCollectionViewCell: UICollectionViewCell {
             cellLabel.text = title
         }
     }
+    var itemImage = UIImage() {
+        didSet {
+            imageView.image = itemImage
+        }
+    }
+    
     var imageUrlInString: String = "" {
         didSet {
             guard let url = URL(string: imageUrlInString) else {

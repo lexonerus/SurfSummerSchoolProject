@@ -10,7 +10,8 @@ import UIKit.UIImage
 
 struct ImageLoader {
     
-    let queueForLoad = DispatchQueue.global(qos: .utility)
+    //let queueForLoad = DispatchQueue.global(qos: .userInteractive)
+    let queueForLoad = DispatchQueue.main
     let session = URLSession(configuration: .default)
     
     func loadImage(from url: URL, _ onLoadWasCompleted: @escaping (_ result: Result<UIImage, Error>) -> Void) {

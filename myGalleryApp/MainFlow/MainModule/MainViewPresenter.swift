@@ -78,6 +78,10 @@ extension MainViewPresenter: MainViewOutput {
 
             if done {
                 print("Data successfully loaded")
+                
+
+                
+                self.loadImagesForPicture()
                 self.updateCollection()
                 self.viewInput?.updateCollection()
                 self.viewInput?.stopLoading()
@@ -87,6 +91,22 @@ extension MainViewPresenter: MainViewOutput {
             }
             
         }
+    }
+    
+    func loadImagesForPicture() {
+        let serialQueue = DispatchQueue(label: "serial")
+            for item in self.model.items {
+                let url = URL(string: item.imageUrlInString)
+                serialQueue.async {
+                    self.model.loadImage(from: url!, with: item.id) { done in
+                        serialQueue.async {
+                            self.viewInput?.updateCollection()
+                        }
+                    }
+                }
+
+                
+            }
     }
 
 }

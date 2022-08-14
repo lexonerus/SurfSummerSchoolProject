@@ -32,6 +32,7 @@ final class MainModel {
                     
                     let result = Picture(
                         id: Int(pictureModel.id)!,
+                        itemImage: UIImage(named: "placeholder")!,
                         imageUrlInString: pictureModel.photoUrl,
                         title: pictureModel.title,
                         isFavorite: (self?.favoriteService.checkIsFavorite(id: Int(pictureModel.id)!))!,
@@ -48,6 +49,15 @@ final class MainModel {
             }
         }
         completionHandler(true)
+    }
+    
+    func loadImage(from url: URL, with id: Int, completionHandler: @escaping (Bool) -> Void) {
+        ImageLoader().loadImage(from: url) { [weak self] result in
+            if case let .success(image) = result {
+                self?.items.first(where: { $0.id == id })!.itemImage = image
+                completionHandler(true)
+            }
+        }
     }
     
     func findItemInModel(id: Int) -> Picture? {

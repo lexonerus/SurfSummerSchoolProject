@@ -51,6 +51,7 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        updateCollection()
     }
     
     func setViewOutput(viewOutput: MainViewOutput?) {
@@ -96,7 +97,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             let item = viewOutput!.presentPicture(index: indexPath.item)
                 cell.title      = item.title
                 cell.isFavorite = item.isFavorite
-                cell.imageUrlInString = item.imageUrlInString
+                cell.itemImage = item.itemImage
                 cell.heartButton.tag = item.id
                 cell.heartButton.addTarget(self, action: #selector(self.favoriteButtonTapped(sender:)), for: .touchUpInside)
         }
@@ -141,7 +142,7 @@ extension MainViewController: MainViewInput {
         }
     }
     func stopLoading() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             self.mainCollectionView.isHidden = false
