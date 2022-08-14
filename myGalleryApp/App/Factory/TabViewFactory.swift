@@ -35,4 +35,16 @@ struct TabViewFactory {
         viewController.coordinator = delegate
         return viewController
     }
+    
+    static func makeSearchScene(delegate: CoordinatorDelegate?) -> SearchViewController {
+        let viewContoller = SearchViewController()
+        let service = FavoriteService.shared
+        let model = MainModel.shared
+        let filteredData = [Picture]()
+        let presenter = SearchViewPresenter(view: viewContoller, service: service, model: model, filteredData: filteredData)
+        viewContoller.presenter = presenter
+        viewContoller.coordinator = delegate
+        viewContoller.hidesBottomBarWhenPushed = true
+        return viewContoller
+    }
 }

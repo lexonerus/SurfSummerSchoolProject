@@ -8,13 +8,6 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-    // MARK: Constants
-    private enum Constants {
-        static let horizontalInset: CGFloat         = 16
-        static let spaceBetweenElements: CGFloat    = 7
-        static let spaceBetweenRows: CGFloat        = 8
-    }
     
     // MARK: Properties
     var presenter: MainViewPresenter!
@@ -80,7 +73,7 @@ private extension MainViewController {
             self?.mainCollectionView.delegate = self
             // регистрация ячейки:
             self?.mainCollectionView.register(UINib(nibName: "\(MainCollectionViewCell.self)", bundle: .main), forCellWithReuseIdentifier: "\(MainCollectionViewCell.self)")
-            self?.mainCollectionView.contentInset = .init(top: 10, left: 16, bottom: 10, right: 16)
+            self?.mainCollectionView.contentInset = CollectionViewConstants.contentInset
         }
     }
 }
@@ -105,15 +98,14 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemWidth = ((view.frame.width - (Constants.horizontalInset * 2 ) - Constants.spaceBetweenElements)/2)
         
-        return CGSize(width: itemWidth, height: (1.46 * itemWidth))
+        return CollectionViewConstants.calcLayout(frameWidth: view.frame.width)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Constants.spaceBetweenRows
+        return CollectionViewConstants.spaceBetweenRows
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return Constants.spaceBetweenElements
+        return CollectionViewConstants.spaceBetweenElements
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = viewOutput!.findItem(index: indexPath.item)

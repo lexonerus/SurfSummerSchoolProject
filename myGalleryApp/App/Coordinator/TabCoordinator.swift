@@ -64,9 +64,8 @@ extension TabCoordinator: CoordinatorDelegate {
         navigation.pushViewController(detailsScene, animated: true)
     }
     func showSearch(navigation: UINavigationController) {
-        let vc = SearchViewController()
-        vc.hidesBottomBarWhenPushed = true
-        navigation.pushViewController(vc, animated: true)
+        let searchScene = TabViewFactory.makeSearchScene(delegate: self)
+        navigation.pushViewController(searchScene, animated: true)
     }
 }
 
