@@ -21,6 +21,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var cellLabel:    UILabel!
     
     // MARK: Properties
+
     var title: String = "" {
         didSet {
             cellLabel.text = title
@@ -28,7 +29,10 @@ class MainCollectionViewCell: UICollectionViewCell {
     }
     var itemImage = UIImage() {
         didSet {
-            imageView.image = itemImage
+            DispatchQueue.main.async {
+                self.imageView.image = self.itemImage
+            }
+            
         }
     }
     
@@ -46,6 +50,7 @@ class MainCollectionViewCell: UICollectionViewCell {
             heartButton.setImage(image , for: .normal)
         }
     }
+
     
     // MARK: Actions
     @IBAction func heartButtonAction(_ sender: Any) {

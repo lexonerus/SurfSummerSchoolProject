@@ -16,4 +16,5 @@ protocol MainViewOutput: AnyObject {
     func presentPicture(index: Int) -> Picture
     func countItems() -> Int
     func reloadData()
+    func configureModel()
 }

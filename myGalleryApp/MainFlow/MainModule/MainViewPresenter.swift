@@ -26,30 +26,28 @@ class MainViewPresenter {
     func setViewInput(viewInput: MainViewInput?) {
         self.viewInput = viewInput
     }
-    func updateCollection() {
+    func observeModel() {
         model.didItemsUpdated = { [weak self] in
-            self?.viewInput?.updateCollection()
+            self?.viewInput?.startLoading()
+            print(self!.model.items.count)
+            for item in self!.model.items {
+                let url = URL(string: item.imageUrlInString)
+                self!.model.loadImage(from: url!, with: item.id) { done in
+                    self?.viewInput?.updateCollection()
+                }
+            }
+            self?.viewInput?.stopLoading()
         }
     }
-    func loadImagesForPicture() {
-        let serialQueue = DispatchQueue(label: "serial")
-            for item in self.model.items {
-                let url = URL(string: item.imageUrlInString)
-                serialQueue.async {
-                    self.model.loadImage(from: url!, with: item.id) { done in
-                        serialQueue.async {
-                            self.viewInput?.updateCollection()
-                        }
-                    }
-                }
 
-                
-            }
-    }
 }
 
 // MARK: MainViewOutput delegate methods
 extension MainViewPresenter: MainViewOutput {
+    
+    func configureModel() {
+        observeModel()
+    }
     
     func activateActivityIndicator() {
         viewInput?.startLoading()
@@ -84,8 +82,6 @@ extension MainViewPresenter: MainViewOutput {
 
             if done {
                 // normal state
-                self.loadImagesForPicture()
-                self.updateCollection()
                 self.viewInput?.updateCollection()
                 self.viewInput?.stopLoading()
             } else {

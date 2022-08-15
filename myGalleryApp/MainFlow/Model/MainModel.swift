@@ -21,7 +21,7 @@ final class MainModel {
         }
     }
     private let pictureService = PictureService()
-    private let favoriteService = FavoriteService.shared
+    private let favoriteService = FavoriteService.shared   
     
     // MARK: Methods
     func getPosts(completionHandler: @escaping (Bool) -> Void) {
@@ -39,6 +39,7 @@ final class MainModel {
                         content: pictureModel.content,
                         dateCreate: pictureModel.date
                     )
+                    
 
                     return result
                 }

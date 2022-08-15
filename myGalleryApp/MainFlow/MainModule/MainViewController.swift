@@ -32,19 +32,22 @@ class MainViewController: UIViewController {
         configureAppearance()
         viewOutput?.activateActivityIndicator()
         DispatchQueue.global(qos: .userInteractive).async {
+            self.viewOutput?.configureModel()
             self.viewOutput?.reloadData()
         }
+        
         
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Главная"
+        updateCollection()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateCollection()
+        
     }
     
     func setViewOutput(viewOutput: MainViewOutput?) {
@@ -134,7 +137,7 @@ extension MainViewController: MainViewInput {
         }
     }
     func stopLoading() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             self.mainCollectionView.isHidden = false
