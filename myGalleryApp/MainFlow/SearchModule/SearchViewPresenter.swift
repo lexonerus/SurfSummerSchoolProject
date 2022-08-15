@@ -13,8 +13,9 @@ class SearchViewPresenter {
     let view: SearchViewController
     let service: FavoriteService
     let model: MainModel
-    var filteredData: [Picture]
+    var filteredData: [Picture] 
     weak var viewInput: SearchViewInput?
+    var isSearching = false
     
     // MARK: Initializers
     init(view: SearchViewController, service: FavoriteService, model: MainModel, filteredData: [Picture]) {
@@ -36,10 +37,25 @@ class SearchViewPresenter {
 }
 
 extension SearchViewPresenter: SearchViewOutput {
+    func prepareState() {
+        if filteredData.isEmpty {
+            presentEmptyState()
+        } else if filteredData.isEmpty || isSearching == true {
+            presentSearchState()
+        }
+        else {
+            presentSearchState()
+        }
+    }
+    func presentSearchState() {
+        viewInput?.showSearchState()
+    }
+    func presentEmptyState() {
+        viewInput?.showEmptyState()
+    }
     func configureModel() {
         updateCollection()
     }
-    
     func toggleFavorite(index: Int) {
         let item = model.findItemInModel(id: index)
 
@@ -61,6 +77,7 @@ extension SearchViewPresenter: SearchViewOutput {
     }
     
     func performSearch(with text: String) {
+
         filteredData.removeAll()
         
         guard text != "" || text != " " else {
@@ -71,10 +88,21 @@ extension SearchViewPresenter: SearchViewOutput {
         for item in model.items {
             let result = text.lowercased()
             let isArrayContain = item.title.lowercased().range(of: result)
-            
+
             if isArrayContain != nil {
                 filteredData.append(item)
             }
+        }
+        
+        if filteredData.isEmpty {
+            // TODO: present no result state
+            print("no results")
+        }
+
+        if text.isEmpty || text == " " {
+            self.isSearching = false
+        } else {
+            isSearching = true
         }
     }
     

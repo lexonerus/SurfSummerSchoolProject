@@ -14,6 +14,8 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: Properties
+    private var emptyState: UIView?
+    
     private var isSearching = false
     var presenter: SearchViewPresenter!
     weak var coordinator: CoordinatorDelegate?
@@ -27,6 +29,8 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationItem.titleView = searchBar
         configureAppearance()
         viewOutput?.configureModel()
+        viewOutput?.prepareState()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,6 +46,11 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
 
 // MARK: Private methods
 private extension SearchViewController {
+    func configureState(nibName: String) -> UIView {
+        let state = UINib(nibName: nibName, bundle: .main).instantiate(withOwner: nil, options: nil).first as! UIView
+        state.frame = self.view.bounds
+        return state
+    }
     func configureNavigationBar() {
         navigationItem.title = ""
         let backButton = UIBarButtonItem(image: UIImage(named: "arrow-right-line"),
@@ -61,6 +70,7 @@ private extension SearchViewController {
         collectionView.dataSource = self
         collectionView.contentInset = CollectionViewConstants.contentInset
         collectionView.register(UINib(nibName: "\(MainCollectionViewCell.self)", bundle: .main), forCellWithReuseIdentifier: "\(MainCollectionViewCell.self)")
+        collectionView.isHidden = true
         
 
     }
@@ -74,9 +84,11 @@ extension SearchViewController: UISearchBarDelegate {
         
         if searchBar.text == "" {
             isSearching = false
+            viewOutput?.prepareState()
             viewOutput?.reloadCollection()
         } else {
             isSearching = true
+            viewOutput?.prepareState()
             viewOutput?.reloadCollection()
         }
     }
@@ -128,6 +140,27 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 }
 
 extension SearchViewController: SearchViewInput {
+    func showEmptyState() {
+        DispatchQueue.main.async {
+            self.emptyState = self.configureState(nibName: "\(EmptyStateView.self)")
+            self.view.addSubview(self.emptyState!)
+            //self.view = emptyState
+        }
+    }
+    func showSearchState() {
+        DispatchQueue.main.async {
+            if self.emptyState != nil {
+                self.emptyState?.removeFromSuperview()
+            }
+            
+            self.collectionView.isHidden = false
+            self.emptyState?.isHidden = true
+        }
+    }
+    func showNoResultState() {
+        
+    }
+    
     func updateCollection() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
             self.collectionView.reloadData()

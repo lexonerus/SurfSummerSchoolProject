@@ -9,4 +9,7 @@ import Foundation
 
 protocol SearchViewInput: AnyObject {
     func updateCollection()
+    func showEmptyState()
+    func showNoResultState()
+    func showSearchState()
 }
