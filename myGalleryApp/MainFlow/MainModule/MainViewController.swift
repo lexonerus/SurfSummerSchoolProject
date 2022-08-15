@@ -93,6 +93,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             let item = viewOutput!.presentPicture(index: indexPath.item)
                 cell.title      = item.title
                 cell.isFavorite = item.isFavorite
+                cell.imageUrlInString = item.imageUrlInString
                 cell.itemImage = item.itemImage
                 cell.heartButton.tag = item.id
                 cell.heartButton.addTarget(self, action: #selector(self.favoriteButtonTapped(sender:)), for: .touchUpInside)
@@ -120,9 +121,13 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 // MARK: MainViewInput delegate
 extension MainViewController: MainViewInput {
     func showErrorState() {
-        let errorState = UINib(nibName: "\(ErrorStateView.self)", bundle: .main).instantiate(withOwner: nil, options: nil).first as! UIView
-        errorState.frame = self.view.bounds
-        self.view.addSubview(errorState)
+        DispatchQueue.main.async {
+            let errorState = UINib(nibName: "\(ErrorStateView.self)", bundle: .main).instantiate(withOwner: nil, options: nil).first as! UIView
+            errorState.frame = self.view.bounds
+            //self.view.addSubview(errorState)
+            self.view = errorState
+        }
+
     }
     func updateCollection() {
         DispatchQueue.main.async() {
@@ -137,7 +142,7 @@ extension MainViewController: MainViewInput {
         }
     }
     func stopLoading() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             self.mainCollectionView.isHidden = false

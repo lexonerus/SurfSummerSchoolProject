@@ -43,6 +43,8 @@
 		566662F2289FE5A000BF395C /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 566662F0289FE5A000BF395C /* FavoriteViewController.xib */; };
 		566662F6289FEB1B00BF395C /* FavoriteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566662F4289FEB1B00BF395C /* FavoriteViewCell.swift */; };
 		566662F7289FEB1B00BF395C /* FavoriteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 566662F5289FEB1B00BF395C /* FavoriteViewCell.xib */; };
+		5689AD3028AAADFB00DB0AA8 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5689AD2F28AAADFB00DB0AA8 /* EmptyStateView.xib */; };
+		5689AD3228AAAE3700DB0AA8 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5689AD3128AAAE3600DB0AA8 /* EmptyStateView.swift */; };
 		568BDF1928A779E200080E3F /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1828A779E200080E3F /* MainViewPresenter.swift */; };
 		568BDF1B28A7B43800080E3F /* TabViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1A28A7B43800080E3F /* TabViewFactory.swift */; };
 		568BDF1D28A7C69300080E3F /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1C28A7C69300080E3F /* CoordinatorDelegate.swift */; };
@@ -111,6 +113,8 @@
 		566662F0289FE5A000BF395C /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
 		566662F4289FEB1B00BF395C /* FavoriteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewCell.swift; sourceTree = "<group>"; };
 		566662F5289FEB1B00BF395C /* FavoriteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewCell.xib; sourceTree = "<group>"; };
+		5689AD2F28AAADFB00DB0AA8 /* EmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
+		5689AD3128AAAE3600DB0AA8 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		568BDF1828A779E200080E3F /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
 		568BDF1A28A7B43800080E3F /* TabViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewFactory.swift; sourceTree = "<group>"; };
 		568BDF1C28A7C69300080E3F /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 		560142F0289AB63C001F8C55 /* SearchModule */ = {
 			isa = PBXGroup;
 			children = (
+				5689AD2E28AAADC900DB0AA8 /* States */,
 				56C894CB28A96B4E00377088 /* Protocols */,
 				560142F1289AB672001F8C55 /* SearchViewController.swift */,
 				56C894C928A96B4900377088 /* SearchViewPresenter.swift */,
@@ -355,6 +360,15 @@
 				566662F5289FEB1B00BF395C /* FavoriteViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		5689AD2E28AAADC900DB0AA8 /* States */ = {
+			isa = PBXGroup;
+			children = (
+				5689AD2F28AAADFB00DB0AA8 /* EmptyStateView.xib */,
+				5689AD3128AAAE3600DB0AA8 /* EmptyStateView.swift */,
+			);
+			path = States;
 			sourceTree = "<group>";
 		};
 		568BDF1E28A7C6CE00080E3F /* Factory */ = {
@@ -609,6 +623,7 @@
 				560142DB289A6897001F8C55 /* MainViewController.xib in Resources */,
 				560142F4289AB672001F8C55 /* SearchViewController.xib in Resources */,
 				560142DF289A6A77001F8C55 /* ProfileViewController.xib in Resources */,
+				5689AD3028AAADFB00DB0AA8 /* EmptyStateView.xib in Resources */,
 				566662F2289FE5A000BF395C /* FavoriteViewController.xib in Resources */,
 				56E6B8E3289DC6C600FC7650 /* LabelTableViewCell.xib in Resources */,
 				5607D6B7289D72E00078C03C /* MainCollectionViewCell.xib in Resources */,
@@ -662,6 +677,7 @@
 				5607683628A186600010B977 /* PictureResponceModel.swift in Sources */,
 				568BDF2A28A7EBCD00080E3F /* ErrorStateView.swift in Sources */,
 				568BDF1928A779E200080E3F /* MainViewPresenter.swift in Sources */,
+				5689AD3228AAAE3700DB0AA8 /* EmptyStateView.swift in Sources */,
 				5607683828A186600010B977 /* BaseTokenStorage.swift in Sources */,
 				56C894C428A9645900377088 /* CollectionViewConstants.swift in Sources */,
 				56177BF128A6A03C00739343 /* AppCoordinator.swift in Sources */,

@@ -29,10 +29,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     }
     var itemImage = UIImage() {
         didSet {
-            DispatchQueue.main.async {
-                self.imageView.image = self.itemImage
-            }
-            
+            imageView.image = itemImage
         }
     }
     

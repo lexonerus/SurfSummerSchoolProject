@@ -26,19 +26,6 @@ class MainViewPresenter {
     func setViewInput(viewInput: MainViewInput?) {
         self.viewInput = viewInput
     }
-    func observeModel() {
-        model.didItemsUpdated = { [weak self] in
-            self?.viewInput?.startLoading()
-            print(self!.model.items.count)
-            for item in self!.model.items {
-                let url = URL(string: item.imageUrlInString)
-                self!.model.loadImage(from: url!, with: item.id) { done in
-                    self?.viewInput?.updateCollection()
-                }
-            }
-            self?.viewInput?.stopLoading()
-        }
-    }
 
 }
 
@@ -46,7 +33,18 @@ class MainViewPresenter {
 extension MainViewPresenter: MainViewOutput {
     
     func configureModel() {
-        observeModel()
+        model.didItemsUpdated = { [weak self] in
+            self?.viewInput?.startLoading()
+            print(self!.model.items.count)
+            for item in self!.model.items {
+                let url = URL(string: item.imageUrlInString)
+                self!.model.loadImage(from: url!, with: item.id) { done in
+                    print("image updated")
+                }
+            }
+            self?.viewInput?.updateCollection()
+
+        }
     }
     
     func activateActivityIndicator() {
@@ -82,7 +80,6 @@ extension MainViewPresenter: MainViewOutput {
 
             if done {
                 // normal state
-                self.viewInput?.updateCollection()
                 self.viewInput?.stopLoading()
             } else {
                 // error state
