@@ -38,31 +38,16 @@ class FavoriteViewController: UIViewController {
     }
     @objc func favoriteButtonTapped(sender: UIButton) {
         self.currentItemId = sender.tag
-        
-        let alert = UIAlertController(title: "Внимание", message: "Вы точно хотите удалить из избранного?", preferredStyle: .alert)
-
-        let ok = UIAlertAction(title: "Да, точно", style: .default, handler: { action in
-            print("да, точно")
-            self.removeItemFromFavorite()
-        })
-        let cancel = UIAlertAction(title: "Нет", style: .cancel, handler: { action in
-            print("нет")
-            self.updateTable()
-        })
-        
-        alert.addAction(ok)
-        alert.addAction(cancel)
-        alert.preferredAction = ok
-        
-        self.present(alert, animated: true)
+        let alert = AlertService.createTwoButtonsAlert(title: "Внимание", message: "Вы точно хотите удалить из избранного?", okButtonTitle: "Да, точно", cancelButtonTitle: "Нет", okAction: removeItemFromFavorite, cancelAction: cancelDeletion)
+        self.showAlert(alert: alert)
     }
     
     func removeItemFromFavorite() {
         viewOutput!.removeFromFavorite(index: currentItemId)
-        
     }
     func cancelDeletion() {
         print("item was not delete from favorites")
+        self.updateTable()
     }
     
 
