@@ -16,6 +16,7 @@ class FavoriteViewController: UIViewController {
     var presenter: FavoriteViewPresenter!
     weak var coordinator: CoordinatorDelegate?
     weak var viewOutput: FavoriteViewOutput?
+    private var currentItemId = 0
 
     // MARK: FavoriteViewController lifecycle
     override func viewDidLoad() {
@@ -36,8 +37,34 @@ class FavoriteViewController: UIViewController {
         coordinator?.showSearch(navigation: navigationController!)
     }
     @objc func favoriteButtonTapped(sender: UIButton) {
-        viewOutput!.removeFromFavorite(index: sender.tag)
+        self.currentItemId = sender.tag
+        
+        let alert = UIAlertController(title: "Внимание", message: "Вы точно хотите удалить из избранного?", preferredStyle: .alert)
+
+        let ok = UIAlertAction(title: "Да, точно", style: .default, handler: { action in
+            print("да, точно")
+            self.removeItemFromFavorite()
+        })
+        let cancel = UIAlertAction(title: "Нет", style: .cancel, handler: { action in
+            print("нет")
+            self.updateTable()
+        })
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        alert.preferredAction = ok
+        
+        self.present(alert, animated: true)
     }
+    
+    func removeItemFromFavorite() {
+        viewOutput!.removeFromFavorite(index: currentItemId)
+        
+    }
+    func cancelDeletion() {
+        print("item was not delete from favorites")
+    }
+    
 
 }
 
