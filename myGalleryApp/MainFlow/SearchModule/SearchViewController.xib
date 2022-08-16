@@ -20,10 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="QJW-ii-j71">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="PEx-Sm-9Uc">
                     <rect key="frame" x="0.0" y="24" width="375" height="643"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -39,15 +35,18 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="PEx-Sm-9Uc" secondAttribute="bottom" id="27b-Xb-ZjW"/>
-                <constraint firstItem="QJW-ii-j71" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="3pg-Sd-3Ob"/>
                 <constraint firstItem="PEx-Sm-9Uc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XGw-a2-JgT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PEx-Sm-9Uc" secondAttribute="trailing" id="kyA-fR-Oay"/>
-                <constraint firstItem="QJW-ii-j71" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qzo-qB-gfY"/>
-                <constraint firstItem="QJW-ii-j71" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vc8-wx-KTf"/>
                 <constraint firstItem="PEx-Sm-9Uc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="z5d-WN-Doo"/>
             </constraints>
             <point key="canvasLocation" x="132" y="81.409295352323838"/>
         </view>
+        <searchBar contentMode="redraw" searchBarStyle="minimal" id="QJW-ii-j71">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="51"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <textInputTraits key="textInputTraits"/>
+            <point key="canvasLocation" x="132" y="-283"/>
+        </searchBar>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">

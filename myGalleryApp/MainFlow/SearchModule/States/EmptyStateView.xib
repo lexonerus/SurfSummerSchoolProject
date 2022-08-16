@@ -13,14 +13,49 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EmptyStateView" customModule="myGalleryApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Om9-Wm-7zH">
+                    <rect key="frame" x="16" y="205" width="382" height="63"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите ваш запрос" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WF-TZ-ZUb">
+                            <rect key="frame" x="0.0" y="46" width="382" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search-eye-line" translatesAutoresizingMaskIntoConstraints="NO" id="qdO-UB-ex6">
+                            <rect key="frame" x="175" y="0.0" width="32" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="32" id="Iwm-jU-7DE"/>
+                                <constraint firstAttribute="height" constant="32" id="uyD-sQ-Zn0"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="9WF-TZ-ZUb" secondAttribute="bottom" id="0aE-fE-fVT"/>
+                        <constraint firstItem="qdO-UB-ex6" firstAttribute="top" secondItem="Om9-Wm-7zH" secondAttribute="top" id="2rs-1k-eKh"/>
+                        <constraint firstAttribute="height" constant="63" id="83J-HJ-Ds4"/>
+                        <constraint firstItem="qdO-UB-ex6" firstAttribute="centerX" secondItem="Om9-Wm-7zH" secondAttribute="centerX" id="DJQ-0y-Uyh"/>
+                        <constraint firstItem="9WF-TZ-ZUb" firstAttribute="leading" secondItem="Om9-Wm-7zH" secondAttribute="leading" id="p6Z-LI-gtq"/>
+                        <constraint firstAttribute="trailing" secondItem="9WF-TZ-ZUb" secondAttribute="trailing" id="wPA-g6-Eq6"/>
+                    </constraints>
+                </view>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemGray5Color"/>
-            <point key="canvasLocation" x="132" y="115"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Om9-Wm-7zH" secondAttribute="trailing" constant="16" id="Mww-Xt-fFS"/>
+                <constraint firstItem="Om9-Wm-7zH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="bFR-su-yf3"/>
+                <constraint firstItem="Om9-Wm-7zH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="161" id="rxh-cf-0gB"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="114.50892857142857"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="search-eye-line" width="32" height="32"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

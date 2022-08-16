@@ -13,8 +13,9 @@ class SearchViewPresenter {
     let view: SearchViewController
     let service: FavoriteService
     let model: MainModel
-    var filteredData: [Picture]
+    var filteredData: [Picture] 
     weak var viewInput: SearchViewInput?
+    var isSearching = false
     
     // MARK: Initializers
     init(view: SearchViewController, service: FavoriteService, model: MainModel, filteredData: [Picture]) {
@@ -28,18 +29,33 @@ class SearchViewPresenter {
     func setViewInput(viewInput: SearchViewInput) {
         self.viewInput = viewInput
     }
-    func updateCollection() {
+    func presentSearchState() {
+        viewInput?.showSearchState()
+    }
+    func presentEmptyState() {
+        viewInput?.showEmptyState()
+    }
+    func presentNoResultState() {
+        viewInput?.showNoResultState()
+    }
+
+}
+
+extension SearchViewPresenter: SearchViewOutput {
+    func prepareState() {
+        if !isSearching {
+            presentEmptyState()
+        } else if isSearching && filteredData.isEmpty {
+            presentNoResultState()
+        } else {
+            presentSearchState()
+        }
+    }
+    func configureModel() {
         model.didItemsUpdated = { [weak self] in
             self?.viewInput?.updateCollection()
         }
     }
-}
-
-extension SearchViewPresenter: SearchViewOutput {
-    func configureModel() {
-        updateCollection()
-    }
-    
     func toggleFavorite(index: Int) {
         let item = model.findItemInModel(id: index)
 
@@ -50,17 +66,15 @@ extension SearchViewPresenter: SearchViewOutput {
             service.deletePictureFromFavorite(id: item!.id)
             model.items.filter {$0.id == index}.first?.isFavorite = false
         }
-        
     }
     func reloadCollection() {
         viewInput?.updateCollection()
     }
-    
     func findItem(index: Int) -> Picture {
         return model.items[index]
     }
-    
     func performSearch(with text: String) {
+        
         filteredData.removeAll()
         
         guard text != "" || text != " " else {
@@ -75,6 +89,12 @@ extension SearchViewPresenter: SearchViewOutput {
             if isArrayContain != nil {
                 filteredData.append(item)
             }
+        }
+        
+        if text.isEmpty || text == " " {
+            isSearching = false
+        } else {
+            isSearching = true
         }
     }
     

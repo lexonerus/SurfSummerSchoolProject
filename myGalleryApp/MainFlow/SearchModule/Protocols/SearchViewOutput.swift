@@ -8,6 +8,7 @@
 import Foundation
 
 protocol SearchViewOutput: AnyObject {
+    func prepareState()
     func toggleFavorite(index: Int)
     func reloadCollection()
     func performSearch(with text: String)

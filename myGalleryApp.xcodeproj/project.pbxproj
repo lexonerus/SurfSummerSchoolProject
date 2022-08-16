@@ -30,6 +30,8 @@
 		5607683A28A186600010B977 /* TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5607682C28A186600010B977 /* TokenStorage.swift */; };
 		5607D6B6289D72E00078C03C /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5607D6B4289D72E00078C03C /* MainCollectionViewCell.swift */; };
 		5607D6B7289D72E00078C03C /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5607D6B5289D72E00078C03C /* MainCollectionViewCell.xib */; };
+		560D390128AB956B003344FE /* NoResultState.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560D390028AB956B003344FE /* NoResultState.xib */; };
+		560D390328AB957B003344FE /* NoResultState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560D390228AB957B003344FE /* NoResultState.swift */; };
 		56177BE128A64F1E00739343 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BE028A64F1E00739343 /* TabBarCoordinator.swift */; };
 		56177BE528A6505800739343 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BE428A6505800739343 /* Coordinator.swift */; };
 		56177BED28A663CB00739343 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BEC28A663CB00739343 /* TabCoordinator.swift */; };
@@ -100,6 +102,8 @@
 		5607682C28A186600010B977 /* TokenStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenStorage.swift; sourceTree = "<group>"; };
 		5607D6B4289D72E00078C03C /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		5607D6B5289D72E00078C03C /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
+		560D390028AB956B003344FE /* NoResultState.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoResultState.xib; sourceTree = "<group>"; };
+		560D390228AB957B003344FE /* NoResultState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultState.swift; sourceTree = "<group>"; };
 		56177BE028A64F1E00739343 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		56177BE428A6505800739343 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		56177BEC28A663CB00739343 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
@@ -367,6 +371,8 @@
 			children = (
 				5689AD2F28AAADFB00DB0AA8 /* EmptyStateView.xib */,
 				5689AD3128AAAE3600DB0AA8 /* EmptyStateView.swift */,
+				560D390028AB956B003344FE /* NoResultState.xib */,
+				560D390228AB957B003344FE /* NoResultState.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -627,6 +633,7 @@
 				566662F2289FE5A000BF395C /* FavoriteViewController.xib in Resources */,
 				56E6B8E3289DC6C600FC7650 /* LabelTableViewCell.xib in Resources */,
 				5607D6B7289D72E00078C03C /* MainCollectionViewCell.xib in Resources */,
+				560D390128AB956B003344FE /* NoResultState.xib in Resources */,
 				56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,6 +672,7 @@
 				5607682F28A186600010B977 /* AuthService.swift in Sources */,
 				56177BE528A6505800739343 /* Coordinator.swift in Sources */,
 				56C894CD28A96B5E00377088 /* SearchViewInput.swift in Sources */,
+				560D390328AB957B003344FE /* NoResultState.swift in Sources */,
 				56177BEF28A6655200739343 /* CoordinatorType.swift in Sources */,
 				568BDF1D28A7C69300080E3F /* CoordinatorDelegate.swift in Sources */,
 				560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */,

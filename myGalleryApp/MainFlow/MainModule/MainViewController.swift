@@ -34,10 +34,7 @@ class MainViewController: UIViewController {
         DispatchQueue.global(qos: .userInteractive).async {
             self.viewOutput?.configureModel()
             self.viewOutput?.reloadData()
-        }
-        
-        
-        
+        } 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -124,7 +121,7 @@ extension MainViewController: MainViewInput {
         DispatchQueue.main.async {
             let errorState = UINib(nibName: "\(ErrorStateView.self)", bundle: .main).instantiate(withOwner: nil, options: nil).first as! UIView
             errorState.frame = self.view.bounds
-            //self.view.addSubview(errorState)
+
             self.view = errorState
         }
 
