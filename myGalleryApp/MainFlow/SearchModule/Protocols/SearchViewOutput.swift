@@ -15,6 +15,4 @@ protocol SearchViewOutput: AnyObject {
     func countFilteredElements() -> Int
     func presentFilteredElement(index: Int) -> Picture
     func configureModel()
-    func presentEmptyState()
-    func presentSearchState()
 }

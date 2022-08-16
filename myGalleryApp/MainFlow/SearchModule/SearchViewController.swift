@@ -14,7 +14,9 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: Properties
+    private var defaultView: UIView?
     private var emptyState: UIView?
+    private var noResultState: UIView?
     
     private var isSearching = false
     var presenter: SearchViewPresenter!
@@ -28,13 +30,17 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
         viewOutput = presenter
         navigationItem.titleView = searchBar
         configureAppearance()
+        defaultView = self.view
+        defaultView?.tag = 99
         viewOutput?.configureModel()
-        viewOutput?.prepareState()
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewOutput?.prepareState()
     }
     
     // MARK: Actions
@@ -70,7 +76,6 @@ private extension SearchViewController {
         collectionView.dataSource = self
         collectionView.contentInset = CollectionViewConstants.contentInset
         collectionView.register(UINib(nibName: "\(MainCollectionViewCell.self)", bundle: .main), forCellWithReuseIdentifier: "\(MainCollectionViewCell.self)")
-        collectionView.isHidden = true
         
 
     }
@@ -142,25 +147,24 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 extension SearchViewController: SearchViewInput {
     func showEmptyState() {
         DispatchQueue.main.async {
-            self.emptyState = self.configureState(nibName: "\(EmptyStateView.self)")
-            self.view.addSubview(self.emptyState!)
-            //self.view = emptyState
+            let view = self.configureState(nibName: "\(EmptyStateView.self)")
+            view.tag = 1
+            self.view = view
+        }
+    }
+    func showNoResultState() {
+        DispatchQueue.main.async {
+            let view = self.configureState(nibName: "\(NoResultState.self)")
+            view.tag = 2
+            self.view = view
         }
     }
     func showSearchState() {
         DispatchQueue.main.async {
-            if self.emptyState != nil {
-                self.emptyState?.removeFromSuperview()
-            }
-            
-            self.collectionView.isHidden = false
-            self.emptyState?.isHidden = true
+            self.view = self.defaultView
+            print(self.view.tag)
         }
     }
-    func showNoResultState() {
-        
-    }
-    
     func updateCollection() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
             self.collectionView.reloadData()
