@@ -26,10 +26,8 @@ class LoginCoordinator: Coordinator {
 
 extension LoginCoordinator: LoginCoordinatorDelegate {
     func showLoginPage() {
-
-            let loginPageScene = ViewFactory.makeLoginPageScene(delegate: self)
-            navigationController.setNavigationBarHidden(false, animated: true)
-            navigationController.pushViewController(loginPageScene, animated: true)
-
+        let loginPageScene = ViewFactory.makeLoginPageScene(delegate: self)
+        navigationController.setNavigationBarHidden(false, animated: true)
+        navigationController.pushViewController(loginPageScene, animated: true)
     }
 }
