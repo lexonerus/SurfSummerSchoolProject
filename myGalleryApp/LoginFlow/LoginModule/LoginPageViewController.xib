@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginPageViewController" customModule="myGalleryApp" customModuleProvider="target">
             <connections>
+                <outlet property="eyeButton" destination="hJ3-S2-Xrc" id="fMM-X6-mHx"/>
                 <outlet property="loginButton" destination="5wR-Ds-dHR" id="EdV-WZ-IK8"/>
                 <outlet property="loginField" destination="CL8-f5-4qF" id="P8Q-1f-elM"/>
                 <outlet property="loginView" destination="bNs-0A-DAP" id="Tb0-PX-rpZ"/>
@@ -61,19 +62,47 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUS-UU-utT">
                     <rect key="frame" x="16" y="141" width="382" height="56"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xan-37-VOJ">
-                            <rect key="frame" x="18" y="27" width="346" height="22"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v86-hu-ccj">
+                            <rect key="frame" x="0.0" y="0.0" width="382" height="56"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xan-37-VOJ">
+                                    <rect key="frame" x="18" y="27" width="346" height="22"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJ3-S2-Xrc">
+                                    <rect key="frame" x="340" y="18" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="24" id="OeQ-Wq-IwY"/>
+                                        <constraint firstAttribute="width" constant="24" id="zaI-iH-CDd"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="hide_password"/>
+                                    <connections>
+                                        <action selector="eyeAction:" destination="-1" eventType="touchUpInside" id="QBC-Qz-jgV"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="hJ3-S2-Xrc" secondAttribute="bottom" constant="18" id="6zh-6v-bdV"/>
+                                <constraint firstItem="hJ3-S2-Xrc" firstAttribute="top" secondItem="v86-hu-ccj" secondAttribute="top" constant="18" id="8ti-Wp-GF4"/>
+                                <constraint firstAttribute="trailing" secondItem="hJ3-S2-Xrc" secondAttribute="trailing" constant="18" id="N3q-ID-Dsu"/>
+                                <constraint firstItem="xan-37-VOJ" firstAttribute="top" secondItem="v86-hu-ccj" secondAttribute="top" constant="27" id="PWT-J7-ixC"/>
+                                <constraint firstAttribute="trailing" secondItem="xan-37-VOJ" secondAttribute="trailing" constant="18" id="UAv-ik-5sA"/>
+                                <constraint firstAttribute="bottom" secondItem="xan-37-VOJ" secondAttribute="bottom" constant="7" id="jnR-Ab-Tpa"/>
+                                <constraint firstItem="xan-37-VOJ" firstAttribute="leading" secondItem="v86-hu-ccj" secondAttribute="leading" constant="18" id="mQn-4c-loZ"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
-                        <constraint firstItem="xan-37-VOJ" firstAttribute="leading" secondItem="cUS-UU-utT" secondAttribute="leading" constant="18" id="4LV-M3-pQM"/>
-                        <constraint firstAttribute="trailing" secondItem="xan-37-VOJ" secondAttribute="trailing" constant="18" id="A02-I4-opA"/>
                         <constraint firstAttribute="height" constant="56" id="C0U-3l-Bti"/>
-                        <constraint firstItem="xan-37-VOJ" firstAttribute="top" secondItem="cUS-UU-utT" secondAttribute="top" constant="27" id="C2q-Md-3am"/>
-                        <constraint firstAttribute="bottom" secondItem="xan-37-VOJ" secondAttribute="bottom" constant="7" id="Uu5-1n-nLu"/>
+                        <constraint firstAttribute="trailing" secondItem="v86-hu-ccj" secondAttribute="trailing" id="aVf-wL-3tS"/>
+                        <constraint firstItem="v86-hu-ccj" firstAttribute="top" secondItem="cUS-UU-utT" secondAttribute="top" id="bFd-sM-qhQ"/>
+                        <constraint firstAttribute="bottom" secondItem="v86-hu-ccj" secondAttribute="bottom" id="cZu-BT-Cyy"/>
+                        <constraint firstItem="v86-hu-ccj" firstAttribute="leading" secondItem="cUS-UU-utT" secondAttribute="leading" id="ydA-0O-G9U"/>
                     </constraints>
                 </view>
             </subviews>
@@ -94,6 +123,7 @@
         </view>
     </objects>
     <resources>
+        <image name="hide_password" width="24" height="24"/>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

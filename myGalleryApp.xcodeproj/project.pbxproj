@@ -496,8 +496,8 @@
 				56ABCBE5289956570057D7AB /* LaunchScreen */,
 				560142E2289A71A2001F8C55 /* MainFlow */,
 				56E505B628AD0234005313A8 /* LoginFlow */,
-				56ABCBE72899566A0057D7AB /* Assets */,
 				56275C2E28A2DE1200FFCF18 /* Helpers */,
+				56ABCBE72899566A0057D7AB /* Assets */,
 			);
 			path = myGalleryApp;
 			sourceTree = "<group>";
