@@ -38,11 +38,9 @@ class AppCoordinator: Coordinator {
 private extension AppCoordinator {
     func showLoginFlow() {
         print("Starting login flow")
-        DispatchQueue.main.async {
-            let loginCoordinator = LoginCoordinator(self.navigationController)
-            self.childCoordinators.append(loginCoordinator)
-            loginCoordinator.start()
-        }
+        let loginCoordinator = LoginCoordinator(navigationController)
+        self.childCoordinators.append(loginCoordinator)
+        loginCoordinator.start()
     }
     func showMainFlow() {
         print("Starting main flow")

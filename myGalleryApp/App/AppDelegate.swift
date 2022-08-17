@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.runMainFlow(isLoggedIn: true)
             
         } else {
-            let tempCredentials = AuthRequestModel(phone: "+71234567890+", password: "qwerty")
+            let tempCredentials = AuthRequestModel(phone: "+71234567890-", password: "qwerty")
             AuthService()
                 .performLoginRequestAndSaveToken(credentials: tempCredentials) { [weak self] result in
                     switch result {
@@ -59,7 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func runLaunchScreen() {
         let lauchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: .main)
             .instantiateInitialViewController()
-
         window?.rootViewController = lauchScreenViewController
     }
     

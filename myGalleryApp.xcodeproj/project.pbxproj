@@ -82,6 +82,7 @@
 		56E505C428AD045C005313A8 /* LoginPageViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505C328AD045C005313A8 /* LoginPageViewOutput.swift */; };
 		56E505C628AD04CF005313A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505C528AD04CF005313A8 /* LoginModel.swift */; };
 		56E505C828AD0758005313A8 /* LoginCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505C728AD0758005313A8 /* LoginCoordinatorDelegate.swift */; };
+		56E505CC28AD2CC0005313A8 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505CB28AD2CC0005313A8 /* AppColors.swift */; };
 		56E6B8D6289DC5FF00FC7650 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8D4289DC5FF00FC7650 /* DetailsViewController.swift */; };
 		56E6B8D7289DC5FF00FC7650 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E6B8D5289DC5FF00FC7650 /* DetailsViewController.xib */; };
 		56E6B8DB289DC68A00FC7650 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8D9289DC68A00FC7650 /* ImageTableViewCell.swift */; };
@@ -170,6 +171,7 @@
 		56E505C328AD045C005313A8 /* LoginPageViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewOutput.swift; sourceTree = "<group>"; };
 		56E505C528AD04CF005313A8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		56E505C728AD0758005313A8 /* LoginCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinatorDelegate.swift; sourceTree = "<group>"; };
+		56E505CB28AD2CC0005313A8 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		56E6B8D4289DC5FF00FC7650 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		56E6B8D5289DC5FF00FC7650 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		56E6B8D9289DC68A00FC7650 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -356,8 +358,8 @@
 			children = (
 				56177BE428A6505800739343 /* Coordinator.swift */,
 				568BDF1C28A7C69300080E3F /* TabCoordinatorDelegate.swift */,
-				56177BE028A64F1E00739343 /* TabBarCoordinator.swift */,
 				56E505C728AD0758005313A8 /* LoginCoordinatorDelegate.swift */,
+				56177BE028A64F1E00739343 /* TabBarCoordinator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -543,6 +545,7 @@
 			children = (
 				56177BEE28A6655200739343 /* CoordinatorType.swift */,
 				56C894C328A9645900377088 /* CollectionViewConstants.swift */,
+				56E505CB28AD2CC0005313A8 /* AppColors.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 				560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */,
 				5607683128A186600010B977 /* EmptyModel.swift in Sources */,
 				560142ED289A72C9001F8C55 /* TabBarModel.swift in Sources */,
+				56E505CC28AD2CC0005313A8 /* AppColors.swift in Sources */,
 				56E505AC28AC10F6005313A8 /* AlertService.swift in Sources */,
 				5607683028A186600010B977 /* BaseNetworkTask.swift in Sources */,
 				568BDF1B28A7B43800080E3F /* ViewFactory.swift in Sources */,

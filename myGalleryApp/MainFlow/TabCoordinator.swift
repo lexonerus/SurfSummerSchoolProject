@@ -73,10 +73,10 @@ extension TabCoordinator: TabCoordinatorDelegate {
 private extension TabCoordinator {
     func getTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor               = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        tabBarController.tabBar.unselectedItemTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        tabBarController.tabBar.barTintColor            = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        tabBarController.tabBar.backgroundColor         = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        tabBarController.tabBar.tintColor               = AppColors.tintColor
+        tabBarController.tabBar.unselectedItemTintColor = AppColors.unselectedItem
+        tabBarController.tabBar.barTintColor            = AppColors.tabBarTint
+        tabBarController.tabBar.backgroundColor         = AppColors.tabBarBackground
         tabBarController.viewControllers                = getTabBarControllers()
         
         return tabBarController
