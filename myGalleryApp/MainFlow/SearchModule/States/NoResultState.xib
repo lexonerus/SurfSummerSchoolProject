@@ -15,17 +15,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6uV-YO-C2h">
-                    <rect key="frame" x="87" y="205" width="240" height="81"/>
+                    <rect key="frame" x="16" y="205" width="382" height="81"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emotion-unhappy-line" translatesAutoresizingMaskIntoConstraints="NO" id="2wW-jb-Zj1">
-                            <rect key="frame" x="104" y="0.0" width="32" height="32"/>
+                            <rect key="frame" x="175" y="0.0" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="0bd-vR-VGe"/>
                                 <constraint firstAttribute="height" constant="32" id="cpA-Z0-6Ls"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="По этому запросу нет результатов, попробуйте другой запрос" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZy-zF-8ER">
-                            <rect key="frame" x="0.0" y="47.5" width="240" height="33.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="нет результатов" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZy-zF-8ER">
+                            <rect key="frame" x="0.0" y="64" width="382" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.80297678709999998" green="0.80297678709999998" blue="0.80297672750000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -45,10 +45,14 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6uV-YO-C2h" secondAttribute="trailing" constant="87" id="5gR-NU-ipB"/>
-                <constraint firstItem="6uV-YO-C2h" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="87" id="8yd-Dh-9mw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="6uV-YO-C2h" secondAttribute="trailing" constant="16" id="5gR-NU-ipB"/>
+                <constraint firstItem="6uV-YO-C2h" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="8yd-Dh-9mw"/>
                 <constraint firstItem="6uV-YO-C2h" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="161" id="S1d-eG-xEk"/>
             </constraints>
+            <connections>
+                <outlet property="stateImage" destination="2wW-jb-Zj1" id="tAg-Ub-LFl"/>
+                <outlet property="stateLabel" destination="lZy-zF-8ER" id="Bvu-VN-RSM"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="97.767857142857139"/>
         </view>
     </objects>

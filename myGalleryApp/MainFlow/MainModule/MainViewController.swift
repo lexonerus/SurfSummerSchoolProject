@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     var presenter: MainViewPresenter!
     weak var coordinator: CoordinatorDelegate?
     weak var viewOutput: MainViewOutput?
+    private var defaultView: UIView?
     
     // MARK: Views
     @IBOutlet private weak var mainCollectionView: UICollectionView!
@@ -25,6 +26,7 @@ class MainViewController: UIViewController {
         presenter.setViewInput(viewInput: self)
         self.viewOutput = presenter
         configureAppearance()
+        defaultView = self.view
         viewOutput?.activateActivityIndicator()
         DispatchQueue.global(qos: .userInteractive).async {
             self.viewOutput?.configureModel()
@@ -117,9 +119,10 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension MainViewController: MainViewInput {
     func showErrorState() {
         DispatchQueue.main.async {
-            let errorState = UINib(nibName: "\(ErrorStateView.self)", bundle: .main).instantiate(withOwner: nil, options: nil).first as! UIView
+            let errorState = UINib(nibName: "\(ErrorStateView.self)", bundle: .main).instantiate(withOwner: nil, options: nil).first as! ErrorStateView
+            
             errorState.frame = self.view.bounds
-
+            errorState.delegate = self
             self.view = errorState
         }
 
@@ -144,6 +147,14 @@ extension MainViewController: MainViewInput {
         }
     }
     
+}
+
+extension MainViewController: ErrorStateDelegate {
+    func refresh() {
+        viewOutput?.reloadData()
+        self.view = defaultView
+    }
+
 }
 
 

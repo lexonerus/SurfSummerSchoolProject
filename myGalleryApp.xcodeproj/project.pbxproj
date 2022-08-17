@@ -70,6 +70,8 @@
 		56C894CD28A96B5E00377088 /* SearchViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C894CC28A96B5E00377088 /* SearchViewInput.swift */; };
 		56C894D028A96B7F00377088 /* SearchViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C894CF28A96B7F00377088 /* SearchViewOutput.swift */; };
 		56E505AC28AC10F6005313A8 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505AB28AC10F6005313A8 /* AlertService.swift */; };
+		56E505AF28ACD600005313A8 /* Date+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505AE28ACD600005313A8 /* Date+Formatter.swift */; };
+		56E505B128ACDDCA005313A8 /* ErrorStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505B028ACDDCA005313A8 /* ErrorStateDelegate.swift */; };
 		56E6B8D6289DC5FF00FC7650 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8D4289DC5FF00FC7650 /* DetailsViewController.swift */; };
 		56E6B8D7289DC5FF00FC7650 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E6B8D5289DC5FF00FC7650 /* DetailsViewController.xib */; };
 		56E6B8DB289DC68A00FC7650 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8D9289DC68A00FC7650 /* ImageTableViewCell.swift */; };
@@ -146,6 +148,8 @@
 		56C894CC28A96B5E00377088 /* SearchViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInput.swift; sourceTree = "<group>"; };
 		56C894CF28A96B7F00377088 /* SearchViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewOutput.swift; sourceTree = "<group>"; };
 		56E505AB28AC10F6005313A8 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		56E505AE28ACD600005313A8 /* Date+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Formatter.swift"; sourceTree = "<group>"; };
+		56E505B028ACDDCA005313A8 /* ErrorStateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateDelegate.swift; sourceTree = "<group>"; };
 		56E6B8D4289DC5FF00FC7650 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		56E6B8D5289DC5FF00FC7650 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		56E6B8D9289DC68A00FC7650 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 		5607681828A186600010B977 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				56E505AD28ACD5EA005313A8 /* DateFormatterService */,
 				5612895C28ABA9D5009A7D42 /* AlertService */,
 				56275C3428A2E72F00FFCF18 /* FavoriteService */,
 				5607681928A186600010B977 /* Networking */,
@@ -404,6 +409,7 @@
 			children = (
 				568BDF2028A7C7E100080E3F /* MainViewInput.swift */,
 				568BDF2228A7CAB000080E3F /* MainViewOutput.swift */,
+				56E505B028ACDDCA005313A8 /* ErrorStateDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -523,6 +529,14 @@
 				56C894CF28A96B7F00377088 /* SearchViewOutput.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		56E505AD28ACD5EA005313A8 /* DateFormatterService */ = {
+			isa = PBXGroup;
+			children = (
+				56E505AE28ACD600005313A8 /* Date+Formatter.swift */,
+			);
+			path = DateFormatterService;
 			sourceTree = "<group>";
 		};
 		56E6B8D0289DC53600FC7650 /* DetailsModule */ = {
@@ -684,6 +698,7 @@
 				56B77644289EAC37000F2E2E /* Picture.swift in Sources */,
 				5607683A28A186600010B977 /* TokenStorage.swift in Sources */,
 				5607682F28A186600010B977 /* AuthService.swift in Sources */,
+				56E505B128ACDDCA005313A8 /* ErrorStateDelegate.swift in Sources */,
 				56177BE528A6505800739343 /* Coordinator.swift in Sources */,
 				56C894CD28A96B5E00377088 /* SearchViewInput.swift in Sources */,
 				5612895E28ABAA02009A7D42 /* UIViewController+AlertService.swift in Sources */,
@@ -704,6 +719,7 @@
 				5689AD3228AAAE3700DB0AA8 /* EmptyStateView.swift in Sources */,
 				5607683828A186600010B977 /* BaseTokenStorage.swift in Sources */,
 				56C894C428A9645900377088 /* CollectionViewConstants.swift in Sources */,
+				56E505AF28ACD600005313A8 /* Date+Formatter.swift in Sources */,
 				56177BF128A6A03C00739343 /* AppCoordinator.swift in Sources */,
 				56177BE128A64F1E00739343 /* TabBarCoordinator.swift in Sources */,
 				5607682E28A186600010B977 /* AuthResponceModel.swift in Sources */,

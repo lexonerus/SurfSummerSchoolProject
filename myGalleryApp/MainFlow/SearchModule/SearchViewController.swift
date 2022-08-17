@@ -163,7 +163,6 @@ extension SearchViewController: SearchViewInput {
     func showSearchState() {
         DispatchQueue.main.async {
             self.view = self.defaultView
-            print(self.view.tag)
         }
     }
     func updateCollection() {

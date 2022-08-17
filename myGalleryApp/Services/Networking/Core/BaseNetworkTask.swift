@@ -46,12 +46,15 @@ struct BaseNetworkTask<AbstractInput: Encodable, AbstractOutput: Decodable>: Net
         do {
             let request = try getRequest(with: input)
             
+            
+            // MARK: get data from chache here
             if let cachedResponse = getCachedResponceFromCache(by: request) {
                 let mappedModel = try JSONDecoder().decode(AbstractOutput.self, from: cachedResponse.data)
                 onResponceWasReceived(.success(mappedModel))
                 return
             }
             
+            // else load task
             session.dataTask(with: request) { data, responce, error in
                 if let error = error {
                     onResponceWasReceived(.failure(error))

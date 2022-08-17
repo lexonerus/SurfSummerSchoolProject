@@ -30,6 +30,9 @@
                                 <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                 <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </buttonConfiguration>
+                            <connections>
+                                <action selector="refresh:" destination="iN0-l3-epB" eventType="touchUpInside" id="9Mi-Qy-CSS"/>
+                            </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emotion-unhappy-line" translatesAutoresizingMaskIntoConstraints="NO" id="B9T-tb-9QH">
                             <rect key="frame" x="175" y="0.0" width="32" height="32"/>
@@ -70,6 +73,10 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="LJw-dq-rHW" secondAttribute="trailing" constant="16" id="bAT-8Q-2fA"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="LJw-dq-rHW" secondAttribute="bottom" constant="348" id="gFX-ua-iD6"/>
             </constraints>
+            <connections>
+                <outlet property="stateImage" destination="B9T-tb-9QH" id="zMg-IJ-5fE"/>
+                <outlet property="stateLabel" destination="JAB-Lq-ctJ" id="gIa-0E-xS8"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="114.50892857142857"/>
         </view>
     </objects>

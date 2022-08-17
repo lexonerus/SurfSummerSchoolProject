@@ -29,7 +29,7 @@ class Picture {
         self.content = content
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.mm.yyyy"
+        formatter.dateFormat = "dd.MM.yyyy"
         
         self.dateCreate = formatter.string(from: dateCreate)
     }

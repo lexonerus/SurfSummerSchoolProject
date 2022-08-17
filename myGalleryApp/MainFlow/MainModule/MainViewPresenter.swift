@@ -34,11 +34,11 @@ extension MainViewPresenter: MainViewOutput {
     func configureModel() {
         model.didItemsUpdated = { [weak self] in
             self?.viewInput?.startLoading()
-            print(self!.model.items.count)
+
             for item in self!.model.items {
                 let url = URL(string: item.imageUrlInString)
                 self!.model.loadImage(from: url!, with: item.id) { done in
-                    print("image updated")
+
                 }
             }
             self?.viewInput?.updateCollection()

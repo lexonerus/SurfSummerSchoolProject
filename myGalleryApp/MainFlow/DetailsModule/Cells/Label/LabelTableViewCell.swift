@@ -29,5 +29,6 @@ class LabelTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
+
     
 }

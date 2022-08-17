@@ -27,7 +27,7 @@
                     <constraint firstItem="2UC-5k-xxh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="RzW-jb-C9Y"/>
                     <constraint firstItem="2UC-5k-xxh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="drk-YK-0k0"/>
                     <constraint firstAttribute="trailing" secondItem="2UC-5k-xxh" secondAttribute="trailing" constant="16" id="fMh-NC-lrj"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2UC-5k-xxh" secondAttribute="bottom" constant="8" id="fZb-Tm-UdU"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2UC-5k-xxh" secondAttribute="bottom" priority="750" constant="8" id="fZb-Tm-UdU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
