@@ -10,8 +10,8 @@ import Foundation
 class DetailsViewPresenter {
     
     // MARK: Properties
-    let view: DetailsViewController
-    let model: Picture
+    private let view: DetailsViewController
+    private let model: Picture
     weak var viewInput: DetailsViewInput?
     
     // MARK: Initializers

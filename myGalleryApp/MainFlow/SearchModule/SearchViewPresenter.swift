@@ -41,6 +41,7 @@ class SearchViewPresenter {
 
 }
 
+// MARK: SearchViewOutput methods
 extension SearchViewPresenter: SearchViewOutput {
     func prepareState() {
         if !isSearching {
@@ -97,11 +98,9 @@ extension SearchViewPresenter: SearchViewOutput {
             isSearching = true
         }
     }
-    
     func countFilteredElements() -> Int {
         return filteredData.count
     }
-    
     func presentFilteredElement(index: Int) -> Picture {
         return filteredData[index]
     }

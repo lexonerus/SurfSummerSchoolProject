@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum TabBarPage {
+enum TabBarModel {
     case main
     case favorite
     case profile

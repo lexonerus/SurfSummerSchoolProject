@@ -16,7 +16,7 @@ class TabCoordinator: NSObject, TabBarCoordinator {
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = [Coordinator]()
     var type: CoordinatorType { .tab }
-    private let allTab: [TabBarPage] = [.main, .favorite, .profile]
+    private let allTab: [TabBarModel] = [.main, .favorite, .profile]
 
     
     required init(_ navigationController: UINavigationController) {
@@ -97,7 +97,7 @@ private extension TabCoordinator {
         return viewControllers
     }
                         
-    func getCurrentViewController(tab: TabBarPage) -> UIViewController {
+    func getCurrentViewController(tab: TabBarModel) -> UIViewController {
         switch tab {
         case .main:
             return TabViewFactory.makeMainScene(delegate: self)

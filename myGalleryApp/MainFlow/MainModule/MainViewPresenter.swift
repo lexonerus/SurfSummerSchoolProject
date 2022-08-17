@@ -31,7 +31,6 @@ class MainViewPresenter {
 
 // MARK: MainViewOutput delegate methods
 extension MainViewPresenter: MainViewOutput {
-    
     func configureModel() {
         model.didItemsUpdated = { [weak self] in
             self?.viewInput?.startLoading()
@@ -43,10 +42,8 @@ extension MainViewPresenter: MainViewOutput {
                 }
             }
             self?.viewInput?.updateCollection()
-
         }
     }
-    
     func activateActivityIndicator() {
         viewInput?.startLoading()
     }
@@ -55,7 +52,6 @@ extension MainViewPresenter: MainViewOutput {
     }
     func toggleFavorite(index: Int) {
         let item = model.findItemInModel(id: index)
-
         if item?.isFavorite == false {
             service.savePictureToFavorite(id: item!.id)
             model.items.filter {$0.id == index}.first?.isFavorite = true
@@ -63,21 +59,15 @@ extension MainViewPresenter: MainViewOutput {
             service.deletePictureFromFavorite(id: item!.id)
             model.items.filter {$0.id == index}.first?.isFavorite = false
         }
-        
-    }
-    func findItem(index: Int) -> Picture {
-        return model.items[index]
     }
     func presentPicture(index: Int) -> Picture {
-        let picture = model.items[index]
-        return picture
+         return model.items[index]
     }
     func countItems() -> Int {
         return model.items.count
     }
     func reloadData() {
         model.getPosts { done in
-
             if done {
                 // normal state
                 self.viewInput?.stopLoading()
@@ -85,9 +75,6 @@ extension MainViewPresenter: MainViewOutput {
                 // error state
                 self.viewInput?.showErrorState()
             }
-            
         }
     }
-    
-
 }

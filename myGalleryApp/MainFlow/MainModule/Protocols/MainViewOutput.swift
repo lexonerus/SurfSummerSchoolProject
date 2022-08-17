@@ -12,7 +12,6 @@ protocol MainViewOutput: AnyObject {
     func activateActivityIndicator()
     func deActivateActivityIndicator()
     func toggleFavorite(index: Int)
-    func findItem(index: Int) -> Picture
     func presentPicture(index: Int) -> Picture
     func countItems() -> Int
     func reloadData()
