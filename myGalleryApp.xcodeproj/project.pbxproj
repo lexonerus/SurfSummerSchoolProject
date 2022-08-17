@@ -49,8 +49,8 @@
 		5689AD3028AAADFB00DB0AA8 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5689AD2F28AAADFB00DB0AA8 /* EmptyStateView.xib */; };
 		5689AD3228AAAE3700DB0AA8 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5689AD3128AAAE3600DB0AA8 /* EmptyStateView.swift */; };
 		568BDF1928A779E200080E3F /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1828A779E200080E3F /* MainViewPresenter.swift */; };
-		568BDF1B28A7B43800080E3F /* TabViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1A28A7B43800080E3F /* TabViewFactory.swift */; };
-		568BDF1D28A7C69300080E3F /* CoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1C28A7C69300080E3F /* CoordinatorDelegate.swift */; };
+		568BDF1B28A7B43800080E3F /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1A28A7B43800080E3F /* ViewFactory.swift */; };
+		568BDF1D28A7C69300080E3F /* TabCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1C28A7C69300080E3F /* TabCoordinatorDelegate.swift */; };
 		568BDF2128A7C7E100080E3F /* MainViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF2028A7C7E100080E3F /* MainViewInput.swift */; };
 		568BDF2328A7CAB000080E3F /* MainViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF2228A7CAB000080E3F /* MainViewOutput.swift */; };
 		568BDF2828A7EB9800080E3F /* ErrorStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568BDF2728A7EB9800080E3F /* ErrorStateView.xib */; };
@@ -74,6 +74,14 @@
 		56E505B128ACDDCA005313A8 /* ErrorStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505B028ACDDCA005313A8 /* ErrorStateDelegate.swift */; };
 		56E505B328ACFC73005313A8 /* ApiLoginResponce.JSON in Resources */ = {isa = PBXBuildFile; fileRef = 56E505B228ACFC73005313A8 /* ApiLoginResponce.JSON */; };
 		56E505B528ACFCC9005313A8 /* AuthProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505B428ACFCC9005313A8 /* AuthProfileModel.swift */; };
+		56E505B928AD02EB005313A8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505B828AD02EB005313A8 /* LoginCoordinator.swift */; };
+		56E505BC28AD0400005313A8 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505BA28AD0400005313A8 /* LoginPageViewController.swift */; };
+		56E505BD28AD0400005313A8 /* LoginPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E505BB28AD0400005313A8 /* LoginPageViewController.xib */; };
+		56E505BF28AD0415005313A8 /* LoginPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505BE28AD0415005313A8 /* LoginPagePresenter.swift */; };
+		56E505C228AD0441005313A8 /* LoginPageViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505C128AD0441005313A8 /* LoginPageViewInput.swift */; };
+		56E505C428AD045C005313A8 /* LoginPageViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505C328AD045C005313A8 /* LoginPageViewOutput.swift */; };
+		56E505C628AD04CF005313A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505C528AD04CF005313A8 /* LoginModel.swift */; };
+		56E505C828AD0758005313A8 /* LoginCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E505C728AD0758005313A8 /* LoginCoordinatorDelegate.swift */; };
 		56E6B8D6289DC5FF00FC7650 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8D4289DC5FF00FC7650 /* DetailsViewController.swift */; };
 		56E6B8D7289DC5FF00FC7650 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E6B8D5289DC5FF00FC7650 /* DetailsViewController.xib */; };
 		56E6B8DB289DC68A00FC7650 /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E6B8D9289DC68A00FC7650 /* ImageTableViewCell.swift */; };
@@ -127,8 +135,8 @@
 		5689AD2F28AAADFB00DB0AA8 /* EmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
 		5689AD3128AAAE3600DB0AA8 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		568BDF1828A779E200080E3F /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
-		568BDF1A28A7B43800080E3F /* TabViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewFactory.swift; sourceTree = "<group>"; };
-		568BDF1C28A7C69300080E3F /* CoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorDelegate.swift; sourceTree = "<group>"; };
+		568BDF1A28A7B43800080E3F /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		568BDF1C28A7C69300080E3F /* TabCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		568BDF2028A7C7E100080E3F /* MainViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewInput.swift; sourceTree = "<group>"; };
 		568BDF2228A7CAB000080E3F /* MainViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewOutput.swift; sourceTree = "<group>"; };
 		568BDF2728A7EB9800080E3F /* ErrorStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorStateView.xib; sourceTree = "<group>"; };
@@ -154,6 +162,14 @@
 		56E505B028ACDDCA005313A8 /* ErrorStateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateDelegate.swift; sourceTree = "<group>"; };
 		56E505B228ACFC73005313A8 /* ApiLoginResponce.JSON */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ApiLoginResponce.JSON; sourceTree = "<group>"; };
 		56E505B428ACFCC9005313A8 /* AuthProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProfileModel.swift; sourceTree = "<group>"; };
+		56E505B828AD02EB005313A8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		56E505BA28AD0400005313A8 /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
+		56E505BB28AD0400005313A8 /* LoginPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginPageViewController.xib; sourceTree = "<group>"; };
+		56E505BE28AD0415005313A8 /* LoginPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPagePresenter.swift; sourceTree = "<group>"; };
+		56E505C128AD0441005313A8 /* LoginPageViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewInput.swift; sourceTree = "<group>"; };
+		56E505C328AD045C005313A8 /* LoginPageViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewOutput.swift; sourceTree = "<group>"; };
+		56E505C528AD04CF005313A8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		56E505C728AD0758005313A8 /* LoginCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		56E6B8D4289DC5FF00FC7650 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		56E6B8D5289DC5FF00FC7650 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		56E6B8D9289DC68A00FC7650 /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -178,6 +194,7 @@
 		560142E2289A71A2001F8C55 /* MainFlow */ = {
 			isa = PBXGroup;
 			children = (
+				56177BEC28A663CB00739343 /* TabCoordinator.swift */,
 				56275C3328A2DFF000FFCF18 /* Model */,
 				560142E5289A71D6001F8C55 /* ProfileModule */,
 				560142E6289A71F9001F8C55 /* FavoriteModule */,
@@ -338,8 +355,9 @@
 			isa = PBXGroup;
 			children = (
 				56177BE428A6505800739343 /* Coordinator.swift */,
-				568BDF1C28A7C69300080E3F /* CoordinatorDelegate.swift */,
+				568BDF1C28A7C69300080E3F /* TabCoordinatorDelegate.swift */,
 				56177BE028A64F1E00739343 /* TabBarCoordinator.swift */,
+				56E505C728AD0758005313A8 /* LoginCoordinatorDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -348,9 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				56177BE328A6500F00739343 /* Protocols */,
-				56177BEE28A6655200739343 /* CoordinatorType.swift */,
 				56177BF028A6A03C00739343 /* AppCoordinator.swift */,
-				56177BEC28A663CB00739343 /* TabCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -370,6 +386,7 @@
 			children = (
 				561806A528A80E28001E3209 /* MainModel.swift */,
 				56B77643289EAC37000F2E2E /* Picture.swift */,
+				56E505C528AD04CF005313A8 /* LoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -405,7 +422,7 @@
 		568BDF1E28A7C6CE00080E3F /* Factory */ = {
 			isa = PBXGroup;
 			children = (
-				568BDF1A28A7B43800080E3F /* TabViewFactory.swift */,
+				568BDF1A28A7B43800080E3F /* ViewFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -468,6 +485,7 @@
 				5607681828A186600010B977 /* Services */,
 				56ABCBE5289956570057D7AB /* LaunchScreen */,
 				560142E2289A71A2001F8C55 /* MainFlow */,
+				56E505B628AD0234005313A8 /* LoginFlow */,
 				56ABCBE72899566A0057D7AB /* Assets */,
 				56275C2E28A2DE1200FFCF18 /* Helpers */,
 			);
@@ -523,6 +541,7 @@
 		56C894C528A9681500377088 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				56177BEE28A6655200739343 /* CoordinatorType.swift */,
 				56C894C328A9645900377088 /* CollectionViewConstants.swift */,
 			);
 			path = Constants;
@@ -543,6 +562,35 @@
 				56E505AE28ACD600005313A8 /* Date+Formatter.swift */,
 			);
 			path = DateFormatterService;
+			sourceTree = "<group>";
+		};
+		56E505B628AD0234005313A8 /* LoginFlow */ = {
+			isa = PBXGroup;
+			children = (
+				56E505B828AD02EB005313A8 /* LoginCoordinator.swift */,
+				56E505B728AD02A6005313A8 /* LoginModule */,
+			);
+			path = LoginFlow;
+			sourceTree = "<group>";
+		};
+		56E505B728AD02A6005313A8 /* LoginModule */ = {
+			isa = PBXGroup;
+			children = (
+				56E505C028AD0425005313A8 /* Protocols */,
+				56E505BA28AD0400005313A8 /* LoginPageViewController.swift */,
+				56E505BE28AD0415005313A8 /* LoginPagePresenter.swift */,
+				56E505BB28AD0400005313A8 /* LoginPageViewController.xib */,
+			);
+			path = LoginModule;
+			sourceTree = "<group>";
+		};
+		56E505C028AD0425005313A8 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				56E505C128AD0441005313A8 /* LoginPageViewInput.swift */,
+				56E505C328AD045C005313A8 /* LoginPageViewOutput.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		56E6B8D0289DC53600FC7650 /* DetailsModule */ = {
@@ -658,6 +706,7 @@
 				568BDF2828A7EB9800080E3F /* ErrorStateView.xib in Resources */,
 				56275C3228A2DEC100FFCF18 /* ServerHowTo.md in Resources */,
 				56E6B8D7289DC5FF00FC7650 /* DetailsViewController.xib in Resources */,
+				56E505BD28AD0400005313A8 /* LoginPageViewController.xib in Resources */,
 				56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */,
 				56E6B8E7289DC6D500FC7650 /* TextTableViewCell.xib in Resources */,
 				560142DB289A6897001F8C55 /* MainViewController.xib in Resources */,
@@ -693,18 +742,24 @@
 				566662F6289FEB1B00BF395C /* FavoriteViewCell.swift in Sources */,
 				56E505B528ACFCC9005313A8 /* AuthProfileModel.swift in Sources */,
 				560142F3289AB672001F8C55 /* SearchViewController.swift in Sources */,
+				56E505BF28AD0415005313A8 /* LoginPagePresenter.swift in Sources */,
 				5607683328A186600010B977 /* NetworkTask.swift in Sources */,
 				56C894CA28A96B4900377088 /* SearchViewPresenter.swift in Sources */,
+				56E505C228AD0441005313A8 /* LoginPageViewInput.swift in Sources */,
+				56E505C828AD0758005313A8 /* LoginCoordinatorDelegate.swift in Sources */,
 				56C894A428A9145E00377088 /* DetailsViewOutput.swift in Sources */,
 				56C894A228A9145400377088 /* DetailsViewInput.swift in Sources */,
 				56C8949F28A913A300377088 /* DetailsViewPresenter.swift in Sources */,
 				56E6B8E2289DC6C600FC7650 /* LabelTableViewCell.swift in Sources */,
 				568BDF2328A7CAB000080E3F /* MainViewOutput.swift in Sources */,
+				56E505C628AD04CF005313A8 /* LoginModel.swift in Sources */,
+				56E505B928AD02EB005313A8 /* LoginCoordinator.swift in Sources */,
 				5607D6B6289D72E00078C03C /* MainCollectionViewCell.swift in Sources */,
 				561806A628A80E28001E3209 /* MainModel.swift in Sources */,
 				560142DA289A6897001F8C55 /* MainViewController.swift in Sources */,
 				56B77644289EAC37000F2E2E /* Picture.swift in Sources */,
 				5607683A28A186600010B977 /* TokenStorage.swift in Sources */,
+				56E505C428AD045C005313A8 /* LoginPageViewOutput.swift in Sources */,
 				5607682F28A186600010B977 /* AuthService.swift in Sources */,
 				56E505B128ACDDCA005313A8 /* ErrorStateDelegate.swift in Sources */,
 				56177BE528A6505800739343 /* Coordinator.swift in Sources */,
@@ -712,13 +767,14 @@
 				5612895E28ABAA02009A7D42 /* UIViewController+AlertService.swift in Sources */,
 				560D390328AB957B003344FE /* NoResultState.swift in Sources */,
 				56177BEF28A6655200739343 /* CoordinatorType.swift in Sources */,
-				568BDF1D28A7C69300080E3F /* CoordinatorDelegate.swift in Sources */,
+				568BDF1D28A7C69300080E3F /* TabCoordinatorDelegate.swift in Sources */,
+				56E505BC28AD0400005313A8 /* LoginPageViewController.swift in Sources */,
 				560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */,
 				5607683128A186600010B977 /* EmptyModel.swift in Sources */,
 				560142ED289A72C9001F8C55 /* TabBarModel.swift in Sources */,
 				56E505AC28AC10F6005313A8 /* AlertService.swift in Sources */,
 				5607683028A186600010B977 /* BaseNetworkTask.swift in Sources */,
-				568BDF1B28A7B43800080E3F /* TabViewFactory.swift in Sources */,
+				568BDF1B28A7B43800080E3F /* ViewFactory.swift in Sources */,
 				56E6B8E6289DC6D500FC7650 /* TextTableViewCell.swift in Sources */,
 				568BDF2128A7C7E100080E3F /* MainViewInput.swift in Sources */,
 				5607683628A186600010B977 /* PictureResponceModel.swift in Sources */,

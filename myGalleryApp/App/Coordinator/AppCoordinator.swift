@@ -25,12 +25,24 @@ class AppCoordinator: Coordinator {
     func start() {
         showMainFlow()
     }
+    func start(isLoggedIn: Bool) {
+        if isLoggedIn {
+            showMainFlow()
+        } else {
+            showLoginFlow()
+        }
+    }
 }
 
 // MARK: Private methods
 private extension AppCoordinator {
     func showLoginFlow() {
         print("Starting login flow")
+        DispatchQueue.main.async {
+            let loginCoordinator = LoginCoordinator(self.navigationController)
+            self.childCoordinators.append(loginCoordinator)
+            loginCoordinator.start()
+        }
     }
     func showMainFlow() {
         print("Starting main flow")

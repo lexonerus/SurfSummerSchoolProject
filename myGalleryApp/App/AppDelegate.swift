@@ -39,18 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         runLaunchScreen()
         
         if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
-            self.runMainFlow()
+            self.runMainFlow(isLoggedIn: true)
             
         } else {
-            let tempCredentials = AuthRequestModel(phone: "+71234567890", password: "qwerty")
+            let tempCredentials = AuthRequestModel(phone: "+71234567890+", password: "qwerty")
             AuthService()
                 .performLoginRequestAndSaveToken(credentials: tempCredentials) { [weak self] result in
                     switch result {
                     case .success:
-                        self?.runMainFlow()
+                        self?.runMainFlow(isLoggedIn: true)
                     case .failure:
                         // TODO: Handle error if token was not received
-                        break
+                        self?.runMainFlow(isLoggedIn: false)
                     }
                 }
         }
@@ -64,12 +64,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: Flow setup
-    func runMainFlow() {
+    func runMainFlow(isLoggedIn: Bool) {
         DispatchQueue.main.async {
             let navigationController = UINavigationController()
             self.window?.rootViewController = navigationController
             self.coordinator = AppCoordinator(navigationController)
-            self.coordinator?.start()
+            if isLoggedIn {
+                self.coordinator?.start(isLoggedIn: true)
+            } else {
+                self.coordinator?.start(isLoggedIn: false)
+            }
+            
         }
 
     }

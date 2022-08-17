@@ -14,7 +14,7 @@ class FavoriteViewController: UIViewController {
     
     // MARK: Properties
     var presenter: FavoriteViewPresenter!
-    weak var coordinator: CoordinatorDelegate?
+    weak var coordinator: TabCoordinatorDelegate?
     weak var viewOutput: FavoriteViewOutput?
     private var currentItemId = 0
 

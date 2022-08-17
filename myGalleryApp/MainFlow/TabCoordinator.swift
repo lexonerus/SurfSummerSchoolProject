@@ -53,18 +53,18 @@ class TabCoordinator: NSObject, TabBarCoordinator {
    
 }
 
-extension TabCoordinator: CoordinatorDelegate {
+extension TabCoordinator: TabCoordinatorDelegate {
     func showFavorite(navigation: UINavigationController) {
-        let favoriteScene = TabViewFactory.makeFavoriteScene(delegate: self)
+        let favoriteScene = ViewFactory.makeFavoriteScene(delegate: self)
         navigation.pushViewController(favoriteScene, animated: true)
     }
     
     func showDetails(navigation: UINavigationController, item: Picture) {
-        let detailsScene = TabViewFactory.makeDetailsScene(delegate: self, item: item)
+        let detailsScene = ViewFactory.makeDetailsScene(delegate: self, item: item)
         navigation.pushViewController(detailsScene, animated: true)
     }
     func showSearch(navigation: UINavigationController) {
-        let searchScene = TabViewFactory.makeSearchScene(delegate: self)
+        let searchScene = ViewFactory.makeSearchScene(delegate: self)
         navigation.pushViewController(searchScene, animated: true)
     }
 }
@@ -100,9 +100,9 @@ private extension TabCoordinator {
     func getCurrentViewController(tab: TabBarModel) -> UIViewController {
         switch tab {
         case .main:
-            return TabViewFactory.makeMainScene(delegate: self)
+            return ViewFactory.makeMainScene(delegate: self)
         case .favorite:
-            return TabViewFactory.makeFavoriteScene(delegate: self)
+            return ViewFactory.makeFavoriteScene(delegate: self)
         case .profile:
             return ProfileViewController()
         }
