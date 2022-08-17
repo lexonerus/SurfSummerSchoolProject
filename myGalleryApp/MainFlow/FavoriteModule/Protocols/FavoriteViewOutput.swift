@@ -9,9 +9,9 @@ import Foundation
 
 protocol FavoriteViewOutput: AnyObject {
     func removeFromFavorite(index: Int)
-    func countItems() -> Int
+    func countFavorites() -> Int
     func presentFavoriteItems() -> Set<Int>
     func presentPicture(index: Int) -> Picture
-    func findItemInModel(id: Int) -> Picture?
+    func getItem(id: Int) -> Picture?
     func configureModel()
 }

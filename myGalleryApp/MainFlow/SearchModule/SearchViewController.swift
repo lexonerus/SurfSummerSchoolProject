@@ -144,6 +144,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     
 }
 
+// MARK: SearchViewInput methods
 extension SearchViewController: SearchViewInput {
     func showEmptyState() {
         DispatchQueue.main.async {

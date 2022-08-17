@@ -13,6 +13,7 @@ class DetailsViewController: UITableViewController, UIGestureRecognizerDelegate 
     var presenter: DetailsViewPresenter?
     weak var coordinator: CoordinatorDelegate?
     weak var viewOutput: DetailsViewOutput?
+    private var arrayWithTypeOfCells = [ImageTableViewCell.self, LabelTableViewCell.self, TextTableViewCell.self]
     
     // MARK: DetailTableViewController lifecycle
     override func viewDidLoad() {
@@ -26,7 +27,7 @@ class DetailsViewController: UITableViewController, UIGestureRecognizerDelegate 
     // MARK: Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: refactor logic below
-        return 3
+        return arrayWithTypeOfCells.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // TODO: refactor logic below

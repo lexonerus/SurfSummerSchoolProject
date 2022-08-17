@@ -21,12 +21,7 @@ class MainViewController: UIViewController {
     // MARK: MainViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "item-search"),
-            style: .plain,
-            target: self,
-            action: #selector(searchButtonTapped)
-        )
+        configureNavigationBar()
         presenter.setViewInput(viewInput: self)
         self.viewOutput = presenter
         configureAppearance()
@@ -41,14 +36,9 @@ class MainViewController: UIViewController {
         title = "Главная"
         updateCollection()
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-    }
-    
-    func setViewOutput(viewOutput: MainViewOutput?) {
-        self.viewOutput = viewOutput
     }
 
     // MARK: Actions
@@ -66,6 +56,14 @@ class MainViewController: UIViewController {
 
 // MARK: Private Methods
 private extension MainViewController {
+    func configureNavigationBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "item-search"),
+            style: .plain,
+            target: self,
+            action: #selector(searchButtonTapped)
+        )
+    }
     func configureAppearance() {
         DispatchQueue.main.async { [weak self] in
             self?.mainCollectionView.isHidden = true
@@ -109,7 +107,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         return CollectionViewConstants.spaceBetweenElements
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = viewOutput!.findItem(index: indexPath.item)
+        let item = viewOutput!.presentPicture(index: indexPath.item)
         coordinator?.showDetails(navigation: navigationController!, item: item)
     }
     
