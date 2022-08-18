@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func runMainFlow(isLoggedIn: Bool) {
         DispatchQueue.main.async {
             let navigationController = UINavigationController()
+
             self.window?.rootViewController = navigationController
             self.coordinator = AppCoordinator(navigationController)
             if isLoggedIn {

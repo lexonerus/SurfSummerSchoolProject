@@ -55,6 +55,7 @@ extension LoginPagePresenter: LoginPageViewOutput {
                     self?.viewInput?.loginPassed()
                 case .failure:
                     // TODO: Implement this case
+                    self?.viewInput?.setWarningAppearance()
                     print("login failure")
                     print("account not found")
                 }

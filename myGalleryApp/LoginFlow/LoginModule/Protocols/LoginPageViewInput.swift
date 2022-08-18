@@ -9,4 +9,5 @@ import Foundation
 
 protocol LoginPageViewInput: AnyObject {
     func loginPassed()
+    func setWarningAppearance()
 }
