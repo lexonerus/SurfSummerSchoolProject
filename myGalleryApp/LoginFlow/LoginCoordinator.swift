@@ -22,10 +22,15 @@ class LoginCoordinator: Coordinator {
         showLoginPage()
     }
     func finish() {
-        finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+        DispatchQueue.main.async {
+            self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+        }
+        
     }
     
-    
+    deinit {
+        print("Login coordinator deinit")
+    }
 }
 
 extension LoginCoordinator: LoginCoordinatorDelegate {

@@ -28,14 +28,14 @@ class AppCoordinator: Coordinator {
         showMainFlow()
     }
     func start(isLoggedIn: Bool) {
-        if isLoggedIn {
-            showMainFlow()
-        } else {
-            showLoginFlow()
-        }
+        isLoggedIn ? showMainFlow() : showLoginFlow()
     }
     func finish() {
-        
+        finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
+    
+    deinit {
+        print("App coordinator deinit")
     }
 }
 

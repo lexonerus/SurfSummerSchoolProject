@@ -52,6 +52,10 @@ class TabCoordinator: NSObject, TabBarCoordinator {
     func showProfileTab() {
         tabBarController?.selectedIndex = 2
     }
+    
+    deinit {
+        print("Tab coordinator deinit")
+    }
 
    
 }

@@ -12,7 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var coordinator: AppCoordinator?
-    
     var tokenStorage: TokenStorage {
         BaseTokenStorage()
     }
@@ -37,22 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func startApplicationProcess() {
         runLaunchScreen()
-        
         if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
             self.runMainFlow(isLoggedIn: true)
-            
         } else {
-            let tempCredentials = AuthRequestModel(phone: "+71234567890-", password: "qwerty")
-            AuthService()
-                .performLoginRequestAndSaveToken(credentials: tempCredentials) { [weak self] result in
-                    switch result {
-                    case .success:
-                        self?.runMainFlow(isLoggedIn: true)
-                    case .failure:
-                        // TODO: Handle error if token was not received
-                        self?.runMainFlow(isLoggedIn: false)
-                    }
-                }
+            self.runMainFlow(isLoggedIn: false)
         }
     }
     

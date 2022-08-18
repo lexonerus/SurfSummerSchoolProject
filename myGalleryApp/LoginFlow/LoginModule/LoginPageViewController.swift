@@ -58,21 +58,22 @@ class LoginPageViewController: UIViewController {
             isWarningShows = false
             toggleWarningMessage()
         }
-
-        coordinator!.loginPassed()
         
+        viewOutput!.setPhoneNumber(phone: self.loginField.text!)
+        viewOutput!.setPassword(password: self.passwordField.text!)
+        viewOutput!.login()
     }
     @IBAction private func eyeAction(_ sender: Any) {
         let condition = passwordField.isSecureTextEntry ? false : true
         let image = passwordField.isSecureTextEntry ? UIImage(named: "show_password") : UIImage(named: "hide_password")
         passwordField.isSecureTextEntry = condition
         eyeButton.setImage(image, for: .normal)
-        
     }
 }
 
 // MARK: Animation
 private extension LoginPageViewController {
+    // TODO: replace digits with constants
     func expandTextFields() {
         UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
             self.loginViewTopConstraint.constant = 5
@@ -88,7 +89,6 @@ private extension LoginPageViewController {
             self.passwordViewTopConstraint.constant = 16
             self.loginButtonTopConstraint.constant = 32
             self.view.layoutIfNeeded()
-            
         })
     }
 }
@@ -126,11 +126,11 @@ private extension LoginPageViewController {
 
         eyeButton.isHidden = true
     }
+    // TODO: replace digits with constants
     func configureWarningLabels(label: UILabel, view: UIView) {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-        label.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         label.heightAnchor.constraint(equalToConstant: 30).isActive = true
         label.text = "Поле не может быть пустым"
@@ -159,7 +159,9 @@ private extension LoginPageViewController {
 
 // MARK: LoginPageViewInput delegate
 extension LoginPageViewController: LoginPageViewInput {
-    
+    func loginPassed() {
+        coordinator?.loginPassed()
+    }
 }
 
 // MARK: LoginField delegate

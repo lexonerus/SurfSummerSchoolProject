@@ -9,4 +9,6 @@ import Foundation
 
 protocol LoginPageViewOutput: AnyObject {
     func login()
+    func setPhoneNumber(phone: String)
+    func setPassword(password: String)
 }
