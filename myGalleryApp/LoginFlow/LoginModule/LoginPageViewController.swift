@@ -23,6 +23,7 @@ class LoginPageViewController: UIViewController {
     private var emptyPasswordWarning =  UILabel()
     private var loginLabel = UILabel()
     private var passwordLabel = UILabel()
+    private var redView = UIView()
     
     // MARK: Constraints
     @IBOutlet weak var loginViewTopConstraint:      NSLayoutConstraint!
@@ -35,6 +36,14 @@ class LoginPageViewController: UIViewController {
     weak var viewOutput:    LoginPageViewOutput?
     private var isWarningShows = false
     private var isStatusBarBlack = true
+    var isDarkContentBackground = false
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if isDarkContentBackground {
+            return .lightContent
+        } else {
+            return .darkContent
+        }
+    }
 
     
     // MARK: LoginPageViewController
@@ -48,20 +57,34 @@ class LoginPageViewController: UIViewController {
         view.addSubview(emptyPasswordWarning)
         view.addSubview(loginLabel)
         view.addSubview(passwordLabel)
+        view.addSubview(redView)
         
         configureAppearance()
         configureWarningLabels(label: emptyLoginWarning, view: loginView)
         configureWarningLabels(label: emptyPasswordWarning, view: passwordView)
         configureSecondLabels(label: loginLabel, view: loginField)
+        configureRedView()
         loginLabel.text = "Логин"
         configureSecondLabels(label: passwordLabel, view: passwordField)
         passwordLabel.text = "Пароль"
-
     }
-
+    func statusBarEnterDarkBackground() { //
+        isDarkContentBackground = true
+        setNeedsStatusBarAppearanceUpdate()
+        self.navigationController?.navigationBar.barStyle = .black
+    }
+    func statusBarEnterLightBackground() { //
+        isDarkContentBackground = false
+        setNeedsStatusBarAppearanceUpdate()
+        self.navigationController?.navigationBar.barStyle = .default
+    }
+    
     // MARK: Actions
     @IBAction private func login(_ sender: Any) {
-
+        
+        !isDarkContentBackground ? statusBarEnterDarkBackground() : statusBarEnterLightBackground()
+        
+        
         if loginField.text!.isEmpty || passwordField.text!.isEmpty {
             isWarningShows = true
             toggleWarningMessage()
@@ -69,6 +92,7 @@ class LoginPageViewController: UIViewController {
         } else {
             isWarningShows = false
             toggleWarningMessage()
+
         }
         
         viewOutput!.setPhoneNumber(phone: self.loginField.text!)
@@ -151,6 +175,7 @@ private extension LoginPageViewController {
 
         eyeButton.isHidden = true
     }
+    
     // TODO: replace digits with constants
     func configureWarningLabels(label: UILabel, view: UIView) {
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -189,6 +214,15 @@ private extension LoginPageViewController {
         view.layer.sublayers![1].frame = CGRect(x: 0, y: view.frame.height - 1, width: view.frame.width, height: 1.0)
         view.layer.sublayers![1].backgroundColor = AppColors.textFieldBottomLine.cgColor
     }
+    func configureRedView() {
+        redView.translatesAutoresizingMaskIntoConstraints = false
+        redView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        redView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        redView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        redView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        redView.backgroundColor = AppColors.attentionRed
+        redView.isHidden = true
+    }
 }
 
 // MARK: LoginPageViewInput delegate
@@ -197,22 +231,14 @@ extension LoginPageViewController: LoginPageViewInput {
         coordinator?.loginPassed()
     }
     func setWarningAppearance() {
-        DispatchQueue.main.async {
-            let navBarAppearance = UINavigationBarAppearance()
-            navBarAppearance.configureWithOpaqueBackground()
-            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14)]
-            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            navBarAppearance.backgroundColor = AppColors.attentionRed
-            
-            self.navigationController!.navigationBar.standardAppearance = navBarAppearance
-            self.navigationController!.navigationBar.scrollEdgeAppearance = navBarAppearance
-            
-            self.title = "Логин или пароль введены не правильно"
+        DispatchQueue.main.sync {
+            UIView.animate(withDuration: 0.3) {
+                self.redView.isHidden = false
+                self.title = "Логин или пароль введены не правильно"
+                self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14)]
+            }
         }
-        
-
     }
-
 }
 
 // MARK: LoginField delegate
@@ -237,7 +263,6 @@ extension LoginPageViewController: UITextFieldDelegate {
 
         return true
     }
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField.tag {
         case 0:
@@ -250,7 +275,6 @@ extension LoginPageViewController: UITextFieldDelegate {
             break
         }
     }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField.tag {
         case 0:
@@ -266,13 +290,5 @@ extension LoginPageViewController: UITextFieldDelegate {
         default:
             break
         }
-        
-        
     }
-    
-
-    
-
-
 }
-
