@@ -12,10 +12,13 @@
             <connections>
                 <outlet property="eyeButton" destination="hJ3-S2-Xrc" id="fMM-X6-mHx"/>
                 <outlet property="loginButton" destination="5wR-Ds-dHR" id="EdV-WZ-IK8"/>
+                <outlet property="loginButtonTopConstraint" destination="4sx-hS-aYT" id="Am8-AY-cBD"/>
                 <outlet property="loginField" destination="CL8-f5-4qF" id="P8Q-1f-elM"/>
                 <outlet property="loginView" destination="bNs-0A-DAP" id="Tb0-PX-rpZ"/>
+                <outlet property="loginViewTopConstraint" destination="tEB-KS-WFb" id="xQo-LV-HAx"/>
                 <outlet property="passwordField" destination="xan-37-VOJ" id="3Sj-So-HnC"/>
                 <outlet property="passwordView" destination="cUS-UU-utT" id="REl-sD-Ue3"/>
+                <outlet property="passwordViewTopConstraint" destination="vTZ-k3-SX9" id="dmc-X3-xLM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

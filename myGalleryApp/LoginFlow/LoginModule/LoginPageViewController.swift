@@ -10,19 +10,27 @@ import UIKit
 class LoginPageViewController: UIViewController {
     
     // MARK: Views
+    @IBOutlet private weak var eyeButton:       UIButton!
+    @IBOutlet private weak var loginView:       UIView!
+    @IBOutlet private weak var passwordView:    UIView!
+    @IBOutlet private weak var loginField:      UITextField!
+    @IBOutlet private weak var passwordField:   UITextField!
+    @IBOutlet private weak var loginButton:     UIButton!
     
-    @IBOutlet weak var eyeButton: UIButton!
-    @IBOutlet private weak var loginView: UIView!
-    @IBOutlet private weak var passwordView: UIView!
-    @IBOutlet private weak var loginField: UITextField!
-    @IBOutlet private weak var passwordField: UITextField!
-    @IBOutlet private weak var loginButton: UIButton!
+    // MARK: Programmatically views
+    private var emptyLoginWarning    =  UILabel()
+    private var emptyPasswordWarning =  UILabel()
+    
+    // MARK: Constraints
+    @IBOutlet weak var loginViewTopConstraint:      NSLayoutConstraint!
+    @IBOutlet weak var passwordViewTopConstraint:   NSLayoutConstraint!
+    @IBOutlet weak var loginButtonTopConstraint:    NSLayoutConstraint!
     
     // MARK: Properties
-    var presenter: LoginPagePresenter?
-    weak var coordinator: LoginCoordinatorDelegate?
-    weak var viewOutput: LoginPageViewOutput?
-
+    var presenter:          LoginPagePresenter?
+    weak var coordinator:   LoginCoordinatorDelegate?
+    weak var viewOutput:    LoginPageViewOutput?
+    private var isWarningShows = false
     
     // MARK: LoginPageViewController
     override func viewDidLoad() {
@@ -30,39 +38,78 @@ class LoginPageViewController: UIViewController {
         presenter?.setViewInput(viewInput: self)
         self.viewOutput = presenter
         title = "Вход"
+        
+        view.addSubview(emptyLoginWarning)
+        view.addSubview(emptyPasswordWarning)
+        
         configureAppearance()
+        configureWarningLabels(label: emptyLoginWarning, view: loginView)
+        configureWarningLabels(label: emptyPasswordWarning, view: passwordView)
+        
     }
 
     // MARK: Actions
     @IBAction private func login(_ sender: Any) {
-        print("Login pressed")
-        UIView.animate(withDuration: 0.2) {
-            self.view.layoutIfNeeded()
-        }
-    
-        if loginField.text!.isEmpty {
-            configureAttentionTextField(view: loginView)
+
+        if loginField.text!.isEmpty || passwordField.text!.isEmpty {
+            isWarningShows = true
+            toggleWarningMessage()
         } else {
-            configureNormalTextField(view: loginView)
+            isWarningShows = false
+            toggleWarningMessage()
         }
-        if passwordField.text!.isEmpty {
-            configureAttentionTextField(view: passwordView)
-        } else {
-            configureNormalTextField(view: passwordView)
-        }
+
+        coordinator!.loginPassed()
+        
     }
     @IBAction private func eyeAction(_ sender: Any) {
         let condition = passwordField.isSecureTextEntry ? false : true
         let image = passwordField.isSecureTextEntry ? UIImage(named: "show_password") : UIImage(named: "hide_password")
         passwordField.isSecureTextEntry = condition
         eyeButton.setImage(image, for: .normal)
+        
     }
-    
-    
+}
+
+// MARK: Animation
+private extension LoginPageViewController {
+    func expandTextFields() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
+            self.loginViewTopConstraint.constant = 5
+            self.passwordViewTopConstraint.constant = 40
+            self.loginButtonTopConstraint.constant = 56
+            self.view.layoutIfNeeded()
+            
+        })
+    }
+    func moveBackTextFields() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
+            self.loginViewTopConstraint.constant = 25
+            self.passwordViewTopConstraint.constant = 16
+            self.loginButtonTopConstraint.constant = 32
+            self.view.layoutIfNeeded()
+            
+        })
+    }
 }
 
 // MARK: Private methods
 private extension LoginPageViewController {
+    func toggleWarningMessage() {
+        if isWarningShows {
+            configureAttentionTextField(view: loginView)
+            emptyLoginWarning.isHidden = false
+            configureAttentionTextField(view: passwordView)
+            emptyPasswordWarning.isHidden = false
+            expandTextFields()
+        } else {
+            configureNormalTextField(view: loginView)
+            emptyLoginWarning.isHidden = true
+            configureNormalTextField(view: passwordView)
+            emptyPasswordWarning.isHidden = true
+            moveBackTextFields()
+        }
+    }
     func configureAppearance() {
         loginField.tag = 0
         loginField.delegate = self
@@ -78,8 +125,18 @@ private extension LoginPageViewController {
         eyeButton.tintColor = AppColors.unselectedItem
 
         eyeButton.isHidden = true
-        
-
+    }
+    func configureWarningLabels(label: UILabel, view: UIView) {
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        label.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        label.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        label.text = "Поле не может быть пустым"
+        label.textColor = AppColors.attentionRed
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.isHidden = true
     }
     func configureTextField(view: UIView) {
         view.backgroundColor = AppColors.textFieldBackground
@@ -98,7 +155,6 @@ private extension LoginPageViewController {
         view.layer.sublayers![1].frame = CGRect(x: 0, y: view.frame.height - 1, width: view.frame.width, height: 1.0)
         view.layer.sublayers![1].backgroundColor = AppColors.textFieldBottomLine.cgColor
     }
-    
 }
 
 // MARK: LoginPageViewInput delegate
@@ -106,7 +162,7 @@ extension LoginPageViewController: LoginPageViewInput {
     
 }
 
-// MARK: LoginField delegat
+// MARK: LoginField delegate
 extension LoginPageViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField.tag {
@@ -129,3 +185,4 @@ extension LoginPageViewController: UITextFieldDelegate {
     }
 
 }
+

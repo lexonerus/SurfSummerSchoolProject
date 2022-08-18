@@ -8,5 +8,5 @@
 import Foundation
 
 protocol LoginPageViewOutput: AnyObject {
-    
+    func login()
 }

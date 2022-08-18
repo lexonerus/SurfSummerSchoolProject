@@ -36,7 +36,6 @@
 		56177BE128A64F1E00739343 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BE028A64F1E00739343 /* TabBarCoordinator.swift */; };
 		56177BE528A6505800739343 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BE428A6505800739343 /* Coordinator.swift */; };
 		56177BED28A663CB00739343 /* TabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BEC28A663CB00739343 /* TabCoordinator.swift */; };
-		56177BEF28A6655200739343 /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BEE28A6655200739343 /* CoordinatorType.swift */; };
 		56177BF128A6A03C00739343 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56177BF028A6A03C00739343 /* AppCoordinator.swift */; };
 		561806A628A80E28001E3209 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561806A528A80E28001E3209 /* MainModel.swift */; };
 		56275C3028A2DE6800FFCF18 /* ApiExample.JSON in Resources */ = {isa = PBXBuildFile; fileRef = 56275C2F28A2DE6800FFCF18 /* ApiExample.JSON */; };
@@ -123,7 +122,6 @@
 		56177BE028A64F1E00739343 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		56177BE428A6505800739343 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		56177BEC28A663CB00739343 /* TabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinator.swift; sourceTree = "<group>"; };
-		56177BEE28A6655200739343 /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		56177BF028A6A03C00739343 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		561806A528A80E28001E3209 /* MainModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		56275C2F28A2DE6800FFCF18 /* ApiExample.JSON */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ApiExample.JSON; sourceTree = "<group>"; };
@@ -551,7 +549,6 @@
 		56C894C528A9681500377088 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				56177BEE28A6655200739343 /* CoordinatorType.swift */,
 				56C894C328A9645900377088 /* CollectionViewConstants.swift */,
 				56E505CB28AD2CC0005313A8 /* AppColors.swift */,
 			);
@@ -770,7 +767,6 @@
 				56C894CD28A96B5E00377088 /* SearchViewInput.swift in Sources */,
 				5612895E28ABAA02009A7D42 /* UIViewController+AlertService.swift in Sources */,
 				560D390328AB957B003344FE /* NoResultState.swift in Sources */,
-				56177BEF28A6655200739343 /* CoordinatorType.swift in Sources */,
 				568BDF1D28A7C69300080E3F /* TabCoordinatorDelegate.swift in Sources */,
 				56E505BC28AD0400005313A8 /* LoginPageViewController.swift in Sources */,
 				560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */,

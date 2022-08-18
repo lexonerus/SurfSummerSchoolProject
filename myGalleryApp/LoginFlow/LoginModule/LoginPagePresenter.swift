@@ -22,12 +22,28 @@ class LoginPagePresenter {
         self.service = service
     }
     
+    // MARK: Methods
     func setViewInput(viewInput: LoginPageViewInput?) {
         self.viewInput = viewInput
     }
     
 }
 
+// MARK: LoginPageViewOutput delegate
 extension LoginPagePresenter: LoginPageViewOutput {
-    
+    func login() {
+        let tempCredentials = AuthRequestModel(phone: "+71234567890-", password: "qwerty")
+        AuthService()
+            .performLoginRequestAndSaveToken(credentials: tempCredentials) { [weak self] result in
+                switch result {
+                case .success:
+                    print("login success")
+                    //self?.runMainFlow(isLoggedIn: true)
+                case .failure:
+                    print("login failure")
+                    // TODO: Handle error if token was not received
+                    //self?.runMainFlow(isLoggedIn: false)
+                }
+            }
+    }
 }

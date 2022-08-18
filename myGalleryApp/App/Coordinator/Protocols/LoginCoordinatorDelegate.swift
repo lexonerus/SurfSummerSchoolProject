@@ -9,4 +9,5 @@ import Foundation
 
 protocol LoginCoordinatorDelegate: AnyObject {
     func showLoginPage()
+    func loginPassed()
 }
