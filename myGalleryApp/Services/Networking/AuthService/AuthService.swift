@@ -14,7 +14,7 @@ struct AuthService {
         path: "auth/login"
     )
 
-    let logoutDataTask = BaseNetworkTask<EmptyModel, EmptyModel>(
+    let logoutDataTask = BaseNetworkTask<EmptyModel, EmptyModel> (
         isNeedToken: true,
         method: .post,
         path: "auth/logout"
@@ -32,6 +32,8 @@ struct AuthService {
                 // TODO: implement profile cache
                 service.setProfileModel(model: responceModel.user_info)
                 service.saveDataToUserDefaults()
+                
+                print(responceModel.token)
                 
                 do {
                 try loginDataTask.tokenStorage.set(newToken: TokenContainer(token: responceModel.token, receivingDate: .now))

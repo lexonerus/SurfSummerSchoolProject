@@ -14,6 +14,7 @@ class ProfileViewPresenter {
     let model: ProfileModel
     let service: AuthService
     weak var viewInput: ProfileViewInput?
+    private var isFirstRequest = false
     
     // MARK: Initializers
     init(view: ProfileViewController, model: ProfileModel, service: AuthService) {
@@ -31,5 +32,22 @@ class ProfileViewPresenter {
 }
 
 extension ProfileViewPresenter: ProfileViewOutput {
-    
+    func logout() {
+        DispatchQueue.main.async {
+            self.service.performLogoutRequest() { [weak self] result in
+                switch result {
+                case .success:
+                    print("success")
+                    URLCache.shared.removeAllCachedResponses()
+                    
+                    // TODO: remove profile data from userDefaults
+                    // TODO: coordinator show login flow
+                    self?.viewInput?.exitMainFlow()
+                case .failure:
+                        print("fail")
+                }
+            }
+        }
+
+    }
 }

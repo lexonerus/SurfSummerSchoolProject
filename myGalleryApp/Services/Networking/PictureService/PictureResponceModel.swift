@@ -21,3 +21,4 @@ struct PictureResponceModel: Decodable {
     // MARK: Private properties
     private let publicationDate: Double
 }
+   

@@ -9,12 +9,20 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    @IBOutlet weak var label: UILabel!
+    // MARK: Views
+
+    
+    // MARK: Properties
+    var presenter: ProfileViewPresenter!
+    weak var coordinator: TabCoordinatorDelegate?
+    weak var viewOutput: ProfileViewOutput?
+    
     // MARK: ProfileViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.setViewInput(viewInput: self)
+        self.viewOutput = presenter
 
-        label.text = ProfileModel.shared.item?.firstName ?? "nil"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -22,17 +30,13 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func logoutButton(_ sender: Any) {
-        let service = AuthService()
-        service.performLogoutRequest() { result in
-            switch result {
-            case .success:
-                print("success")
-                URLCache.shared.removeAllCachedResponses()
-                // TODO: remove profile data from userDefaults
-                // TODO: coordinator show login flow
-            case .failure:
-                print("fail")
-            }
-        }
+        viewOutput?.logout()
+    }
+}
+
+// MARK: ProfileViewInput delegate
+extension ProfileViewController: ProfileViewInput {
+    func exitMainFlow() {
+        coordinator?.finishMainFlow()
     }
 }

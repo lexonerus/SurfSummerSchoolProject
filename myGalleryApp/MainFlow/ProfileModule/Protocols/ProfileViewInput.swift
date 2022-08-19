@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ProfileViewInput: AnyObject {
-    
+    func exitMainFlow()
 }

@@ -9,7 +9,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="myGalleryApp" customModuleProvider="target">
             <connections>
-                <outlet property="label" destination="XuT-TD-Hty" id="7hC-kl-mvW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,12 +20,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7r-1U-DYf">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuT-TD-Hty">
-                            <rect key="frame" x="186" y="398.5" width="42" height="21"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OZq-as-iU8">
                             <rect key="frame" x="16" y="746" width="382" height="48"/>
                             <constraints>
@@ -46,11 +39,9 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="XuT-TD-Hty" firstAttribute="centerY" secondItem="x7r-1U-DYf" secondAttribute="centerY" id="IKw-xV-VLo"/>
                         <constraint firstItem="OZq-as-iU8" firstAttribute="leading" secondItem="x7r-1U-DYf" secondAttribute="leading" constant="16" id="TZR-xU-mdR"/>
                         <constraint firstAttribute="trailing" secondItem="OZq-as-iU8" secondAttribute="trailing" constant="16" id="cdR-B3-brb"/>
                         <constraint firstAttribute="bottom" secondItem="OZq-as-iU8" secondAttribute="bottom" constant="24" id="eEV-rW-Htu"/>
-                        <constraint firstItem="XuT-TD-Hty" firstAttribute="centerX" secondItem="x7r-1U-DYf" secondAttribute="centerX" id="mzZ-hi-1Yt"/>
                     </constraints>
                 </view>
             </subviews>

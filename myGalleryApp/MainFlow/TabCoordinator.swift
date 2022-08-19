@@ -34,7 +34,9 @@ class TabCoordinator: NSObject, TabBarCoordinator {
         showMainTab()
     }
     func finish() {
-        
+        DispatchQueue.main.async {
+            self.finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+        }
     }
     
     func showDetailsScene(navigation: UINavigationController, item: Picture) {
@@ -74,6 +76,9 @@ extension TabCoordinator: TabCoordinatorDelegate {
         let searchScene = ViewFactory.makeSearchScene(delegate: self)
         navigation.pushViewController(searchScene, animated: true)
     }
+    func finishMainFlow() {
+        finish()
+    }
 }
 
 // MARK: Private Methods
@@ -111,7 +116,7 @@ private extension TabCoordinator {
         case .favorite:
             return ViewFactory.makeFavoriteScene(delegate: self)
         case .profile:
-            return ProfileViewController()
+            return ViewFactory.makeProfileScene(delegate: self)
         }
     }
 
