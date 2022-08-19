@@ -8,24 +8,33 @@
 import Foundation
 
 struct AuthService {
-    let dataTask = BaseNetworkTask<AuthRequestModel, AuthResponceModel>(
+    let loginDataTask = BaseNetworkTask<AuthRequestModel, AuthResponceModel>(
         isNeedToken: false,
         method: .post,
         path: "auth/login"
     )
+
+    let logoutDataTask = BaseNetworkTask<EmptyModel, EmptyModel>(
+        isNeedToken: true,
+        method: .post,
+        path: "auth/logout"
+    )
+    
+    let service = ProfileService.shared
     
     func performLoginRequestAndSaveToken(
         credentials: AuthRequestModel,
         _ onResponceWasReceived: @escaping (_ result: Result<AuthResponceModel, Error>) -> Void
     ) {
-        dataTask.performRequest(input: credentials) { result in
+        loginDataTask.performRequest(input: credentials) { result in
             if case let .success(responceModel) = result {
 
                 // TODO: implement profile cache
-                ProfileModel.shared.item = responceModel.user_info
+                service.setProfileModel(model: responceModel.user_info)
+                service.saveDataToUserDefaults()
                 
                 do {
-                try dataTask.tokenStorage.set(newToken: TokenContainer(token: responceModel.token, receivingDate: .now))
+                try loginDataTask.tokenStorage.set(newToken: TokenContainer(token: responceModel.token, receivingDate: .now))
             } catch {
                 // TODO: Error if token was not received
                 print("token was not received")
@@ -33,5 +42,9 @@ struct AuthService {
         }
         onResponceWasReceived(result)
         }
+    }
+    
+    func performLogoutRequest(_ onResponceWasReceived: @escaping (_ result: Result<EmptyModel, Error>) -> Void) {
+        logoutDataTask.performRequest(onResponceWasReceived)
     }
 }

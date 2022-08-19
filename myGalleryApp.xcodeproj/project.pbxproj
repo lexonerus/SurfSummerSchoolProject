@@ -51,6 +51,7 @@
 		568AD6FD28AF822A00CFA8CF /* ProfileViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AD6FC28AF822900CFA8CF /* ProfileViewInput.swift */; };
 		568AD6FF28AF823400CFA8CF /* ProfileViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AD6FE28AF823400CFA8CF /* ProfileViewOutput.swift */; };
 		568AD70128AF831300CFA8CF /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AD70028AF831300CFA8CF /* ProfileModel.swift */; };
+		568AD70428AF8AB800CFA8CF /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AD70328AF8AB800CFA8CF /* ProfileService.swift */; };
 		568BDF1928A779E200080E3F /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1828A779E200080E3F /* MainViewPresenter.swift */; };
 		568BDF1B28A7B43800080E3F /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1A28A7B43800080E3F /* ViewFactory.swift */; };
 		568BDF1D28A7C69300080E3F /* TabCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1C28A7C69300080E3F /* TabCoordinatorDelegate.swift */; };
@@ -141,6 +142,7 @@
 		568AD6FC28AF822900CFA8CF /* ProfileViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewInput.swift; sourceTree = "<group>"; };
 		568AD6FE28AF823400CFA8CF /* ProfileViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewOutput.swift; sourceTree = "<group>"; };
 		568AD70028AF831300CFA8CF /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		568AD70328AF8AB800CFA8CF /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		568BDF1828A779E200080E3F /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
 		568BDF1A28A7B43800080E3F /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		568BDF1C28A7C69300080E3F /* TabCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinatorDelegate.swift; sourceTree = "<group>"; };
@@ -231,9 +233,9 @@
 			isa = PBXGroup;
 			children = (
 				568AD6FB28AF821C00CFA8CF /* Protocols */,
-				560142DD289A6A77001F8C55 /* ProfileViewController.xib */,
-				568AD6F928AF821600CFA8CF /* ProfileViewPresenter.swift */,
 				560142DC289A6A77001F8C55 /* ProfileViewController.swift */,
+				568AD6F928AF821600CFA8CF /* ProfileViewPresenter.swift */,
+				560142DD289A6A77001F8C55 /* ProfileViewController.xib */,
 			);
 			path = ProfileModule;
 			sourceTree = "<group>";
@@ -273,9 +275,10 @@
 		5607681828A186600010B977 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				568AD70228AF8A8E00CFA8CF /* ProfileService */,
+				56275C3428A2E72F00FFCF18 /* FavoriteService */,
 				5699FF8128AD7EAF00E4DBAF /* PhoneMaskingService */,
 				5612895C28ABA9D5009A7D42 /* AlertService */,
-				56275C3428A2E72F00FFCF18 /* FavoriteService */,
 				5607681928A186600010B977 /* Networking */,
 			);
 			path = Services;
@@ -437,6 +440,14 @@
 				568AD6FE28AF823400CFA8CF /* ProfileViewOutput.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		568AD70228AF8A8E00CFA8CF /* ProfileService */ = {
+			isa = PBXGroup;
+			children = (
+				568AD70328AF8AB800CFA8CF /* ProfileService.swift */,
+			);
+			path = ProfileService;
 			sourceTree = "<group>";
 		};
 		568BDF1E28A7C6CE00080E3F /* Factory */ = {
@@ -757,6 +768,7 @@
 				5607683928A186600010B977 /* TokenContainer.swift in Sources */,
 				5607683428A186600010B977 /* ImageLoader.swift in Sources */,
 				568AD6FD28AF822A00CFA8CF /* ProfileViewInput.swift in Sources */,
+				568AD70428AF8AB800CFA8CF /* ProfileService.swift in Sources */,
 				56275C3A28A2E8C200FFCF18 /* FavoriteService.swift in Sources */,
 				566662F1289FE5A000BF395C /* FavoriteViewController.swift in Sources */,
 				56177BED28A663CB00739343 /* TabCoordinator.swift in Sources */,

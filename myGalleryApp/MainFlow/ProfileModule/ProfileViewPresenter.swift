@@ -12,12 +12,14 @@ class ProfileViewPresenter {
     // MARK: Properties
     let view: ProfileViewController
     let model: ProfileModel
+    let service: AuthService
     weak var viewInput: ProfileViewInput?
     
     // MARK: Initializers
-    init(view: ProfileViewController, model: ProfileModel) {
+    init(view: ProfileViewController, model: ProfileModel, service: AuthService) {
         self.view = view
         self.model = model
+        self.service = service
     }
     
     // MARK: Methods

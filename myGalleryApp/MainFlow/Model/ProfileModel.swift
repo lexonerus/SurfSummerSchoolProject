@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProfileModel {
+class ProfileModel: Codable {
     
     var item: AuthProfileModel?
 

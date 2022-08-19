@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var tokenStorage: TokenStorage {
         BaseTokenStorage()
     }
-    let service = FavoriteService.shared
+    let favoriteService = FavoriteService.shared
+    let profileService = ProfileService.shared
     
     
     // MARK: App lifecycle
@@ -23,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        service.loadDataFromUserDefaults()
+        favoriteService.loadDataFromUserDefaults()
+        profileService.loadDataFromUserDefaults()
+
         startApplicationProcess()
         
         return true
@@ -31,7 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillTerminate(_ application: UIApplication) {
         print("App will terminated")
-        service.saveDataToUserDefaults()
+        favoriteService.saveDataToUserDefaults()
+        profileService.saveDataToUserDefaults()
     }
     
     func startApplicationProcess() {
