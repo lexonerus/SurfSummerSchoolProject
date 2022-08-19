@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CoordinatorDelegate: AnyObject {
+protocol TabCoordinatorDelegate: AnyObject {
     func showDetails(navigation: UINavigationController, item: Picture)
     func showSearch(navigation: UINavigationController)
     func showFavorite(navigation: UINavigationController)

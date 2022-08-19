@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 class TabCoordinator: NSObject, TabBarCoordinator {
-
     
     // MARK: Properties
     var tabBarController: UITabBarController?
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator] = [Coordinator]()
     var type: CoordinatorType { .tab }
+    var finishDelegate: CoordinatorFinishDelegate?
     private let allTab: [TabBarModel] = [.main, .favorite, .profile]
 
     
@@ -33,6 +33,9 @@ class TabCoordinator: NSObject, TabBarCoordinator {
         navigationController.viewControllers = [self.tabBarController!]
         showMainTab()
     }
+    func finish() {
+        
+    }
     
     func showDetailsScene(navigation: UINavigationController, item: Picture) {
 
@@ -49,22 +52,26 @@ class TabCoordinator: NSObject, TabBarCoordinator {
     func showProfileTab() {
         tabBarController?.selectedIndex = 2
     }
+    
+    deinit {
+        print("Tab coordinator deinit")
+    }
 
    
 }
 
-extension TabCoordinator: CoordinatorDelegate {
+extension TabCoordinator: TabCoordinatorDelegate {
     func showFavorite(navigation: UINavigationController) {
-        let favoriteScene = TabViewFactory.makeFavoriteScene(delegate: self)
+        let favoriteScene = ViewFactory.makeFavoriteScene(delegate: self)
         navigation.pushViewController(favoriteScene, animated: true)
     }
     
     func showDetails(navigation: UINavigationController, item: Picture) {
-        let detailsScene = TabViewFactory.makeDetailsScene(delegate: self, item: item)
+        let detailsScene = ViewFactory.makeDetailsScene(delegate: self, item: item)
         navigation.pushViewController(detailsScene, animated: true)
     }
     func showSearch(navigation: UINavigationController) {
-        let searchScene = TabViewFactory.makeSearchScene(delegate: self)
+        let searchScene = ViewFactory.makeSearchScene(delegate: self)
         navigation.pushViewController(searchScene, animated: true)
     }
 }
@@ -73,10 +80,10 @@ extension TabCoordinator: CoordinatorDelegate {
 private extension TabCoordinator {
     func getTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor               = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        tabBarController.tabBar.unselectedItemTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        tabBarController.tabBar.barTintColor            = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        tabBarController.tabBar.backgroundColor         = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        tabBarController.tabBar.tintColor               = AppColors.tintColor
+        tabBarController.tabBar.unselectedItemTintColor = AppColors.unselectedItem
+        tabBarController.tabBar.barTintColor            = AppColors.tabBarTint
+        tabBarController.tabBar.backgroundColor         = AppColors.tabBarBackground
         tabBarController.viewControllers                = getTabBarControllers()
         
         return tabBarController
@@ -100,9 +107,9 @@ private extension TabCoordinator {
     func getCurrentViewController(tab: TabBarModel) -> UIViewController {
         switch tab {
         case .main:
-            return TabViewFactory.makeMainScene(delegate: self)
+            return ViewFactory.makeMainScene(delegate: self)
         case .favorite:
-            return TabViewFactory.makeFavoriteScene(delegate: self)
+            return ViewFactory.makeFavoriteScene(delegate: self)
         case .profile:
             return ProfileViewController()
         }

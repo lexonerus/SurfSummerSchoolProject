@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
     
     // MARK: Properties
     var presenter: MainViewPresenter!
-    weak var coordinator: CoordinatorDelegate?
+    weak var coordinator: TabCoordinatorDelegate?
     weak var viewOutput: MainViewOutput?
     private var defaultView: UIView?
     

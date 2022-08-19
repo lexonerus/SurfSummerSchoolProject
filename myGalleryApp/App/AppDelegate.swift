@@ -12,7 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var coordinator: AppCoordinator?
-    
     var tokenStorage: TokenStorage {
         BaseTokenStorage()
     }
@@ -37,39 +36,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func startApplicationProcess() {
         runLaunchScreen()
-        
         if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
-            self.runMainFlow()
-            
+            self.runMainFlow(isLoggedIn: true)
         } else {
-            let tempCredentials = AuthRequestModel(phone: "+71234567890", password: "qwerty")
-            AuthService()
-                .performLoginRequestAndSaveToken(credentials: tempCredentials) { [weak self] result in
-                    switch result {
-                    case .success:
-                        self?.runMainFlow()
-                    case .failure:
-                        // TODO: Handle error if token was not received
-                        break
-                    }
-                }
+            self.runMainFlow(isLoggedIn: false)
         }
     }
     
     func runLaunchScreen() {
         let lauchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: .main)
             .instantiateInitialViewController()
-
         window?.rootViewController = lauchScreenViewController
     }
     
     // MARK: Flow setup
-    func runMainFlow() {
+    func runMainFlow(isLoggedIn: Bool) {
         DispatchQueue.main.async {
             let navigationController = UINavigationController()
+
             self.window?.rootViewController = navigationController
             self.coordinator = AppCoordinator(navigationController)
-            self.coordinator?.start()
+            if isLoggedIn {
+                self.coordinator?.start(isLoggedIn: true)
+            } else {
+                self.coordinator?.start(isLoggedIn: false)
+            }
+            
         }
 
     }

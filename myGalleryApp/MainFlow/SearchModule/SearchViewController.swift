@@ -20,7 +20,7 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
     
     private var isSearching = false
     var presenter: SearchViewPresenter!
-    weak var coordinator: CoordinatorDelegate?
+    weak var coordinator: TabCoordinatorDelegate?
     weak var viewOutput: SearchViewOutput?
     
     // MARK: SearchViewController lifecycle

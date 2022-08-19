@@ -8,8 +8,18 @@
 import Foundation
 import UIKit
 
-struct TabViewFactory {
-    static func makeMainScene(delegate: CoordinatorDelegate?) -> MainViewController {
+struct ViewFactory {
+    static func makeLoginPageScene(delegate: LoginCoordinatorDelegate?) -> LoginPageViewController {
+        let viewController = LoginPageViewController()
+        let service = AuthService()
+        let model = LoginModel()
+        let presenter = LoginPagePresenter(view: viewController, model: model, service: service)
+        viewController.presenter = presenter
+        viewController.coordinator = delegate
+        return viewController
+    }
+    
+    static func makeMainScene(delegate: TabCoordinatorDelegate?) -> MainViewController {
         let viewContoller = MainViewController()
         let service = FavoriteService.shared
         let model = MainModel.shared
@@ -18,7 +28,7 @@ struct TabViewFactory {
         viewContoller.coordinator = delegate
         return viewContoller
     }
-    static func makeDetailsScene(delegate: CoordinatorDelegate?, item: Picture) -> DetailsViewController {
+    static func makeDetailsScene(delegate: TabCoordinatorDelegate?, item: Picture) -> DetailsViewController {
         let viewController = DetailsViewController()
         let model = item
         let presenter = DetailsViewPresenter(view: viewController, model: model)
@@ -26,7 +36,7 @@ struct TabViewFactory {
         viewController.coordinator = delegate
         return viewController
     }
-    static func makeFavoriteScene(delegate: CoordinatorDelegate?) -> FavoriteViewController {
+    static func makeFavoriteScene(delegate: TabCoordinatorDelegate?) -> FavoriteViewController {
         let viewController = FavoriteViewController()
         let service = FavoriteService.shared
         let model = MainModel.shared
@@ -35,8 +45,7 @@ struct TabViewFactory {
         viewController.coordinator = delegate
         return viewController
     }
-    
-    static func makeSearchScene(delegate: CoordinatorDelegate?) -> SearchViewController {
+    static func makeSearchScene(delegate: TabCoordinatorDelegate?) -> SearchViewController {
         let viewContoller = SearchViewController()
         let service = FavoriteService.shared
         let model = MainModel.shared

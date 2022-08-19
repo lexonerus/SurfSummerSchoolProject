@@ -11,7 +11,7 @@ class DetailsViewController: UITableViewController, UIGestureRecognizerDelegate 
         
     // MARK: Properties
     var presenter: DetailsViewPresenter?
-    weak var coordinator: CoordinatorDelegate?
+    weak var coordinator: TabCoordinatorDelegate?
     weak var viewOutput: DetailsViewOutput?
     private var arrayWithTypeOfCells = [ImageTableViewCell.self, LabelTableViewCell.self, TextTableViewCell.self]
     
