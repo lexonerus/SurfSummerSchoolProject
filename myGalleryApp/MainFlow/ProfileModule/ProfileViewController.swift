@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController {
     // MARK: ProfileViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(ProfileModel.shared.item)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

@@ -47,6 +47,10 @@
 		566662F7289FEB1B00BF395C /* FavoriteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 566662F5289FEB1B00BF395C /* FavoriteViewCell.xib */; };
 		5689AD3028AAADFB00DB0AA8 /* EmptyStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5689AD2F28AAADFB00DB0AA8 /* EmptyStateView.xib */; };
 		5689AD3228AAAE3700DB0AA8 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5689AD3128AAAE3600DB0AA8 /* EmptyStateView.swift */; };
+		568AD6FA28AF821600CFA8CF /* ProfileViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AD6F928AF821600CFA8CF /* ProfileViewPresenter.swift */; };
+		568AD6FD28AF822A00CFA8CF /* ProfileViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AD6FC28AF822900CFA8CF /* ProfileViewInput.swift */; };
+		568AD6FF28AF823400CFA8CF /* ProfileViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AD6FE28AF823400CFA8CF /* ProfileViewOutput.swift */; };
+		568AD70128AF831300CFA8CF /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AD70028AF831300CFA8CF /* ProfileModel.swift */; };
 		568BDF1928A779E200080E3F /* MainViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1828A779E200080E3F /* MainViewPresenter.swift */; };
 		568BDF1B28A7B43800080E3F /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1A28A7B43800080E3F /* ViewFactory.swift */; };
 		568BDF1D28A7C69300080E3F /* TabCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF1C28A7C69300080E3F /* TabCoordinatorDelegate.swift */; };
@@ -133,6 +137,10 @@
 		566662F5289FEB1B00BF395C /* FavoriteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewCell.xib; sourceTree = "<group>"; };
 		5689AD2F28AAADFB00DB0AA8 /* EmptyStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateView.xib; sourceTree = "<group>"; };
 		5689AD3128AAAE3600DB0AA8 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		568AD6F928AF821600CFA8CF /* ProfileViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewPresenter.swift; sourceTree = "<group>"; };
+		568AD6FC28AF822900CFA8CF /* ProfileViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewInput.swift; sourceTree = "<group>"; };
+		568AD6FE28AF823400CFA8CF /* ProfileViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewOutput.swift; sourceTree = "<group>"; };
+		568AD70028AF831300CFA8CF /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		568BDF1828A779E200080E3F /* MainViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenter.swift; sourceTree = "<group>"; };
 		568BDF1A28A7B43800080E3F /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
 		568BDF1C28A7C69300080E3F /* TabCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCoordinatorDelegate.swift; sourceTree = "<group>"; };
@@ -222,7 +230,9 @@
 		560142E5289A71D6001F8C55 /* ProfileModule */ = {
 			isa = PBXGroup;
 			children = (
+				568AD6FB28AF821C00CFA8CF /* Protocols */,
 				560142DD289A6A77001F8C55 /* ProfileViewController.xib */,
+				568AD6F928AF821600CFA8CF /* ProfileViewPresenter.swift */,
 				560142DC289A6A77001F8C55 /* ProfileViewController.swift */,
 			);
 			path = ProfileModule;
@@ -387,6 +397,7 @@
 				561806A528A80E28001E3209 /* MainModel.swift */,
 				56B77643289EAC37000F2E2E /* Picture.swift */,
 				56E505C528AD04CF005313A8 /* LoginModel.swift */,
+				568AD70028AF831300CFA8CF /* ProfileModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -417,6 +428,15 @@
 				560D390228AB957B003344FE /* NoResultState.swift */,
 			);
 			path = States;
+			sourceTree = "<group>";
+		};
+		568AD6FB28AF821C00CFA8CF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				568AD6FC28AF822900CFA8CF /* ProfileViewInput.swift */,
+				568AD6FE28AF823400CFA8CF /* ProfileViewOutput.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		568BDF1E28A7C6CE00080E3F /* Factory */ = {
@@ -736,6 +756,7 @@
 				5607682D28A186600010B977 /* AuthRequestModel.swift in Sources */,
 				5607683928A186600010B977 /* TokenContainer.swift in Sources */,
 				5607683428A186600010B977 /* ImageLoader.swift in Sources */,
+				568AD6FD28AF822A00CFA8CF /* ProfileViewInput.swift in Sources */,
 				56275C3A28A2E8C200FFCF18 /* FavoriteService.swift in Sources */,
 				566662F1289FE5A000BF395C /* FavoriteViewController.swift in Sources */,
 				56177BED28A663CB00739343 /* TabCoordinator.swift in Sources */,
@@ -760,15 +781,18 @@
 				560142DA289A6897001F8C55 /* MainViewController.swift in Sources */,
 				56B77644289EAC37000F2E2E /* Picture.swift in Sources */,
 				5607683A28A186600010B977 /* TokenStorage.swift in Sources */,
+				568AD6FA28AF821600CFA8CF /* ProfileViewPresenter.swift in Sources */,
 				56E505C428AD045C005313A8 /* LoginPageViewOutput.swift in Sources */,
 				5607682F28A186600010B977 /* AuthService.swift in Sources */,
 				56E505B128ACDDCA005313A8 /* ErrorStateDelegate.swift in Sources */,
+				568AD6FF28AF823400CFA8CF /* ProfileViewOutput.swift in Sources */,
 				56177BE528A6505800739343 /* Coordinator.swift in Sources */,
 				56C894CD28A96B5E00377088 /* SearchViewInput.swift in Sources */,
 				5612895E28ABAA02009A7D42 /* UIViewController+AlertService.swift in Sources */,
 				560D390328AB957B003344FE /* NoResultState.swift in Sources */,
 				568BDF1D28A7C69300080E3F /* TabCoordinatorDelegate.swift in Sources */,
 				56E505BC28AD0400005313A8 /* LoginPageViewController.swift in Sources */,
+				568AD70128AF831300CFA8CF /* ProfileModel.swift in Sources */,
 				560142DE289A6A77001F8C55 /* ProfileViewController.swift in Sources */,
 				5607683128A186600010B977 /* EmptyModel.swift in Sources */,
 				560142ED289A72C9001F8C55 /* TabBarModel.swift in Sources */,
