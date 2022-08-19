@@ -82,9 +82,7 @@ class LoginPageViewController: UIViewController {
     // MARK: Actions
     @IBAction private func login(_ sender: Any) {
         
-        !isDarkContentBackground ? statusBarEnterDarkBackground() : statusBarEnterLightBackground()
-        
-        
+        // TODO: set activity indicator while login proceed
         if loginField.text!.isEmpty || passwordField.text!.isEmpty {
             isWarningShows = true
             toggleWarningMessage()
@@ -217,7 +215,7 @@ private extension LoginPageViewController {
     func configureRedView() {
         redView.translatesAutoresizingMaskIntoConstraints = false
         redView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        redView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        redView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         redView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         redView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         redView.backgroundColor = AppColors.attentionRed
@@ -232,11 +230,14 @@ extension LoginPageViewController: LoginPageViewInput {
     }
     func setWarningAppearance() {
         DispatchQueue.main.sync {
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
+                self.statusBarEnterDarkBackground()
                 self.redView.isHidden = false
+                self.redView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
                 self.title = "Логин или пароль введены не правильно"
                 self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14)]
-            }
+                self.loadViewIfNeeded()
+            })
         }
     }
 }
