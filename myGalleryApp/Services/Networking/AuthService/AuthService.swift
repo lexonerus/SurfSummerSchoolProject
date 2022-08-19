@@ -15,7 +15,7 @@ struct AuthService {
     )
 
     let logoutDataTask = BaseNetworkTask<EmptyModel, EmptyModel> (
-        isNeedToken: true,
+        isNeedToken: false,
         method: .post,
         path: "auth/logout"
     )

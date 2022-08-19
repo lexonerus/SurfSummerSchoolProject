@@ -226,6 +226,10 @@ private extension LoginPageViewController {
 // MARK: LoginPageViewInput delegate
 extension LoginPageViewController: LoginPageViewInput {
     func loginPassed() {
+        DispatchQueue.main.sync {
+            self.statusBarEnterLightBackground()
+        }
+        
         coordinator?.loginPassed()
     }
     func setWarningAppearance() {
