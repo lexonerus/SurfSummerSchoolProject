@@ -41,14 +41,19 @@ class ProfileViewController: UIViewController {
 
     // MARK: Actions
     @IBAction func logoutButton(_ sender: Any) {
-        toggleWarningMessage()
-//        let alert = AlertService.createTwoButtonsAlert(title: "Внимание", message: "Вы точно хотите выйти из приложения?", okButtonTitle: "Да, точно", cancelButtonTitle: "Нет", okAction: confirmLogout, cancelAction: cancelLogout)
-//        self.showAlert(alert: alert)
+        let alert = AlertService.createTwoButtonsAlert(title: "Внимание", message: "Вы точно хотите выйти из приложения?", okButtonTitle: "Да, точно", cancelButtonTitle: "Нет", okAction: confirmLogout, cancelAction: cancelLogout)
+        self.showAlert(alert: alert)
     }
 }
 
 // MARK: Private methods
 private extension ProfileViewController {
+    @objc func hideWarning() {
+        redView.isHidden = true
+        statusBarEnterLightBackground()
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)]
+        title = "Профиль"
+    }
     func statusBarEnterDarkBackground() {
         isDarkContentBackground = true
         self.navigationController?.navigationBar.barStyle = .black
@@ -92,7 +97,6 @@ extension ProfileViewController: ProfileViewInput {
     }
     func toggleWarningMessage() {
         DispatchQueue.main.async {
-            
             UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
                 self.statusBarEnterDarkBackground()
                 self.redView.isHidden = false
@@ -102,15 +106,9 @@ extension ProfileViewController: ProfileViewInput {
                 self.loadViewIfNeeded()
             })
             let _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hideWarning), userInfo: nil, repeats: false)
-            
         }
     }
-    @objc func hideWarning() {
-        redView.isHidden = true
-        statusBarEnterLightBackground()
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)]
-        title = "Профиль"
-    }
+
 }
 
 // MARK: TableView

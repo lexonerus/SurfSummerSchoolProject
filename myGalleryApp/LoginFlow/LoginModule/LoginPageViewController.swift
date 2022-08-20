@@ -61,14 +61,6 @@ class LoginPageViewController: UIViewController {
         configureSecondLabels(label: passwordLabel, view: passwordField)
         passwordLabel.text = "Пароль"
     }
-    func statusBarEnterDarkBackground() {
-        isDarkContentBackground = true
-        self.navigationController?.navigationBar.barStyle = .black
-    }
-    func statusBarEnterLightBackground() {
-        isDarkContentBackground = false
-        self.navigationController?.navigationBar.barStyle = .default
-    }
     
     // MARK: Actions
     @IBAction private func login(_ sender: Any) {
@@ -117,7 +109,20 @@ private extension LoginPageViewController {
             self.view.layoutIfNeeded()
         })
     }
-
+    func statusBarEnterDarkBackground() {
+        isDarkContentBackground = true
+        self.navigationController?.navigationBar.barStyle = .black
+    }
+    func statusBarEnterLightBackground() {
+        isDarkContentBackground = false
+        self.navigationController?.navigationBar.barStyle = .default
+    }
+    @objc func hideWarning() {
+        redView.isHidden = true
+        statusBarEnterLightBackground()
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)]
+        title = "Вход"
+    }
 }
 
 // MARK: Private methods
@@ -233,6 +238,7 @@ extension LoginPageViewController: LoginPageViewInput {
                 self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14)]
                 self.loadViewIfNeeded()
             })
+            let _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hideWarning), userInfo: nil, repeats: false)
         }
     }
 }
