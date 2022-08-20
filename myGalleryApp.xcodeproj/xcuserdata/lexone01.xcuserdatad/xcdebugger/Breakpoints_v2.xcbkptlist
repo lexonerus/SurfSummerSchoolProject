@@ -334,8 +334,8 @@
             filePath = "myGalleryApp/MainFlow/MainModule/MainViewPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "reloadData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -625,6 +625,38 @@
             startingLineNumber = "42"
             endingLineNumber = "42"
             landmarkName = "removeDataFromUserDefaults()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6AF3B6DB-C846-4BB2-8E35-FAE1B3B2596F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myGalleryApp/MainFlow/FavoriteModule/FavoriteViewPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "checkState()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F5AA373-5D6C-49B9-ACB3-C764F24B3193"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myGalleryApp/MainFlow/FavoriteModule/FavoriteViewPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "checkState()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

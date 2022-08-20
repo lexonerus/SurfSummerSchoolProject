@@ -51,6 +51,7 @@ extension MainViewPresenter: MainViewOutput {
         viewInput?.stopLoading()
     }
     func toggleFavorite(index: Int) {
+        
         let item = model.findItemInModel(id: index)
         if item?.isFavorite == false {
             service.savePictureToFavorite(id: item!.id)
@@ -59,6 +60,8 @@ extension MainViewPresenter: MainViewOutput {
             service.deletePictureFromFavorite(id: item!.id)
             model.items.filter {$0.id == index}.first?.isFavorite = false
         }
+        // TODO: remove print
+        print(FavoriteService.shared.favoritePictures)
     }
     func presentPicture(index: Int) -> Picture {
          return model.items[index]

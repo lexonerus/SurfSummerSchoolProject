@@ -14,4 +14,5 @@ protocol FavoriteViewOutput: AnyObject {
     func presentPicture(index: Int) -> Picture
     func getItem(id: Int) -> Picture?
     func configureModel()
+    func checkState()
 }

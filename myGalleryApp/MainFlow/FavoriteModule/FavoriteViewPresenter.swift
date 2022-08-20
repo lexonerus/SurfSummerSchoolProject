@@ -53,4 +53,11 @@ extension FavoriteViewPresenter: FavoriteViewOutput {
             self?.viewInput!.updateTable()
         }
     }
+    func checkState() {
+        if service.favoritePictures.isEmpty {
+            viewInput?.showEmptyState()
+        } else {
+            viewInput?.showNormalState()
+        }
+    }
 }

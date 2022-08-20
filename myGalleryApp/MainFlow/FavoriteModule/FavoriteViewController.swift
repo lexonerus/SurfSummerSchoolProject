@@ -17,6 +17,7 @@ class FavoriteViewController: UIViewController {
     weak var coordinator: TabCoordinatorDelegate?
     weak var viewOutput: FavoriteViewOutput?
     private var currentItemId = 0
+    private var defaultView: UIView?
 
     // MARK: FavoriteViewController lifecycle
     override func viewDidLoad() {
@@ -24,11 +25,13 @@ class FavoriteViewController: UIViewController {
         presenter.setViewInput(viewInput: self)
         self.viewOutput = presenter
         configureAppearance()
+        defaultView = self.view
         viewOutput!.configureModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         title = "Избранное"
+        viewOutput!.checkState()
         updateTable()
     }
         
@@ -43,6 +46,7 @@ class FavoriteViewController: UIViewController {
     }
     func removeItemFromFavorite() {
         viewOutput!.removeFromFavorite(index: currentItemId)
+        viewOutput!.checkState()
     }
     func cancelDeletion() {
         print("item was not delete from favorites")
@@ -86,6 +90,12 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: Private methods
 private extension FavoriteViewController {
+    // TODO: insert into UIViewController extension
+    func configureState(nibName: String) -> UIView {
+        let state = UINib(nibName: nibName, bundle: .main).instantiate(withOwner: nil, options: nil).first as! UIView
+        state.frame = self.view.bounds
+        return state
+    }
     func configureAppearance() {
         configureNavigationBar()
         configureTableView()
@@ -103,6 +113,18 @@ private extension FavoriteViewController {
 
 // MARK: FavoriteViewInput methods
 extension FavoriteViewController: FavoriteViewInput {
+    func showEmptyState() {
+        DispatchQueue.main.async {
+            let view = self.configureState(nibName: "\(EmptyStateView.self)") as! EmptyStateView
+            view.setLabel(label: "Нет избранных элементов")
+            self.view = view
+        }
+    }
+    func showNormalState() {
+        DispatchQueue.main.async {
+            self.view = self.defaultView
+        }
+    }
     func updateTable() {
         DispatchQueue.main.async {
             self.tableView.reloadData()

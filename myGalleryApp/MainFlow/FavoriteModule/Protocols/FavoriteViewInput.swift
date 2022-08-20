@@ -9,4 +9,6 @@ import Foundation
 
 protocol FavoriteViewInput: AnyObject {
     func updateTable()
+    func showEmptyState()
+    func showNormalState()
 }
