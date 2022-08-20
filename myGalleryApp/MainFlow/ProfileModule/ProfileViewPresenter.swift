@@ -33,16 +33,15 @@ class ProfileViewPresenter {
     func setViewInput(viewInput: ProfileViewInput) {
         self.viewInput = viewInput
     }
-    
     func clearAllUserData() {
         URLCache.shared.removeAllCachedResponses()
         mainModel.clearModel()
         favoriteService.clearService()
         profileService.clearService()
     }
-    
 }
 
+// MARK: ProfileViewOutput delegate
 extension ProfileViewPresenter: ProfileViewOutput {
     func getAvatar() -> String {
         return model.item!.avatar
@@ -62,7 +61,6 @@ extension ProfileViewPresenter: ProfileViewOutput {
     func getEmail() -> String {
         return model.item!.email
     }
-    
     func logout() {
         DispatchQueue.main.async {
             self.authService.performLogoutRequest() { [weak self] result in
@@ -71,10 +69,11 @@ extension ProfileViewPresenter: ProfileViewOutput {
                     self?.clearAllUserData()
                     self?.viewInput?.exitMainFlow()
                 case .failure:
+                    // TODO: Cannot logout state
+                    self?.viewInput?.toggleWarningMessage()
                     print(result)
                 }
             }
         }
-
     }
 }
