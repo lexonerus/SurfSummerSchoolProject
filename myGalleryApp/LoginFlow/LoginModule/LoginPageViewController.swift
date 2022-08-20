@@ -44,7 +44,7 @@ class LoginPageViewController: UIViewController {
         super.viewDidLoad()
         presenter?.setViewInput(viewInput: self)
         self.viewOutput = presenter
-        title = "Вход"
+        title = StringConstants.loginTitle
         
         view.addSubview(emptyLoginWarning)
         view.addSubview(emptyPasswordWarning)
@@ -57,17 +57,9 @@ class LoginPageViewController: UIViewController {
         configureWarningLabels(label: emptyPasswordWarning, view: passwordView)
         configureSecondLabels(label: loginLabel, view: loginField)
         configureRedView()
-        loginLabel.text = "Логин"
+        loginLabel.text = StringConstants.loginLabel
         configureSecondLabels(label: passwordLabel, view: passwordField)
-        passwordLabel.text = "Пароль"
-    }
-    func statusBarEnterDarkBackground() {
-        isDarkContentBackground = true
-        self.navigationController?.navigationBar.barStyle = .black
-    }
-    func statusBarEnterLightBackground() {
-        isDarkContentBackground = false
-        self.navigationController?.navigationBar.barStyle = .default
+        passwordLabel.text = StringConstants.passLabel
     }
     
     // MARK: Actions
@@ -91,7 +83,7 @@ class LoginPageViewController: UIViewController {
     }
     @IBAction private func eyeAction(_ sender: Any) {
         let condition = passwordField.isSecureTextEntry ? false : true
-        let image = passwordField.isSecureTextEntry ? UIImage(named: "show_password") : UIImage(named: "hide_password")
+        let image = passwordField.isSecureTextEntry ? UIImage(named: StringConstants.showPass) : UIImage(named: StringConstants.hidePass)
         passwordField.isSecureTextEntry = condition
         eyeButton.setImage(image, for: .normal)
     }
@@ -117,7 +109,20 @@ private extension LoginPageViewController {
             self.view.layoutIfNeeded()
         })
     }
-
+    func statusBarEnterDarkBackground() {
+        isDarkContentBackground = true
+        self.navigationController?.navigationBar.barStyle = .black
+    }
+    func statusBarEnterLightBackground() {
+        isDarkContentBackground = false
+        self.navigationController?.navigationBar.barStyle = .default
+    }
+    @objc func hideWarning() {
+        redView.isHidden = true
+        statusBarEnterLightBackground()
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)]
+        title = StringConstants.loginTitle
+    }
 }
 
 // MARK: Private methods
@@ -160,7 +165,7 @@ private extension LoginPageViewController {
         configureTextField(view: loginView)
         configureTextField(view: passwordView)
         
-        eyeButton.tintColor = AppColors.unselectedItem
+        eyeButton.tintColor = AppColors.unselected
 
         eyeButton.isHidden = true
     }
@@ -172,8 +177,8 @@ private extension LoginPageViewController {
         label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         label.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        label.text = "Поле не может быть пустым"
-        label.textColor = AppColors.attentionRed
+        label.text = StringConstants.warningEmptyField
+        label.textColor = AppColors.redBanner
         label.font = UIFont.systemFont(ofSize: 12)
         label.isHidden = true
     }
@@ -182,7 +187,7 @@ private extension LoginPageViewController {
         label.bottomAnchor.constraint(equalTo: view.topAnchor).isActive = true
         label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        label.textColor = AppColors.unselectedItem
+        label.textColor = AppColors.unselected
         label.font = UIFont.systemFont(ofSize: 12)
         label.isHidden = true
     }
@@ -197,7 +202,7 @@ private extension LoginPageViewController {
     }
     func configureAttentionTextField(view: UIView) {
         view.layer.sublayers![1].frame = CGRect(x: 0, y: view.frame.height - 1, width: view.frame.width, height: 2.0)
-        view.layer.sublayers![1].backgroundColor = AppColors.attentionRed.cgColor
+        view.layer.sublayers![1].backgroundColor = AppColors.redBanner.cgColor
     }
     func configureNormalTextField(view: UIView) {
         view.layer.sublayers![1].frame = CGRect(x: 0, y: view.frame.height - 1, width: view.frame.width, height: 1.0)
@@ -209,7 +214,7 @@ private extension LoginPageViewController {
         redView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         redView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         redView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        redView.backgroundColor = AppColors.attentionRed
+        redView.backgroundColor = AppColors.redBanner
         redView.isHidden = true
     }
 }
@@ -229,10 +234,11 @@ extension LoginPageViewController: LoginPageViewInput {
                 self.statusBarEnterDarkBackground()
                 self.redView.isHidden = false
                 self.redView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-                self.title = "Логин или пароль введены не правильно"
+                self.title = StringConstants.warningWrongLogin
                 self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14)]
                 self.loadViewIfNeeded()
             })
+            let _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hideWarning), userInfo: nil, repeats: false)
         }
     }
 }
@@ -276,12 +282,12 @@ extension LoginPageViewController: UITextFieldDelegate {
         case 0:
             if textField.text!.isEmpty {
                 loginLabel.isHidden = true
-                textField.placeholder = "Логин"
+                textField.placeholder = StringConstants.loginLabel
             }
         case 1:
             if textField.text!.isEmpty {
                 passwordLabel.isHidden = true
-                textField.placeholder = "Пароль"
+                textField.placeholder = StringConstants.passLabel
             }
         default:
             break

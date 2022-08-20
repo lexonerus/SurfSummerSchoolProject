@@ -9,17 +9,21 @@ import Foundation
 import UIKit
 
 enum AppColors {
-    static let textFieldBackground: UIColor = #colorLiteral(red: 0.9830670953, green: 0.9830670953, blue: 0.9830670953, alpha: 1)
-    static let textFieldBottomLine: UIColor = #colorLiteral(red: 0.8763229251, green: 0.873159945, blue: 0.8731170297, alpha: 1)
-    static let buttonBackground: UIColor    = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let tintColor: UIColor           = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let attentionRed: UIColor        = #colorLiteral(red: 0.9535939097, green: 0.346052289, blue: 0.3458001018, alpha: 1)
-    static let mainFont: UIColor            = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    static let statesFont: UIColor          = #colorLiteral(red: 0.7278710604, green: 0.7278710604, blue: 0.7278710008, alpha: 1)
-    static let dateFont: UIColor            = #colorLiteral(red: 0.8100515008, green: 0.8100515008, blue: 0.8100514412, alpha: 1)
-    static let unselectedItem: UIColor      = #colorLiteral(red: 0.7024803758, green: 0.7024803758, blue: 0.7024803758, alpha: 1)
-    static let tabBarTint: UIColor          = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    static let tabBarBackground: UIColor    = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-    static let profileBottomLine: UIColor   = #colorLiteral(red: 0.9660721421, green: 0.9660721421, blue: 0.9660720229, alpha: 1)
+    // main colors
+    static let white                  = UIColor(rgb: 0xFFFFFF)
+    static let black                  = UIColor(rgb: 0x000000)
+    static let unselected             = UIColor(rgb: 0xCCCCCC)
+    // font colors
+    static let mainFont               = UIColor(rgb: 0x000000)
+    static let secondFont             = UIColor(rgb: 0xCCCCCC)
+    // warning banner
+    static let redBanner              = UIColor(rgb: 0xF35858)
+    // login view
+    static let textFieldBackground    = UIColor(rgb: 0xFBFBFB)
+    static let textFieldBottomLine    = UIColor(rgb: 0xDFDFDF)
+    static let attentionRed           = UIColor(rgb: 0xF35858)
+    // profile view
+    static let profileBottomLine      = UIColor(rgb: 0xf5f5f5)
+
     
 }

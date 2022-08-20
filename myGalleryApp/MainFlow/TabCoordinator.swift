@@ -8,17 +8,17 @@
 import Foundation
 import UIKit
 
-class TabCoordinator: NSObject, TabBarCoordinator {
+final class TabCoordinator: NSObject, TabBarCoordinator {
     
     // MARK: Properties
-    var tabBarController: UITabBarController?
-    var navigationController: UINavigationController
-    var childCoordinators: [Coordinator] = [Coordinator]()
-    var type: CoordinatorType { .tab }
-    var finishDelegate: CoordinatorFinishDelegate?
-    private let allTab: [TabBarModel] = [.main, .favorite, .profile]
+    var tabBarController:       UITabBarController?
+    var navigationController:   UINavigationController
+    var childCoordinators:      [Coordinator] = [Coordinator]()
+    var type:                   CoordinatorType { .tab }
+    var finishDelegate:         CoordinatorFinishDelegate?
+    private let allTab:         [TabBarModel] = [.main, .favorite, .profile]
 
-    
+    // MARK: Initializers
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
@@ -85,10 +85,10 @@ extension TabCoordinator: TabCoordinatorDelegate {
 private extension TabCoordinator {
     func getTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
-        tabBarController.tabBar.tintColor               = AppColors.tintColor
-        tabBarController.tabBar.unselectedItemTintColor = AppColors.unselectedItem
-        tabBarController.tabBar.barTintColor            = AppColors.tabBarTint
-        tabBarController.tabBar.backgroundColor         = AppColors.tabBarBackground
+        tabBarController.tabBar.tintColor               = AppColors.black
+        tabBarController.tabBar.unselectedItemTintColor = AppColors.unselected
+        tabBarController.tabBar.barTintColor            = AppColors.white
+        tabBarController.tabBar.backgroundColor         = AppColors.white
         tabBarController.viewControllers                = getTabBarControllers()
         
         return tabBarController
@@ -101,7 +101,7 @@ private extension TabCoordinator {
 
             let controller = getCurrentViewController(tab: tab)
             let navigationView = UINavigationController(rootViewController: controller)
-            navigationView.navigationBar.tintColor = .black
+            navigationView.navigationBar.tintColor = AppColors.black
             let tabBarItem = UITabBarItem(title: tab.title, image: tab.image, selectedImage: tab.selectedImage)
             controller.tabBarItem = tabBarItem
             viewControllers.append(navigationView)

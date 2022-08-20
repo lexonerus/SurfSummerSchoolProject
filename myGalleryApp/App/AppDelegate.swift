@@ -6,29 +6,27 @@
 //
 
 import UIKit
+import Network
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-    var coordinator: AppCoordinator?
-    var tokenStorage: TokenStorage {
-        BaseTokenStorage()
-    }
-    let favoriteService = FavoriteService.shared
-    let profileService = ProfileService.shared
     
+    // MARK: Properties
+    var window:               UIWindow?
+    var coordinator:          AppCoordinator?
+    let favoriteService     = FavoriteService.shared
+    let profileService      = ProfileService.shared
+    let connectionService   = ConnectionService.shared
+    var tokenStorage:         TokenStorage { BaseTokenStorage() }
     
     // MARK: App lifecycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
+        connectionService.startMonitoring()
         favoriteService.loadDataFromUserDefaults()
         profileService.loadDataFromUserDefaults()
-
         startApplicationProcess()
-        
         return true
     }
     
@@ -38,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         profileService.saveDataToUserDefaults()
     }
     
+    // MARK: Methods
     func startApplicationProcess() {
         runLaunchScreen()
         if let tokenContainer = try? tokenStorage.getToken(), !tokenContainer.isExpired {
@@ -48,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func runLaunchScreen() {
-        let lauchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: .main)
+        let lauchScreenViewController = UIStoryboard(name: StringConstants.launchScreen, bundle: .main)
             .instantiateInitialViewController()
         window?.rootViewController = lauchScreenViewController
     }
@@ -57,7 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func runMainFlow(isLoggedIn: Bool) {
         DispatchQueue.main.async {
             let navigationController = UINavigationController()
-
             self.window?.rootViewController = navigationController
             self.coordinator = AppCoordinator(navigationController)
             if isLoggedIn {
@@ -65,10 +63,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 self.coordinator?.start(isLoggedIn: false)
             }
-            
         }
-
     }
-
+    
 }
 

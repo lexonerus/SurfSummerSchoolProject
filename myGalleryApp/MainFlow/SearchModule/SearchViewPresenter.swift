@@ -10,31 +10,38 @@ import Foundation
 class SearchViewPresenter {
     
     // MARK: Properties
-    let view: SearchViewController
-    let service: FavoriteService
-    let model: MainModel
-    var filteredData: [Picture] 
-    weak var viewInput: SearchViewInput?
-    var isSearching = false
+    let view:               SearchViewController
+    let service:            FavoriteService
+    let model:              MainModel
+    var filteredData:       [Picture]
+    weak var viewInput:     SearchViewInput?
+    var isSearching         = false
     
     // MARK: Initializers
-    init(view: SearchViewController, service: FavoriteService, model: MainModel, filteredData: [Picture]) {
-        self.view = view
-        self.service = service
-        self.model = model
-        self.filteredData = filteredData
+    init(view: SearchViewController,
+         service: FavoriteService,
+         model: MainModel,
+         filteredData: [Picture])
+    {
+        self.view           = view
+        self.service        = service
+        self.model          = model
+        self.filteredData   = filteredData
     }
     
     // MARK: Methods
     func setViewInput(viewInput: SearchViewInput) {
         self.viewInput = viewInput
     }
+    
     func presentSearchState() {
         viewInput?.showSearchState()
     }
+    
     func presentEmptyState() {
         viewInput?.showEmptyState()
     }
+    
     func presentNoResultState() {
         viewInput?.showNoResultState()
     }
@@ -43,6 +50,7 @@ class SearchViewPresenter {
 
 // MARK: SearchViewOutput methods
 extension SearchViewPresenter: SearchViewOutput {
+    
     func prepareState() {
         if !isSearching {
             presentEmptyState()
@@ -52,11 +60,13 @@ extension SearchViewPresenter: SearchViewOutput {
             presentSearchState()
         }
     }
+    
     func configureModel() {
         model.didItemsUpdated = { [weak self] in
             self?.viewInput?.updateCollection()
         }
     }
+    
     func toggleFavorite(index: Int) {
         let item = model.findItemInModel(id: index)
 
@@ -68,18 +78,18 @@ extension SearchViewPresenter: SearchViewOutput {
             model.items.filter {$0.id == index}.first?.isFavorite = false
         }
     }
+    
     func reloadCollection() {
         viewInput?.updateCollection()
     }
+    
     func findItem(index: Int) -> Picture {
         return model.items[index]
     }
+    
     func performSearch(with text: String) {
-        
         filteredData.removeAll()
-        
         guard text != "" || text != " " else {
-            print("empty search")
             return
         }
         
@@ -98,9 +108,11 @@ extension SearchViewPresenter: SearchViewOutput {
             isSearching = true
         }
     }
+    
     func countFilteredElements() -> Int {
         return filteredData.count
     }
+    
     func presentFilteredElement(index: Int) -> Picture {
         return filteredData[index]
     }

@@ -8,6 +8,6 @@
 import Foundation
 
 struct AuthRequestModel: Encodable {
-    let phone: String
+    let phone:    String
     let password: String
 }

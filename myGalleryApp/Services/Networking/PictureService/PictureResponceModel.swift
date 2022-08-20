@@ -9,10 +9,10 @@ import Foundation
 
 struct PictureResponceModel: Decodable {
     // MARK: Internal properties
-    let id: String
-    let title: String
-    let content: String
-    let photoUrl: String
+    let id:         String
+    let title:      String
+    let content:    String
+    let photoUrl:   String
     
     var date: Date {
         Date(timeIntervalSince1970: publicationDate / 1000)

@@ -32,19 +32,17 @@ final class MainModel {
                     
                     let result = Picture(
                         id: Int(pictureModel.id)!,
-                        itemImage: UIImage(named: "placeholder")!,
+                        itemImage: UIImage(named: StringConstants.placeholderImage)!,
                         imageUrlInString: pictureModel.photoUrl,
                         title: pictureModel.title,
-                        isFavorite: (self?.favoriteService.checkIsFavorite(id: Int(pictureModel.id)!))!,
+                        isFavorite: self!.favoriteService.checkIsFavorite(id: Int(pictureModel.id)!),
                         content: pictureModel.content,
                         dateCreate: pictureModel.date
                     )
                     
-
                     return result
                 }
             case .failure(_):
-                // TODO ErrorState
                 completionHandler(false)
                 break
             }

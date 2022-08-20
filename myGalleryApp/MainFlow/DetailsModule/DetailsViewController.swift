@@ -10,9 +10,9 @@ import UIKit
 class DetailsViewController: UITableViewController, UIGestureRecognizerDelegate {
         
     // MARK: Properties
-    var presenter: DetailsViewPresenter?
-    weak var coordinator: TabCoordinatorDelegate?
-    weak var viewOutput: DetailsViewOutput?
+    var presenter:                   DetailsViewPresenter?
+    weak var coordinator:            TabCoordinatorDelegate?
+    weak var viewOutput:             DetailsViewOutput?
     private var arrayWithTypeOfCells = [ImageTableViewCell.self, LabelTableViewCell.self, TextTableViewCell.self]
     
     // MARK: DetailTableViewController lifecycle
@@ -72,12 +72,12 @@ private extension DetailsViewController {
     
     func configureNavigationBar() {
         navigationItem.title = viewOutput?.presentItem().title
-        let backButton = UIBarButtonItem(image: UIImage(named: "arrow-right-line"),
+        let backButton = UIBarButtonItem(image: UIImage(named: StringConstants.arrowRightLine),
                                          style: .plain,
                                          target: navigationController,
                                          action: #selector(UINavigationController.popViewController(animated:)))
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        navigationItem.leftBarButtonItem?.tintColor = AppColors.black
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     

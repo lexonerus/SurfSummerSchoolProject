@@ -22,7 +22,6 @@ protocol NetworkTask {
     func performRequest(input: Input,
                         _ onResponceWasReceived: @escaping (_ result: Result<Output, Error>) -> Void
                         )
-    
 }
 
 extension NetworkTask {

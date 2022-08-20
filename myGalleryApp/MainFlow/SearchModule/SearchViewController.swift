@@ -10,18 +10,18 @@ import UIKit
 class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: Views
-    @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private weak var searchBar:   UISearchBar!
+    @IBOutlet weak var collectionView:      UICollectionView!
     
     // MARK: Properties
-    private var defaultView: UIView?
-    private var emptyState: UIView?
-    private var noResultState: UIView?
+    private var defaultView:    UIView?
+    private var emptyState:     UIView?
+    private var noResultState:  UIView?
     
-    private var isSearching = false
-    var presenter: SearchViewPresenter!
-    weak var coordinator: TabCoordinatorDelegate?
-    weak var viewOutput: SearchViewOutput?
+    private var isSearching     = false
+    var presenter:              SearchViewPresenter!
+    weak var coordinator:       TabCoordinatorDelegate?
+    weak var viewOutput:        SearchViewOutput?
     
     // MARK: SearchViewController lifecycle
     override func viewDidLoad() {
@@ -34,10 +34,12 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
         defaultView?.tag = 99
         viewOutput?.configureModel()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewOutput?.prepareState()
@@ -52,23 +54,26 @@ class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
 
 // MARK: Private methods
 private extension SearchViewController {
+    
     func configureState(nibName: String) -> UIView {
         let state = UINib(nibName: nibName, bundle: .main).instantiate(withOwner: nil, options: nil).first as! UIView
         state.frame = self.view.bounds
         return state
     }
+    
     func configureNavigationBar() {
         navigationItem.title = ""
-        let backButton = UIBarButtonItem(image: UIImage(named: "arrow-right-line"),
+        let backButton = UIBarButtonItem(image: UIImage(named: StringConstants.arrowRightLine),
                                          style: .plain,
                                          target: navigationController,
                                          action: #selector(UINavigationController.popViewController(animated:)))
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        navigationItem.leftBarButtonItem?.tintColor = AppColors.black
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
+    
     func configureAppearance() {
-        searchBar.placeholder = "Поиск"
+        searchBar.placeholder = StringConstants.searchPlaceholder
         searchBar.delegate = self
         searchBar.searchTextField.layer.cornerRadius = 20
         searchBar.searchTextField.layer.masksToBounds = true
@@ -76,13 +81,13 @@ private extension SearchViewController {
         collectionView.dataSource = self
         collectionView.contentInset = CollectionViewConstants.contentInset
         collectionView.register(UINib(nibName: "\(MainCollectionViewCell.self)", bundle: .main), forCellWithReuseIdentifier: "\(MainCollectionViewCell.self)")
-        
-
     }
+    
 }
 
 // MARK: SearchBar
 extension SearchViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         viewOutput?.performSearch(with: searchText)
@@ -98,7 +103,6 @@ extension SearchViewController: UISearchBarDelegate {
         }
     }
     
-    
 }
 
 // MARK: CollectionView
@@ -111,12 +115,14 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MainCollectionViewCell.self)", for: indexPath)
         if let cell = cell as? MainCollectionViewCell {
+            
             let item = viewOutput!.presentFilteredElement(index: indexPath.item)
-            cell.title = item.title
-            cell.isFavorite = item.isFavorite
-            cell.itemImage = item.itemImage
-            cell.heartButton.tag = item.id
+            cell.title              = item.title
+            cell.isFavorite         = item.isFavorite
+            cell.itemImage          = item.itemImage
+            cell.heartButton.tag    = item.id
             cell.heartButton.addTarget(self, action: #selector(favoriteButtonTapped(sender:)), for: .touchUpInside)
+            
         }
         return cell
     }
@@ -146,6 +152,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 
 // MARK: SearchViewInput methods
 extension SearchViewController: SearchViewInput {
+    
     func showEmptyState() {
         DispatchQueue.main.async {
             let view = self.configureState(nibName: "\(EmptyStateView.self)")
@@ -153,6 +160,7 @@ extension SearchViewController: SearchViewInput {
             self.view = view
         }
     }
+    
     func showNoResultState() {
         DispatchQueue.main.async {
             let view = self.configureState(nibName: "\(NoResultState.self)")
@@ -160,11 +168,13 @@ extension SearchViewController: SearchViewInput {
             self.view = view
         }
     }
+    
     func showSearchState() {
         DispatchQueue.main.async {
             self.view = self.defaultView
         }
     }
+    
     func updateCollection() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
             self.collectionView.reloadData()

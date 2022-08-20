@@ -9,8 +9,5 @@ import Foundation
 import UIKit
 
 protocol TabBarCoordinator: Coordinator {
-    // TODO: is it nesseccery?
-    // MARK: Properties
     var tabBarController: UITabBarController? { get set }
-    
 }

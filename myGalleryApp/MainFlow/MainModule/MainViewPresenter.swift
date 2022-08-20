@@ -10,46 +10,62 @@ import Foundation
 class MainViewPresenter {
     
     // MARK: Properties
-    let view: MainViewController
-    let service: FavoriteService
-    let model: MainModel
+    let view:           MainViewController
+    let service:        FavoriteService
+    let model:          MainModel
     weak var viewInput: MainViewInput?
     
     // MARK: Initializers
-    init(view: MainViewController, model: MainModel, service: FavoriteService) {
-        self.view = view
-        self.model = model
-        self.service = service
+    init(view: MainViewController,
+         model: MainModel,
+         service: FavoriteService)
+    {
+        self.view       = view
+        self.model      = model
+        self.service    = service
     }
     
     // MARK: Methods
     func setViewInput(viewInput: MainViewInput?) {
         self.viewInput = viewInput
     }
+    
+    func loadImagesForReuse() {
+        DispatchQueue.global(qos: .background).async {
+            self.model.didItemsUpdated = { [weak self] in
+                for item in self!.model.items {
+                    let url = URL(string: item.imageUrlInString)
+                    self!.model.loadImage(from: url!, with: item.id) { done in
+                        self!.viewInput?.updateCollection()
+                    }
+                    
+                }
+                
+            }
+        }
+    }
 
 }
 
 // MARK: MainViewOutput delegate methods
 extension MainViewPresenter: MainViewOutput {
-    func configureModel() {
-        model.didItemsUpdated = { [weak self] in
-            self?.viewInput?.startLoading()
-
-            for item in self!.model.items {
-                let url = URL(string: item.imageUrlInString)
-                self!.model.loadImage(from: url!, with: item.id) { done in
-
-                }
-            }
-            self?.viewInput?.updateCollection()
-        }
+    
+    func prepateImages() {
+        loadImagesForReuse()
     }
+    
+    func configureModel() {
+        loadImagesForReuse()
+    }
+    
     func activateActivityIndicator() {
         viewInput?.startLoading()
     }
+    
     func deActivateActivityIndicator() {
         viewInput?.stopLoading()
     }
+    
     func toggleFavorite(index: Int) {
         let item = model.findItemInModel(id: index)
         if item?.isFavorite == false {
@@ -60,21 +76,31 @@ extension MainViewPresenter: MainViewOutput {
             model.items.filter {$0.id == index}.first?.isFavorite = false
         }
     }
+    
     func presentPicture(index: Int) -> Picture {
          return model.items[index]
     }
+    
     func countItems() -> Int {
         return model.items.count
     }
+    
     func reloadData() {
-        model.getPosts { done in
-            if done {
-                // normal state
-                self.viewInput?.stopLoading()
-            } else {
-                // error state
-                self.viewInput?.showErrorState()
+        if ConnectionService.shared.isConnected {
+            model.getPosts { done in
+                if done {
+                    self.viewInput?.stopLoading()
+                    self.viewInput?.endRefreshControl()
+                    self.prepateImages()
+                }
+                else {
+                    return
+                }
             }
+        } else {
+            self.viewInput?.showErrorState()
+            self.viewInput?.endRefreshControl()
         }
     }
+
 }

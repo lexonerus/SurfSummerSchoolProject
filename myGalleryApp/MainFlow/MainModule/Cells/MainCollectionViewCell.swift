@@ -69,9 +69,9 @@ class MainCollectionViewCell: UICollectionViewCell {
 // MARK: MainCollectionView extensions
 private extension MainCollectionViewCell {
     func configureAppearance() {
-        cellLabel.textColor             = .black
+        cellLabel.textColor             = AppColors.mainFont
         cellLabel.font                  = .systemFont(ofSize: 12)
         imageView.layer.cornerRadius    = 12
-        heartButton.tintColor           = .white
+        heartButton.tintColor           = AppColors.white
     }
 }

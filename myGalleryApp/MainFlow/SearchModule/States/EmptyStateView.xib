@@ -49,6 +49,10 @@
                 <constraint firstItem="Om9-Wm-7zH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="bFR-su-yf3"/>
                 <constraint firstItem="Om9-Wm-7zH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="161" id="rxh-cf-0gB"/>
             </constraints>
+            <connections>
+                <outlet property="stateImage" destination="qdO-UB-ex6" id="CMl-WG-myH"/>
+                <outlet property="stateLabel" destination="9WF-TZ-ZUb" id="7Ns-JA-IZH"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="114.50892857142857"/>
         </view>
     </objects>
