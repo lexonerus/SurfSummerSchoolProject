@@ -38,11 +38,6 @@ AppCoordinator инициализируется при запуске прило
 Конструирование объектов происходит в ViewFactory. Там настраиваются все элементы каждого модуля.
 
 ## Скриншоты
-<img src="/Pictures/001.png" width="216" height="494">
-<img src="/Pictures/002.png" width="216" height="494">
-<img src="/Pictures/003.png" width="216" height="494">
-<img src="/Pictures/004.png" width="216" height="494">
-<img src="/Pictures/005.png" width="216" height="494">
-<img src="/Pictures/006.png" width="216" height="494">
+<img src="/Pictures/001.png" width="216" height="494"><img src="/Pictures/002.png" width="216" height="494"><img src="/Pictures/003.png" width="216" height="494"><img src="/Pictures/004.png" width="216" height="494"><img src="/Pictures/005.png" width="216" height="494"><img src="/Pictures/006.png" width="216" height="494">
 
 
