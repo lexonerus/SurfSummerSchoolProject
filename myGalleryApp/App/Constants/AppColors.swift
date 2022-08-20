@@ -20,5 +20,6 @@ enum AppColors {
     static let unselectedItem: UIColor      = #colorLiteral(red: 0.7024803758, green: 0.7024803758, blue: 0.7024803758, alpha: 1)
     static let tabBarTint: UIColor          = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     static let tabBarBackground: UIColor    = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    static let profileBottomLine: UIColor   = #colorLiteral(red: 0.9660721421, green: 0.9660721421, blue: 0.9660720229, alpha: 1)
     
 }

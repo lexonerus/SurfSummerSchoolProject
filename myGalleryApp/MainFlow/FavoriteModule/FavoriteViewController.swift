@@ -63,7 +63,7 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(FavoriteViewCell.self)")
         let ids = Array(viewOutput!.presentFavoriteItems())
         let item = viewOutput!.getItem(id: ids[indexPath.row])
-        if item!.isFavorite == true {
+        if (item?.isFavorite ?? false) == true {
             if let cell = cell as? FavoriteViewCell {
                 cell.itemImage = item!.itemImage
                 cell.isFavorite = item!.isFavorite
@@ -73,7 +73,7 @@ extension FavoriteViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.favButton.tag = item!.id
                 cell.favButton.addTarget(self, action: #selector(favoriteButtonTapped(sender:)), for: .touchUpInside)
             }
-        }
+        } 
         return cell!
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

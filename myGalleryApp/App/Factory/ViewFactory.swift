@@ -56,4 +56,16 @@ struct ViewFactory {
         viewContoller.hidesBottomBarWhenPushed = true
         return viewContoller
     }
+    static func makeProfileScene(delegate: TabCoordinatorDelegate?) -> ProfileViewController {
+        let viewController = ProfileViewController()
+        let authService = AuthService()
+        let profileService = ProfileService.shared
+        let favoriteService = FavoriteService.shared
+        let model = ProfileModel.shared
+        let mainModel = MainModel.shared
+        let presenter = ProfileViewPresenter(view: viewController, model: model, mainModel: mainModel, authService: authService, favoriteService: favoriteService, profileService: profileService)
+        viewController.presenter = presenter
+        viewController.coordinator = delegate
+        return viewController
+    }
 }
