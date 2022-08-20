@@ -4,14 +4,12 @@
 [![Swift](https://img.shields.io/badge/Swift-5-orange)]()
 [![UIKit](https://img.shields.io/badge/UIKit-Interface-lightgrey)]()
 
-[Schedule, assignments, lectures and additional materials](https://github.com/lexonerus/SurfSummerSchool2022/blob/main/README.md)
+[Репозиторий школы, расписание, лекции, полезные материалы](https://github.com/lexonerus/SurfSummerSchool2022/blob/main/README.md)
 
-[Design](https://www.figma.com/file/6eLvnZ89LeHIxHc283Uoe8/Surf-education-iOS-(Copy))
+[Дизайн приложения в Figma](https://www.figma.com/file/6eLvnZ89LeHIxHc283Uoe8/Surf-education-iOS-(Copy))
 
-This is a test project for implementation homework and pass through summer school.
+Данное приложение является тестовым проектом во время прохождения летней школы в компании Surf в 2022 году.
 
-## How App would look like
-![Login](/Pictures/Login.png)
-![Home](/Pictures/Home.png)
-![Favorite](/Pictures/Favorite.png)
-![Profile](/Pictures/Profile.png)
+## Архитекура построения приложения MVP-C
+
+![Login](/Pictures/arch.png)
