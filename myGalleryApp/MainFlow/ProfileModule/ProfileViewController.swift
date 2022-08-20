@@ -32,11 +32,18 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func logoutButton(_ sender: Any) {
-        viewOutput?.logout()
+        let alert = AlertService.createTwoButtonsAlert(title: "Внимание", message: "Вы точно хотите выйти из приложения?", okButtonTitle: "Да, точно", cancelButtonTitle: "Нет", okAction: confirmLogout, cancelAction: cancelLogout)
+        self.showAlert(alert: alert)
     }
 }
 
 private extension ProfileViewController {
+    @objc func confirmLogout() {
+        viewOutput?.logout()
+    }
+    @objc func cancelLogout() {
+        print("cancel")
+    }
     func configureAppearance() {
         configureTableView()
     }
@@ -47,7 +54,6 @@ private extension ProfileViewController {
         tableView.register(UINib(nibName: "\(ProfileInfoCell.self)", bundle: .main), forCellReuseIdentifier: "\(ProfileInfoCell.self)")
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
-
     }
 }
 
