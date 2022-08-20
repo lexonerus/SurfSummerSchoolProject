@@ -9,4 +9,10 @@ import Foundation
 
 protocol ProfileViewOutput: AnyObject {
     func logout()
+    func getAvatar()    -> String
+    func getName()      -> String
+    func getStatus()    -> String
+    func getCity()      -> String
+    func getPhone()     -> String
+    func getEmail()     -> String
 }

@@ -15,7 +15,7 @@ struct AuthService {
     )
 
     let logoutDataTask = BaseNetworkTask<EmptyModel, EmptyModel> (
-        isNeedToken: false,
+        isNeedToken: true,
         method: .post,
         path: "auth/logout"
     )
@@ -46,7 +46,17 @@ struct AuthService {
         }
     }
     
-    func performLogoutRequest(_ onResponceWasReceived: @escaping (_ result: Result<EmptyModel, Error>) -> Void) {
-        logoutDataTask.performRequest(onResponceWasReceived)
+    func performLogoutRequest(_ onResponceWasReceived: @escaping (_ result: Result<String, Error>) -> Void) {
+        logoutDataTask.performRequestWithoutResponce(input: EmptyModel()) { result in
+            if case .success(_) = result {
+                do {
+                    try logoutDataTask.tokenStorage.removeTokenFromContainer()
+                    onResponceWasReceived(result)
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        
     }
 }

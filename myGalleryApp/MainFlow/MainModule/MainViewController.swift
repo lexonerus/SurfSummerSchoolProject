@@ -140,7 +140,7 @@ extension MainViewController: MainViewInput {
         }
     }
     func stopLoading() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             self.mainCollectionView.isHidden = false

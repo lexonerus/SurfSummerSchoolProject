@@ -32,6 +32,25 @@ class ProfileViewPresenter {
 }
 
 extension ProfileViewPresenter: ProfileViewOutput {
+    func getAvatar() -> String {
+        return model.item!.avatar
+    }
+    func getName() -> String {
+        return "\(model.item!.firstName)\n\(model.item!.lastName)"
+    }
+    func getStatus() -> String {
+        return "«\(model.item!.about)»"
+    }
+    func getCity() -> String {
+        return model.item!.city
+    }
+    func getPhone() -> String {
+        return model.item!.phone
+    }
+    func getEmail() -> String {
+        return model.item!.email
+    }
+    
     func logout() {
         DispatchQueue.main.async {
             self.service.performLogoutRequest() { [weak self] result in
@@ -39,8 +58,8 @@ extension ProfileViewPresenter: ProfileViewOutput {
                 case .success:
                     print("success")
                     URLCache.shared.removeAllCachedResponses()
-                    
                     // TODO: remove profile data from userDefaults
+                    UserDefaults.standard.removeSuite(named: "UserAccount")
                     // TODO: coordinator show login flow
                     self?.viewInput?.exitMainFlow()
                 case .failure:

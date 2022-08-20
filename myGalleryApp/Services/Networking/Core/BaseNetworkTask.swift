@@ -39,6 +39,37 @@ struct BaseNetworkTask<AbstractInput: Encodable, AbstractOutput: Decodable>: Net
     }
     
     // MARK: Network task
+    func performRequestWithoutResponce(
+        input: AbstractInput,
+        _ onResponceWasReceived: @escaping (_ result: Result<String, Error>) -> Void
+    ) {
+        do {
+            let request = try getRequest(with: input)
+            session.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    onResponceWasReceived(.failure(error))
+                } else if let response = response {
+                    if let httpResponse = response as? HTTPURLResponse {
+                        switch httpResponse.statusCode {
+                        case 204:
+                            let success = "You are successfully logged out."
+                            print(success)
+                            onResponceWasReceived(.success(success))
+                        case 401:
+                            onResponceWasReceived(.failure(NetworkTaskError.notLoggedIn))
+                        default:
+                            onResponceWasReceived(.failure(NetworkTaskError.unknownError))
+                        }
+                    }
+                } else {
+                    onResponceWasReceived(.failure(NetworkTaskError.unknownError))
+                }
+            }
+            .resume()
+        } catch {
+            onResponceWasReceived(.failure(NetworkTaskError.unknownError))
+        }
+    }
     
     func performRequest(
             input: AbstractInput,
@@ -81,10 +112,11 @@ struct BaseNetworkTask<AbstractInput: Encodable, AbstractOutput: Decodable>: Net
 
 // MARK: Empty model
 extension BaseNetworkTask where Input == EmptyModel {
+
+        func performRequest(_ onResponceWasReceived: @escaping (_ result: Result<AbstractOutput, Error>) -> Void) {
+            performRequest(input: EmptyModel(), onResponceWasReceived)
+        }
     
-    func performRequest(_ onResponceWasReceived: @escaping (_ result: Result<AbstractOutput, Error>) -> Void) {
-        performRequest(input: EmptyModel(), onResponceWasReceived)
-    }
 }
 
 
@@ -114,6 +146,7 @@ private extension BaseNetworkTask {
         case urlComponentWasNotCreated
         case parametersIsNotValid
         case unknownError
+        case notLoggedIn
     }
     
     func getRequest(with parameters: AbstractInput) throws -> URLRequest {
