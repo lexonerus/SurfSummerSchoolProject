@@ -165,7 +165,7 @@ private extension LoginPageViewController {
         configureTextField(view: loginView)
         configureTextField(view: passwordView)
         
-        eyeButton.tintColor = AppColors.unselectedItem
+        eyeButton.tintColor = AppColors.unselected
 
         eyeButton.isHidden = true
     }
@@ -178,7 +178,7 @@ private extension LoginPageViewController {
         label.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         label.heightAnchor.constraint(equalToConstant: 30).isActive = true
         label.text = "Поле не может быть пустым"
-        label.textColor = AppColors.attentionRed
+        label.textColor = AppColors.redBanner
         label.font = UIFont.systemFont(ofSize: 12)
         label.isHidden = true
     }
@@ -187,7 +187,7 @@ private extension LoginPageViewController {
         label.bottomAnchor.constraint(equalTo: view.topAnchor).isActive = true
         label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        label.textColor = AppColors.unselectedItem
+        label.textColor = AppColors.unselected
         label.font = UIFont.systemFont(ofSize: 12)
         label.isHidden = true
     }
@@ -202,7 +202,7 @@ private extension LoginPageViewController {
     }
     func configureAttentionTextField(view: UIView) {
         view.layer.sublayers![1].frame = CGRect(x: 0, y: view.frame.height - 1, width: view.frame.width, height: 2.0)
-        view.layer.sublayers![1].backgroundColor = AppColors.attentionRed.cgColor
+        view.layer.sublayers![1].backgroundColor = AppColors.redBanner.cgColor
     }
     func configureNormalTextField(view: UIView) {
         view.layer.sublayers![1].frame = CGRect(x: 0, y: view.frame.height - 1, width: view.frame.width, height: 1.0)
@@ -214,7 +214,7 @@ private extension LoginPageViewController {
         redView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         redView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         redView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        redView.backgroundColor = AppColors.attentionRed
+        redView.backgroundColor = AppColors.redBanner
         redView.isHidden = true
     }
 }

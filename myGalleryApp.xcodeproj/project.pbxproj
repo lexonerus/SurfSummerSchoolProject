@@ -65,6 +65,7 @@
 		568BDF2A28A7EBCD00080E3F /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF2928A7EBCD00080E3F /* ErrorStateView.swift */; };
 		5699FF8328AD7ED100E4DBAF /* String+PhoneMasking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5699FF8228AD7ED100E4DBAF /* String+PhoneMasking.swift */; };
 		569D401D28B13E6D00E9D2BE /* ConnectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D401C28B13E6D00E9D2BE /* ConnectionService.swift */; };
+		569D402028B1575200E9D2BE /* UIColor+HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D401F28B1575200E9D2BE /* UIColor+HexColor.swift */; };
 		56ABCBD0289953830057D7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ABCBCF289953830057D7AB /* AppDelegate.swift */; };
 		56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBD8289953850057D7AB /* Assets.xcassets */; };
 		56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBDA289953850057D7AB /* LaunchScreen.storyboard */; };
@@ -161,6 +162,7 @@
 		568BDF2928A7EBCD00080E3F /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
 		5699FF8228AD7ED100E4DBAF /* String+PhoneMasking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+PhoneMasking.swift"; sourceTree = "<group>"; };
 		569D401C28B13E6D00E9D2BE /* ConnectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionService.swift; sourceTree = "<group>"; };
+		569D401F28B1575200E9D2BE /* UIColor+HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexColor.swift"; sourceTree = "<group>"; };
 		56ABCBCC289953830057D7AB /* myGalleryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myGalleryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56ABCBCF289953830057D7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56ABCBD8289953850057D7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 		5607681828A186600010B977 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				569D401E28B1573700E9D2BE /* HexColor */,
 				569D401B28B13E5500E9D2BE /* ConnectionService */,
 				568AD70228AF8A8E00CFA8CF /* ProfileService */,
 				56275C3428A2E72F00FFCF18 /* FavoriteService */,
@@ -530,6 +533,14 @@
 				569D401C28B13E6D00E9D2BE /* ConnectionService.swift */,
 			);
 			path = ConnectionService;
+			sourceTree = "<group>";
+		};
+		569D401E28B1573700E9D2BE /* HexColor */ = {
+			isa = PBXGroup;
+			children = (
+				569D401F28B1575200E9D2BE /* UIColor+HexColor.swift */,
+			);
+			path = HexColor;
 			sourceTree = "<group>";
 		};
 		56ABCBC3289953830057D7AB = {
@@ -814,6 +825,7 @@
 				5699FF8328AD7ED100E4DBAF /* String+PhoneMasking.swift in Sources */,
 				5607683328A186600010B977 /* NetworkTask.swift in Sources */,
 				56C894CA28A96B4900377088 /* SearchViewPresenter.swift in Sources */,
+				569D402028B1575200E9D2BE /* UIColor+HexColor.swift in Sources */,
 				56E505C228AD0441005313A8 /* LoginPageViewInput.swift in Sources */,
 				56E505C828AD0758005313A8 /* LoginCoordinatorDelegate.swift in Sources */,
 				56C894A428A9145E00377088 /* DetailsViewOutput.swift in Sources */,

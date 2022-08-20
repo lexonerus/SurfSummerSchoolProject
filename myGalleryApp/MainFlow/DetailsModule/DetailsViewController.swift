@@ -77,7 +77,7 @@ private extension DetailsViewController {
                                          target: navigationController,
                                          action: #selector(UINavigationController.popViewController(animated:)))
         navigationItem.leftBarButtonItem = backButton
-        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        navigationItem.leftBarButtonItem?.tintColor = AppColors.black
         navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
