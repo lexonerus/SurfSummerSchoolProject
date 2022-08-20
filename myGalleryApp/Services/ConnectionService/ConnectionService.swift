@@ -10,22 +10,26 @@ import Network
 
 class ConnectionService {
     
-    static let shared = ConnectionService()
-    let monitor = NWPathMonitor()
+    // MARK: Properties
+    static let shared            = ConnectionService()
+    let monitor                  = NWPathMonitor()
     private(set) var isConnected = false
     
+    // MARK: Methods
     func startMonitoring() {
+        
         monitor.pathUpdateHandler = { path in
             if path.status == .satisfied {
-                print("We're connected!")
+                print("Connected")
                 self.isConnected = true
             } else {
-                print("No connection.")
+                print("No connection")
                 self.isConnected = false
             }
 
             print(path.isExpensive)
         }
+        
         let queue = DispatchQueue(label: "Monitor")
         monitor.start(queue: queue)
     }

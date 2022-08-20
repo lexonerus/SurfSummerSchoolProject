@@ -10,12 +10,10 @@ import Foundation
 class FavoriteService {
     
     // MARK: Properties
-
-    let defaults = UserDefaults.standard
-    static let shared = FavoriteService()
-    var favoritePictures = Set<Int>()
-    
-    var favoriteItems = Set<Int>() {
+    let defaults            = UserDefaults.standard
+    static let shared       = FavoriteService()
+    var favoritePictures    = Set<Int>()
+    var favoriteItems       = Set<Int>() {
         didSet {
             self.favoritePictures = favoriteItems
         }

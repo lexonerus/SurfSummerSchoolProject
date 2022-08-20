@@ -10,26 +10,25 @@ import UIKit
 class MainViewController: UIViewController {
     
     // MARK: Properties
-    var presenter: MainViewPresenter!
-    weak var coordinator: TabCoordinatorDelegate?
-    weak var viewOutput: MainViewOutput?
-    private var defaultView: UIView?
-    private var isWarningShows = false
-    var isDarkContentBackground = false
+    var presenter:                      MainViewPresenter!
+    weak var coordinator:               TabCoordinatorDelegate?
+    weak var viewOutput:                MainViewOutput?
+    private var defaultView:            UIView?
+    private var isWarningShows          = false
+    private var isDarkContentBackground = false
     
     // MARK: Views
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Programmatically views
-    private let refreshControl = UIRefreshControl()
-    private var redView = UIView()
+    private let refreshControl  = UIRefreshControl()
+    private var redView         = UIView()
     
     // MARK: MainViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(redView)
-        
         configureNavigationBar()
         presenter.setViewInput(viewInput: self)
         self.viewOutput = presenter
@@ -37,18 +36,18 @@ class MainViewController: UIViewController {
         configureRedView()
         defaultView = self.view
         viewOutput?.activateActivityIndicator()
-        
         DispatchQueue.global(qos: .background).async {
             self.viewOutput?.configureModel()
             self.viewOutput?.reloadData()
-            
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "Главная"
         updateCollection()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -57,12 +56,15 @@ class MainViewController: UIViewController {
     @objc func refreshControlCalled() {
         viewOutput?.reloadData()
     }
+    
     @objc func searchButtonTapped() {
         coordinator?.showSearch(navigation: navigationController!)
     }
+    
     @objc func favoriteButtonTapped(sender: UIButton) {
         viewOutput!.toggleFavorite(index: sender.tag)
     }
+    
     @IBAction func failButtonPressed(_ sender: Any) {
         viewOutput?.reloadData()
         mainCollectionView.isHidden = true
@@ -72,20 +74,24 @@ class MainViewController: UIViewController {
 
 // MARK: Private Methods
 private extension MainViewController {
+    
     @objc func hideWarning() {
         redView.isHidden = true
         statusBarEnterLightBackground()
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)]
         title = "Главная"
     }
+    
     func statusBarEnterDarkBackground() {
         isDarkContentBackground = true
         self.navigationController?.navigationBar.barStyle = .black
     }
+    
     func statusBarEnterLightBackground() {
         isDarkContentBackground = false
         self.navigationController?.navigationBar.barStyle = .default
     }
+    
     func configureNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "item-search"),
@@ -94,6 +100,7 @@ private extension MainViewController {
             action: #selector(searchButtonTapped)
         )
     }
+    
     func configureAppearance() {
         DispatchQueue.main.async { [weak self] in
             self?.refreshControl.addTarget(self, action: #selector(self!.refreshControlCalled), for: .valueChanged)
@@ -105,6 +112,7 @@ private extension MainViewController {
             self?.mainCollectionView.contentInset = CollectionViewConstants.contentInset
         }
     }
+    
     func configureRedView() {
         redView.translatesAutoresizingMaskIntoConstraints = false
         redView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
@@ -114,37 +122,45 @@ private extension MainViewController {
         redView.backgroundColor = AppColors.attentionRed
         redView.isHidden = true
     }
+    
 }
 
 // MARK: UICollectionView
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewOutput?.countItems() ?? 0
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MainCollectionViewCell.self)", for: indexPath)
         
         if let cell = cell as? MainCollectionViewCell {
+            
             let item = viewOutput!.presentPicture(index: indexPath.item)
-                cell.title      = item.title
-                cell.isFavorite = item.isFavorite
-                cell.itemImage = item.itemImage
-                cell.heartButton.tag = item.id
+                cell.title              = item.title
+                cell.isFavorite         = item.isFavorite
+                cell.itemImage          = item.itemImage
+                cell.heartButton.tag    = item.id
                 cell.heartButton.addTarget(self, action: #selector(self.favoriteButtonTapped(sender:)), for: .touchUpInside)
         }
 
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CollectionViewConstants.calcLayout(frameWidth: view.frame.width)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return CollectionViewConstants.spaceBetweenRows
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return CollectionViewConstants.spaceBetweenElements
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = viewOutput!.presentPicture(index: indexPath.item)
         coordinator?.showDetails(navigation: navigationController!, item: item)
@@ -154,22 +170,23 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 // MARK: MainViewInput delegate
 extension MainViewController: MainViewInput {
+    
     func showErrorState() {
         DispatchQueue.main.async {
             let errorState = UINib(nibName: "\(ErrorStateView.self)", bundle: .main).instantiate(withOwner: nil, options: nil).first as! ErrorStateView
-            
             errorState.frame = self.view.bounds
             errorState.delegate = self
             self.view = errorState
-            
         }
 
     }
+    
     func updateCollection() {
         DispatchQueue.main.async() {
             self.mainCollectionView.reloadData()
         }
     }
+    
     func startLoading() {
         DispatchQueue.main.async {
             self.mainCollectionView.isHidden = true
@@ -177,6 +194,7 @@ extension MainViewController: MainViewInput {
             self.activityIndicator.startAnimating()
         }
     }
+    
     func stopLoading() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             self.activityIndicator.stopAnimating()
@@ -184,6 +202,7 @@ extension MainViewController: MainViewInput {
             self.mainCollectionView.isHidden = false
         }
     }
+    
     func endRefreshControl() {
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
@@ -191,12 +210,12 @@ extension MainViewController: MainViewInput {
         }
 
     }
+    
     func toggleWarningMessage() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
                 self.statusBarEnterDarkBackground()
                 self.redView.isHidden = false
-                //self.redView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
                 self.title = "Отсутствует интернет соединение \n Попробуйте позже"
                 self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14)]
                 self.redView.backgroundColor = AppColors.attentionRed
@@ -207,6 +226,8 @@ extension MainViewController: MainViewInput {
     }
     
 }
+
+// MARK: Error state delegate
 extension MainViewController: ErrorStateDelegate {
     func refresh() {
         viewOutput?.reloadData()

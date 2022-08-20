@@ -10,9 +10,9 @@ import UIKit
 class DetailsViewController: UITableViewController, UIGestureRecognizerDelegate {
         
     // MARK: Properties
-    var presenter: DetailsViewPresenter?
-    weak var coordinator: TabCoordinatorDelegate?
-    weak var viewOutput: DetailsViewOutput?
+    var presenter:                   DetailsViewPresenter?
+    weak var coordinator:            TabCoordinatorDelegate?
+    weak var viewOutput:             DetailsViewOutput?
     private var arrayWithTypeOfCells = [ImageTableViewCell.self, LabelTableViewCell.self, TextTableViewCell.self]
     
     // MARK: DetailTableViewController lifecycle

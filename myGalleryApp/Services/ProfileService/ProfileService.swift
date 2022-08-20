@@ -9,13 +9,16 @@ import Foundation
 
 class ProfileService {
     
-    static let shared = ProfileService()
-    let model = ProfileModel.shared
-    let defaults = UserDefaults.standard
+    // MARK: Properties
+    static let shared   = ProfileService()
+    let model           = ProfileModel.shared
+    let defaults        = UserDefaults.standard
     
+    // MARK: Methods
     func setProfileModel(model: AuthProfileModel) {
         self.model.item = model
     }
+    
     func saveDataToUserDefaults() {
         do {
             let encoder = JSONEncoder()

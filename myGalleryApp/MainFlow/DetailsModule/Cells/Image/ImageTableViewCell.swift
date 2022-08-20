@@ -24,7 +24,6 @@ class ImageTableViewCell: UITableViewCell {
         super.awakeFromNib()
         configureAppearance()
     }
-
     
 }
 
@@ -33,6 +32,5 @@ private extension ImageTableViewCell {
     func configureAppearance() {
         postImage.layer.cornerRadius = 12
         selectionStyle = .none
-        
     }
 }

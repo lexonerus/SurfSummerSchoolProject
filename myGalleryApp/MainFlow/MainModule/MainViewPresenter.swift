@@ -10,22 +10,26 @@ import Foundation
 class MainViewPresenter {
     
     // MARK: Properties
-    let view: MainViewController
-    let service: FavoriteService
-    let model: MainModel
+    let view:           MainViewController
+    let service:        FavoriteService
+    let model:          MainModel
     weak var viewInput: MainViewInput?
     
     // MARK: Initializers
-    init(view: MainViewController, model: MainModel, service: FavoriteService) {
-        self.view = view
-        self.model = model
-        self.service = service
+    init(view: MainViewController,
+         model: MainModel,
+         service: FavoriteService)
+    {
+        self.view       = view
+        self.model      = model
+        self.service    = service
     }
     
     // MARK: Methods
     func setViewInput(viewInput: MainViewInput?) {
         self.viewInput = viewInput
     }
+    
     func loadImagesForReuse() {
         DispatchQueue.global(qos: .background).async {
             self.model.didItemsUpdated = { [weak self] in
@@ -46,21 +50,24 @@ class MainViewPresenter {
 
 // MARK: MainViewOutput delegate methods
 extension MainViewPresenter: MainViewOutput {
+    
     func prepateImages() {
         loadImagesForReuse()
     }
+    
     func configureModel() {
         loadImagesForReuse()
-        
     }
+    
     func activateActivityIndicator() {
         viewInput?.startLoading()
     }
+    
     func deActivateActivityIndicator() {
         viewInput?.stopLoading()
     }
+    
     func toggleFavorite(index: Int) {
-        
         let item = model.findItemInModel(id: index)
         if item?.isFavorite == false {
             service.savePictureToFavorite(id: item!.id)
@@ -69,20 +76,20 @@ extension MainViewPresenter: MainViewOutput {
             service.deletePictureFromFavorite(id: item!.id)
             model.items.filter {$0.id == index}.first?.isFavorite = false
         }
-        // TODO: remove print
-        print(FavoriteService.shared.favoritePictures)
     }
+    
     func presentPicture(index: Int) -> Picture {
          return model.items[index]
     }
+    
     func countItems() -> Int {
         return model.items.count
     }
+    
     func reloadData() {
         if ConnectionService.shared.isConnected {
             model.getPosts { done in
                 if done {
-                    // normal state
                     self.viewInput?.stopLoading()
                     self.viewInput?.endRefreshControl()
                     self.prepateImages()
@@ -92,9 +99,7 @@ extension MainViewPresenter: MainViewOutput {
                 }
             }
         } else {
-            // error state
             self.viewInput?.showErrorState()
-            //self.viewInput?.toggleWarningMessage()
             self.viewInput?.endRefreshControl()
         }
     }

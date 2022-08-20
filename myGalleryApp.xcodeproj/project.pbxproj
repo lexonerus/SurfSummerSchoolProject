@@ -394,7 +394,6 @@
 			isa = PBXGroup;
 			children = (
 				56177BE328A6500F00739343 /* Protocols */,
-				56177BF028A6A03C00739343 /* AppCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -498,16 +497,8 @@
 			isa = PBXGroup;
 			children = (
 				568BDF2628A7EB3000080E3F /* ErrorState */,
-				568BDF2528A7EB2700080E3F /* LoadingState */,
 			);
 			path = States;
-			sourceTree = "<group>";
-		};
-		568BDF2528A7EB2700080E3F /* LoadingState */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LoadingState;
 			sourceTree = "<group>";
 		};
 		568BDF2628A7EB3000080E3F /* ErrorState */ = {
@@ -576,10 +567,11 @@
 		56ABCBE3289956430057D7AB /* App */ = {
 			isa = PBXGroup;
 			children = (
+				56177BF028A6A03C00739343 /* AppCoordinator.swift */,
+				56ABCBCF289953830057D7AB /* AppDelegate.swift */,
 				56C894C528A9681500377088 /* Constants */,
 				568BDF1E28A7C6CE00080E3F /* Factory */,
 				56177BEB28A661FC00739343 /* Coordinator */,
-				56ABCBCF289953830057D7AB /* AppDelegate.swift */,
 				56ABCBDD289953850057D7AB /* Info.plist */,
 			);
 			path = App;

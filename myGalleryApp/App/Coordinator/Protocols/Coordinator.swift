@@ -10,10 +10,10 @@ import UIKit
 protocol Coordinator {
     
     // MARK: Properties
-    var navigationController: UINavigationController { get set }
-    var childCoordinators: [Coordinator] { get set }
-    var finishDelegate: CoordinatorFinishDelegate? { get set }
-    var type: CoordinatorType { get }
+    var navigationController:   UINavigationController { get set }
+    var childCoordinators:      [Coordinator] { get set }
+    var finishDelegate:         CoordinatorFinishDelegate? { get set }
+    var type:                   CoordinatorType { get }
     
     // MARK: Initializers
     init(_ navigationController: UINavigationController)

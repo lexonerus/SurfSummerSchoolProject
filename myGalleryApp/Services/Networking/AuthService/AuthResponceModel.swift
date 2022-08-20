@@ -9,7 +9,7 @@ import Foundation
 
 struct AuthResponceModel: Decodable {
     let user_info: AuthProfileModel
-    let token: String
+    let token:     String
 }
 
 

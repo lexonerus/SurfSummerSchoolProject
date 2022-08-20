@@ -12,13 +12,12 @@ class ProfileViewController: UIViewController {
     // MARK: Views
     @IBOutlet weak var tableView: UITableView!
     
-    
     // MARK: Properties
-    var presenter: ProfileViewPresenter!
-    weak var coordinator: TabCoordinatorDelegate?
-    weak var viewOutput: ProfileViewOutput?
-    var isDarkContentBackground = false
-    private var isWarningShows = false
+    var presenter:                  ProfileViewPresenter!
+    weak var coordinator:           TabCoordinatorDelegate?
+    weak var viewOutput:            ProfileViewOutput?
+    var isDarkContentBackground     = false
+    private var isWarningShows      = false
     
     // MARK: Programmatically views
     private var redView = UIView()
@@ -26,14 +25,13 @@ class ProfileViewController: UIViewController {
     // MARK: ProfileViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addSubview(redView)
         presenter.setViewInput(viewInput: self)
         self.viewOutput = presenter
         configureAppearance()
         configureRedView()
-
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         title = "Профиль"
@@ -41,36 +39,45 @@ class ProfileViewController: UIViewController {
 
     // MARK: Actions
     @IBAction func logoutButton(_ sender: Any) {
+        
         let alert = AlertService.createTwoButtonsAlert(title: "Внимание", message: "Вы точно хотите выйти из приложения?", okButtonTitle: "Да, точно", cancelButtonTitle: "Нет", okAction: confirmLogout, cancelAction: cancelLogout)
         self.showAlert(alert: alert)
+        
     }
 }
 
 // MARK: Private methods
 private extension ProfileViewController {
+    
     @objc func hideWarning() {
         redView.isHidden = true
         statusBarEnterLightBackground()
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)]
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: AppColors.mainFont, .font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)]
         title = "Профиль"
     }
+    
     func statusBarEnterDarkBackground() {
         isDarkContentBackground = true
         self.navigationController?.navigationBar.barStyle = .black
     }
+    
     func statusBarEnterLightBackground() {
         isDarkContentBackground = false
         self.navigationController?.navigationBar.barStyle = .default
     }
+    
     @objc func confirmLogout() {
         viewOutput?.logout()
     }
+    
     @objc func cancelLogout() {
         print("cancel")
     }
+    
     func configureAppearance() {
         configureTableView()
     }
+    
     func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -79,6 +86,7 @@ private extension ProfileViewController {
         tableView.separatorStyle = .none
         tableView.isScrollEnabled = false
     }
+    
     func configureRedView() {
         redView.translatesAutoresizingMaskIntoConstraints = false
         redView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
@@ -92,9 +100,11 @@ private extension ProfileViewController {
 
 // MARK: ProfileViewInput delegate
 extension ProfileViewController: ProfileViewInput {
+    
     func exitMainFlow() {
         coordinator?.finishMainFlow()
     }
+    
     func toggleWarningMessage() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
@@ -117,6 +127,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
@@ -135,6 +146,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.field = viewOutput!.getCity()
             }
             return cell ?? UITableViewCell()
+            
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(ProfileInfoCell.self)")
             if let cell = cell as? ProfileInfoCell {
@@ -143,6 +155,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.field = phone.phoneMasking(pattern: "+# (###) ### ## ##", replacementCharacter: "#")
             }
             return cell ?? UITableViewCell()
+            
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(ProfileInfoCell.self)")
             if let cell = cell as? ProfileInfoCell {
@@ -150,6 +163,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.field = viewOutput!.getEmail()
             }
             return cell ?? UITableViewCell()
+            
         default:
             return UITableViewCell()
         }

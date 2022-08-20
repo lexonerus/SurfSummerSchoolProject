@@ -13,7 +13,7 @@ protocol MainViewOutput: AnyObject {
     func deActivateActivityIndicator()
     func toggleFavorite(index: Int)
     func presentPicture(index: Int) -> Picture
-    func countItems() -> Int
+    func countItems()               -> Int
     func reloadData()
     func configureModel()
     func prepateImages()

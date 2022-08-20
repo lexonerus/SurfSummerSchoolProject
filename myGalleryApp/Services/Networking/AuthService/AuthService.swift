@@ -8,33 +8,30 @@
 import Foundation
 
 struct AuthService {
+    
+    // MARK: Properties
     let loginDataTask = BaseNetworkTask<AuthRequestModel, AuthResponceModel>(
         isNeedToken: false,
         method: .post,
         path: "auth/login"
     )
-
     let logoutDataTask = BaseNetworkTask<EmptyModel, EmptyModel> (
         isNeedToken: true,
         method: .post,
         path: "auth/logout"
     )
-    
     let service = ProfileService.shared
     
+    
+    // MARK: Methods
     func performLoginRequestAndSaveToken(
         credentials: AuthRequestModel,
         _ onResponceWasReceived: @escaping (_ result: Result<AuthResponceModel, Error>) -> Void
     ) {
         loginDataTask.performRequest(input: credentials) { result in
             if case let .success(responceModel) = result {
-
-                // TODO: implement profile cache
                 service.setProfileModel(model: responceModel.user_info)
                 service.saveDataToUserDefaults()
-                
-                print(responceModel.token)
-                
                 do {
                 try loginDataTask.tokenStorage.set(newToken: TokenContainer(token: responceModel.token, receivingDate: .now))
             } catch {

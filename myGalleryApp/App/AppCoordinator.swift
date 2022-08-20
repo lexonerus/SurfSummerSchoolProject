@@ -11,10 +11,10 @@ import UIKit
 class AppCoordinator: Coordinator {
 
     // MARK: Properties
-    var navigationController: UINavigationController
-    var childCoordinators: [Coordinator] = [Coordinator]()
-    var type: CoordinatorType = .app
-    weak var finishDelegate: CoordinatorFinishDelegate?
+    var navigationController:   UINavigationController
+    var childCoordinators:      [Coordinator] = [Coordinator]()
+    var type:                   CoordinatorType = .app
+    weak var finishDelegate:    CoordinatorFinishDelegate?
     
     // MARK: Initializers
     required init(_ navigationController: UINavigationController) {
@@ -27,13 +27,16 @@ class AppCoordinator: Coordinator {
     func start() {
         showMainFlow()
     }
+    
     func start(isLoggedIn: Bool) {
         isLoggedIn ? showMainFlow() : showLoginFlow()
     }
+    
     func finish() {
         finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
     
+    // MARK: Deinitializers
     deinit {
         print("App coordinator deinit")
     }
@@ -41,6 +44,7 @@ class AppCoordinator: Coordinator {
 
 // MARK: Private methods
 private extension AppCoordinator {
+    
     func showLoginFlow() {
         print("Starting login flow")
         let loginCoordinator = LoginCoordinator(navigationController)
@@ -48,6 +52,7 @@ private extension AppCoordinator {
         self.childCoordinators.append(loginCoordinator)
         loginCoordinator.start()
     }
+    
     func showMainFlow() {
         print("Starting main flow")
         let tabCoordinator = TabCoordinator(navigationController)
@@ -55,6 +60,7 @@ private extension AppCoordinator {
         childCoordinators.append(tabCoordinator)
         tabCoordinator.start()
     }
+    
 }
 
 // MARK: CoordinatorFinishDelegate

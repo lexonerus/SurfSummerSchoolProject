@@ -11,31 +11,21 @@ import UIKit
 struct BaseNetworkTask<AbstractInput: Encodable, AbstractOutput: Decodable>: NetworkTask {  
 
     // MARK: NetworkTask
-    typealias Input = AbstractInput
-    typealias Output = AbstractOutput
-    
-    var baseURL: URL? {
-       URL(string: "https://pictures.chronicker.fun/api")
-    }
-    
-    let path: String
-    let method: NetworkMethod
-    let session: URLSession = URLSession(configuration: .default)
-    let isNeedToken: Bool
-    var urlCache: URLCache {
-        URLCache.shared
-    }
-    
-    var tokenStorage: TokenStorage {
-        BaseTokenStorage()
-    }
+    typealias Input         = AbstractInput
+    typealias Output        = AbstractOutput
+    var baseURL:            URL? { URL(string: "https://pictures.chronicker.fun/api") }
+    let path:               String
+    let method:             NetworkMethod
+    let session:            URLSession = URLSession(configuration: .default)
+    let isNeedToken:        Bool
+    var urlCache:           URLCache { URLCache.shared }
+    var tokenStorage: TokenStorage { BaseTokenStorage() }
     
     // MARK: Initialization
-    
     init(isNeedToken: Bool, method: NetworkMethod, path: String ) {
         self.isNeedToken = isNeedToken
-        self.path = path
-        self.method = method
+        self.path        = path
+        self.method      = method
     }
     
     // MARK: Network task

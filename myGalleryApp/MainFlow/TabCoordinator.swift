@@ -8,17 +8,17 @@
 import Foundation
 import UIKit
 
-class TabCoordinator: NSObject, TabBarCoordinator {
+final class TabCoordinator: NSObject, TabBarCoordinator {
     
     // MARK: Properties
-    var tabBarController: UITabBarController?
-    var navigationController: UINavigationController
-    var childCoordinators: [Coordinator] = [Coordinator]()
-    var type: CoordinatorType { .tab }
-    var finishDelegate: CoordinatorFinishDelegate?
-    private let allTab: [TabBarModel] = [.main, .favorite, .profile]
+    var tabBarController:       UITabBarController?
+    var navigationController:   UINavigationController
+    var childCoordinators:      [Coordinator] = [Coordinator]()
+    var type:                   CoordinatorType { .tab }
+    var finishDelegate:         CoordinatorFinishDelegate?
+    private let allTab:         [TabBarModel] = [.main, .favorite, .profile]
 
-    
+    // MARK: Initializers
     required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
     }

@@ -40,11 +40,9 @@ final class MainModel {
                         dateCreate: pictureModel.date
                     )
                     
-
                     return result
                 }
             case .failure(_):
-                // TODO ErrorState
                 completionHandler(false)
                 break
             }

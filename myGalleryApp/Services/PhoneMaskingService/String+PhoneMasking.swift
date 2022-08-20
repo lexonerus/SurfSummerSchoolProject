@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    
     func phoneMasking(pattern: String, replacementCharacter: Character) -> String {
         var maskedNumber = self.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
         for index in 0 ..< pattern.count {
@@ -19,4 +20,5 @@ extension String {
         }
         return maskedNumber
     }
+    
 }

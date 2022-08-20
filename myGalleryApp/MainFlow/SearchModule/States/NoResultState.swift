@@ -9,9 +9,11 @@ import UIKit
 
 class NoResultState: UIView {
 
+    // MARK: Views
     @IBOutlet weak var stateImage: UIImageView!
     @IBOutlet weak var stateLabel: UILabel!
     
+    // MARK: Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -22,11 +24,11 @@ class NoResultState: UIView {
         configureAppearance()
     }
     
+    // MARK: Methods
     func configureAppearance() {
         DispatchQueue.main.async {
             self.stateLabel.text = "По этому запросу нет результатов, \n попробуйте другой запрос"
         }
-
     }
 
 }
