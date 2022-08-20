@@ -30,7 +30,7 @@ class ConnectionService {
             print(path.isExpensive)
         }
         
-        let queue = DispatchQueue(label: "Monitor")
+        let queue = DispatchQueue(label: StringConstants.monitorQueue)
         monitor.start(queue: queue)
     }
     

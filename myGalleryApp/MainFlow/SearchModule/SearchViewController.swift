@@ -63,7 +63,7 @@ private extension SearchViewController {
     
     func configureNavigationBar() {
         navigationItem.title = ""
-        let backButton = UIBarButtonItem(image: UIImage(named: "arrow-right-line"),
+        let backButton = UIBarButtonItem(image: UIImage(named: StringConstants.arrowRightLine),
                                          style: .plain,
                                          target: navigationController,
                                          action: #selector(UINavigationController.popViewController(animated:)))
@@ -73,7 +73,7 @@ private extension SearchViewController {
     }
     
     func configureAppearance() {
-        searchBar.placeholder = "Поиск"
+        searchBar.placeholder = StringConstants.searchPlaceholder
         searchBar.delegate = self
         searchBar.searchTextField.layer.cornerRadius = 20
         searchBar.searchTextField.layer.masksToBounds = true

@@ -13,7 +13,7 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet private var postImage: UIImageView!
         
     // MARK: Properties
-    var itemImage = UIImage(named: "placeholder") {
+    var itemImage = UIImage(named: StringConstants.placeholderImage) {
         didSet {
             postImage.image = itemImage
         }

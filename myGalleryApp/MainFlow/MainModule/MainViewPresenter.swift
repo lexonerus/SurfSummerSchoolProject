@@ -36,7 +36,6 @@ class MainViewPresenter {
                 for item in self!.model.items {
                     let url = URL(string: item.imageUrlInString)
                     self!.model.loadImage(from: url!, with: item.id) { done in
-                        print("image loaded")
                         self!.viewInput?.updateCollection()
                     }
                     

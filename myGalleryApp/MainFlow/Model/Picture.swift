@@ -45,7 +45,7 @@ class Picture {
     // MARK: Default data
     static func createDefault() -> Picture {
         .init(id: 0,
-              itemImage: UIImage(named: "placeholder")!,
+              itemImage: UIImage(named: StringConstants.placeholderImage)!,
               imageUrlInString: "",
               title: "Самый милый корги",
               isFavorite: false,

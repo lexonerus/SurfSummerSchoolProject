@@ -27,7 +27,7 @@ class NoResultState: UIView {
     // MARK: Methods
     func configureAppearance() {
         DispatchQueue.main.async {
-            self.stateLabel.text = "По этому запросу нет результатов, \n попробуйте другой запрос"
+            self.stateLabel.text = StringConstants.searchEmptyState
         }
     }
 

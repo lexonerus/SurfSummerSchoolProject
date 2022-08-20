@@ -31,7 +31,7 @@ class FavoriteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        title = "Избранное"
+        title = StringConstants.favoriteTitle
         viewOutput!.checkState()
         updateTable()
     }
@@ -43,7 +43,14 @@ class FavoriteViewController: UIViewController {
     
     @objc func favoriteButtonTapped(sender: UIButton) {
         self.currentItemId = sender.tag
-        let alert = AlertService.createTwoButtonsAlert(title: "Внимание", message: "Вы точно хотите удалить из избранного?", okButtonTitle: "Да, точно", cancelButtonTitle: "Нет", okAction: removeItemFromFavorite, cancelAction: cancelDeletion)
+        let alert = AlertService.createTwoButtonsAlert(
+            title:                  StringConstants.alertTitle,
+            message:                StringConstants.alertUnfavoriteBody,
+            okButtonTitle:          StringConstants.alertOkButton,
+            cancelButtonTitle:      StringConstants.alertNoButton,
+            okAction:               removeItemFromFavorite,
+            cancelAction:           cancelDeletion
+        )
         self.showAlert(alert: alert)
     }
     
@@ -118,7 +125,7 @@ private extension FavoriteViewController {
     }
     
     func configureNavigationBar() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "item-search"), style: .plain, target: self, action: #selector(searchButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: StringConstants.itemSearch), style: .plain, target: self, action: #selector(searchButtonTapped))
     }
     
 }
@@ -129,7 +136,7 @@ extension FavoriteViewController: FavoriteViewInput {
     func showEmptyState() {
         DispatchQueue.main.async {
             let view = self.configureState(nibName: "\(EmptyStateView.self)") as! EmptyStateView
-            view.setLabel(label: "Нет избранных элементов")
+            view.setLabel(label: StringConstants.favoriteEmptyState)
             self.view = view
         }
     }

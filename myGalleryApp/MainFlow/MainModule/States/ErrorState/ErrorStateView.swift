@@ -29,7 +29,7 @@ class ErrorStateView: UIView {
     
     func configureAppearance() {
         DispatchQueue.main.async {
-            self.stateLabel.text = "Не удалось загрузить ленту \n Обновите экран или попробуйте позже"
+            self.stateLabel.text = StringConstants.mainEmptyState
         }
     }
 

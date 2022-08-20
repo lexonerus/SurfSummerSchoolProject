@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        title = "Главная"
+        title = StringConstants.mainTitle
         updateCollection()
     }
     
@@ -79,7 +79,7 @@ private extension MainViewController {
         redView.isHidden = true
         statusBarEnterLightBackground()
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)]
-        title = "Главная"
+        title = StringConstants.mainTitle
     }
     
     func statusBarEnterDarkBackground() {
@@ -94,7 +94,7 @@ private extension MainViewController {
     
     func configureNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "item-search"),
+            image: UIImage(named: StringConstants.itemSearch),
             style: .plain,
             target: self,
             action: #selector(searchButtonTapped)
@@ -216,7 +216,7 @@ extension MainViewController: MainViewInput {
             UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
                 self.statusBarEnterDarkBackground()
                 self.redView.isHidden = false
-                self.title = "Отсутствует интернет соединение \n Попробуйте позже"
+                self.title = StringConstants.warningNoConnection
                 self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14)]
                 self.redView.backgroundColor = AppColors.attentionRed
                 self.loadViewIfNeeded()

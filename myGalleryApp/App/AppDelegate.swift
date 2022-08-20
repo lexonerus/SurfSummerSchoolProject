@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func runLaunchScreen() {
-        let lauchScreenViewController = UIStoryboard(name: "LaunchScreen", bundle: .main)
+        let lauchScreenViewController = UIStoryboard(name: StringConstants.launchScreen, bundle: .main)
             .instantiateInitialViewController()
         window?.rootViewController = lauchScreenViewController
     }

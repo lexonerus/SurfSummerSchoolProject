@@ -72,7 +72,7 @@ private extension DetailsViewController {
     
     func configureNavigationBar() {
         navigationItem.title = viewOutput?.presentItem().title
-        let backButton = UIBarButtonItem(image: UIImage(named: "arrow-right-line"),
+        let backButton = UIBarButtonItem(image: UIImage(named: StringConstants.arrowRightLine),
                                          style: .plain,
                                          target: navigationController,
                                          action: #selector(UINavigationController.popViewController(animated:)))

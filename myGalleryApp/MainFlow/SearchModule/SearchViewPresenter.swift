@@ -90,7 +90,6 @@ extension SearchViewPresenter: SearchViewOutput {
     func performSearch(with text: String) {
         filteredData.removeAll()
         guard text != "" || text != " " else {
-            print("empty search")
             return
         }
         

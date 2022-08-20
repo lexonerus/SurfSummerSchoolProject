@@ -34,13 +34,20 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        title = "Профиль"
+        title = StringConstants.profileTitle
     }
 
     // MARK: Actions
     @IBAction func logoutButton(_ sender: Any) {
         
-        let alert = AlertService.createTwoButtonsAlert(title: "Внимание", message: "Вы точно хотите выйти из приложения?", okButtonTitle: "Да, точно", cancelButtonTitle: "Нет", okAction: confirmLogout, cancelAction: cancelLogout)
+        let alert = AlertService.createTwoButtonsAlert(
+            title:              StringConstants.alertTitle,
+            message:            StringConstants.alertLogoutBody,
+            okButtonTitle:      StringConstants.alertOkButton,
+            cancelButtonTitle:  StringConstants.alertNoButton,
+            okAction:           confirmLogout,
+            cancelAction:       cancelLogout
+        )
         self.showAlert(alert: alert)
         
     }
@@ -53,7 +60,7 @@ private extension ProfileViewController {
         redView.isHidden = true
         statusBarEnterLightBackground()
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: AppColors.mainFont, .font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)]
-        title = "Профиль"
+        title = StringConstants.profileTitle
     }
     
     func statusBarEnterDarkBackground() {
@@ -111,7 +118,7 @@ extension ProfileViewController: ProfileViewInput {
                 self.statusBarEnterDarkBackground()
                 self.redView.isHidden = false
                 self.redView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-                self.title = "Не удалось выйти, попробуйте еще раз"
+                self.title = StringConstants.warningLogoutFail
                 self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14)]
                 self.loadViewIfNeeded()
             })
@@ -142,7 +149,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(ProfileInfoCell.self)")
             if let cell = cell as? ProfileInfoCell {
-                cell.label = "Город"
+                cell.label = StringConstants.profileCity
                 cell.field = viewOutput!.getCity()
             }
             return cell ?? UITableViewCell()
@@ -150,7 +157,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(ProfileInfoCell.self)")
             if let cell = cell as? ProfileInfoCell {
-                cell.label = "Телефон"
+                cell.label = StringConstants.profilePhone
                 let phone = viewOutput!.getPhone()
                 cell.field = phone.phoneMasking(pattern: "+# (###) ### ## ##", replacementCharacter: "#")
             }
@@ -159,7 +166,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "\(ProfileInfoCell.self)")
             if let cell = cell as? ProfileInfoCell {
-                cell.label = "Почта"
+                cell.label = StringConstants.profileEmail
                 cell.field = viewOutput!.getEmail()
             }
             return cell ?? UITableViewCell()

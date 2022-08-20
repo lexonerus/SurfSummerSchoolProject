@@ -32,14 +32,14 @@ class FavoriteService {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(favoritePictures)
-            defaults.set(data, forKey: "favorite")
+            defaults.set(data, forKey: StringConstants.favoriteKey)
         } catch {
             print(error)
         }
     }
     
     func loadDataFromUserDefaults() {
-        if let data = defaults.data(forKey: "favorite") {
+        if let data = defaults.data(forKey: StringConstants.favoriteKey) {
             do {
                 let decoder = JSONDecoder()
                 let result = try decoder.decode(Set<Int>.self, from: data)
@@ -52,7 +52,7 @@ class FavoriteService {
     }
     
     func clearService() {
-        defaults.removeObject(forKey: "favorite")
+        defaults.removeObject(forKey: StringConstants.favoriteKey)
         defaults.synchronize()
         self.favoriteItems = Set<Int>()
     }

@@ -23,14 +23,14 @@ class ProfileService {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(model.item)
-            defaults.set(data, forKey: "profile")
+            defaults.set(data, forKey: StringConstants.profileKey)
         } catch {
             print(error)
         }
     }
     
     func loadDataFromUserDefaults() {
-        if let data = defaults.data(forKey: "profile") {
+        if let data = defaults.data(forKey: StringConstants.profileKey) {
             do {
                 let decoder = JSONDecoder()
                 let result = try decoder.decode(AuthProfileModel.self, from: data)
@@ -42,7 +42,7 @@ class ProfileService {
     }
 
     func clearService() {
-        defaults.removeObject(forKey: "profile")
+        defaults.removeObject(forKey: StringConstants.profileKey)
         defaults.synchronize()
     }
     
