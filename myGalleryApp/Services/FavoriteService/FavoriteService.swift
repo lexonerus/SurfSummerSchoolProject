@@ -53,6 +53,12 @@ class FavoriteService {
         
     }
     
+    func clearService() {
+        defaults.removeObject(forKey: "favorite")
+        defaults.synchronize()
+        self.favoriteItems = Set<Int>()
+    }
+    
     func checkIsFavorite(id: Int) -> Bool {
         if favoritePictures.contains(id) {
             return true
@@ -60,4 +66,5 @@ class FavoriteService {
             return false
         }
     }
+    
 }

@@ -222,8 +222,8 @@
             filePath = "myGalleryApp/MainFlow/Model/MainModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -609,6 +609,22 @@
             startingLineNumber = "100"
             endingLineNumber = "100"
             landmarkName = "performRequest(input:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59050B5F-5B1C-4814-8A1D-B6C4F78CD07D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "myGalleryApp/Services/ProfileService/ProfileService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "removeDataFromUserDefaults()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

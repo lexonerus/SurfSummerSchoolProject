@@ -11,16 +11,22 @@ class ProfileViewPresenter {
     
     // MARK: Properties
     let view: ProfileViewController
-    let model: ProfileModel
-    let service: AuthService
+    let model: ProfileModel!
+    let mainModel: MainModel!
+    let authService: AuthService!
+    let favoriteService: FavoriteService!
+    let profileService: ProfileService!
     weak var viewInput: ProfileViewInput?
     private var isFirstRequest = false
     
     // MARK: Initializers
-    init(view: ProfileViewController, model: ProfileModel, service: AuthService) {
+    init(view: ProfileViewController, model: ProfileModel, mainModel: MainModel, authService: AuthService, favoriteService: FavoriteService, profileService: ProfileService) {
         self.view = view
         self.model = model
-        self.service = service
+        self.mainModel = mainModel
+        self.authService = authService
+        self.favoriteService = favoriteService
+        self.profileService = profileService
     }
     
     // MARK: Methods
@@ -28,6 +34,12 @@ class ProfileViewPresenter {
         self.viewInput = viewInput
     }
     
+    func clearAllUserData() {
+        URLCache.shared.removeAllCachedResponses()
+        mainModel.clearModel()
+        favoriteService.clearService()
+        profileService.clearService()
+    }
     
 }
 
@@ -53,17 +65,13 @@ extension ProfileViewPresenter: ProfileViewOutput {
     
     func logout() {
         DispatchQueue.main.async {
-            self.service.performLogoutRequest() { [weak self] result in
+            self.authService.performLogoutRequest() { [weak self] result in
                 switch result {
                 case .success:
-                    print("success")
-                    URLCache.shared.removeAllCachedResponses()
-                    // TODO: remove profile data from userDefaults
-                    
-                    // TODO: coordinator show login flow
+                    self?.clearAllUserData()
                     self?.viewInput?.exitMainFlow()
                 case .failure:
-                        print("fail")
+                    print(result)
                 }
             }
         }

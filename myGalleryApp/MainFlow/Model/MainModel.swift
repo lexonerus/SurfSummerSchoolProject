@@ -70,6 +70,10 @@ final class MainModel {
         }
     }
     
+    func clearModel() {
+        self.items = [Picture]()
+    }
+    
 
 }
 

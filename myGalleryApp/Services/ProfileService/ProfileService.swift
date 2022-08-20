@@ -37,9 +37,10 @@ class ProfileService {
             }
         }
     }
-    
-    func removeDataFromUserDefaults() {
-        
+
+    func clearService() {
+        defaults.removeObject(forKey: "profile")
+        defaults.synchronize()
     }
     
 }
