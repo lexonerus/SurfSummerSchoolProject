@@ -59,7 +59,7 @@ extension ProfileViewPresenter: ProfileViewOutput {
                     print("success")
                     URLCache.shared.removeAllCachedResponses()
                     // TODO: remove profile data from userDefaults
-                    UserDefaults.standard.removeSuite(named: "UserAccount")
+                    
                     // TODO: coordinator show login flow
                     self?.viewInput?.exitMainFlow()
                 case .failure:

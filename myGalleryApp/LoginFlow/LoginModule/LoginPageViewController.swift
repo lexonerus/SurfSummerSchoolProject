@@ -37,13 +37,6 @@ class LoginPageViewController: UIViewController {
     private var isWarningShows = false
     private var isStatusBarBlack = true
     var isDarkContentBackground = false
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        if isDarkContentBackground {
-            return .lightContent
-        } else {
-            return .darkContent
-        }
-    }
 
     
     // MARK: LoginPageViewController
@@ -68,14 +61,12 @@ class LoginPageViewController: UIViewController {
         configureSecondLabels(label: passwordLabel, view: passwordField)
         passwordLabel.text = "Пароль"
     }
-    func statusBarEnterDarkBackground() { //
+    func statusBarEnterDarkBackground() {
         isDarkContentBackground = true
-        setNeedsStatusBarAppearanceUpdate()
         self.navigationController?.navigationBar.barStyle = .black
     }
-    func statusBarEnterLightBackground() { //
+    func statusBarEnterLightBackground() {
         isDarkContentBackground = false
-        setNeedsStatusBarAppearanceUpdate()
         self.navigationController?.navigationBar.barStyle = .default
     }
     

@@ -38,4 +38,8 @@ class ProfileService {
         }
     }
     
+    func removeDataFromUserDefaults() {
+        
+    }
+    
 }
