@@ -19,6 +19,9 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
+    // MARK: Programmatically views
+    private let refreshControl = UIRefreshControl()
+    
     // MARK: MainViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +47,9 @@ class MainViewController: UIViewController {
     }
 
     // MARK: Actions
+    @objc func refreshControlCalled() {
+        viewOutput?.reloadData()
+    }
     @objc func searchButtonTapped() {
         coordinator?.showSearch(navigation: navigationController!)
     }
@@ -68,6 +74,8 @@ private extension MainViewController {
     }
     func configureAppearance() {
         DispatchQueue.main.async { [weak self] in
+            self?.refreshControl.addTarget(self, action: #selector(self!.refreshControlCalled), for: .valueChanged)
+            self?.mainCollectionView.refreshControl = self?.refreshControl
             self?.mainCollectionView.isHidden = true
             self?.mainCollectionView.dataSource = self
             self?.mainCollectionView.delegate = self
@@ -145,6 +153,13 @@ extension MainViewController: MainViewInput {
             self.activityIndicator.isHidden = true
             self.mainCollectionView.isHidden = false
         }
+    }
+    func endRefreshControl() {
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+            self.mainCollectionView.reloadData()
+        }
+
     }
     
 }

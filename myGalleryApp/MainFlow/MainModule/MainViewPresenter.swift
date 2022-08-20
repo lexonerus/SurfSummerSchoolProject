@@ -33,7 +33,7 @@ class MainViewPresenter {
 extension MainViewPresenter: MainViewOutput {
     func configureModel() {
         model.didItemsUpdated = { [weak self] in
-            self?.viewInput?.startLoading()
+            //self?.viewInput?.startLoading()
 
             for item in self!.model.items {
                 let url = URL(string: item.imageUrlInString)
@@ -74,9 +74,11 @@ extension MainViewPresenter: MainViewOutput {
             if done {
                 // normal state
                 self.viewInput?.stopLoading()
+                self.viewInput?.endRefreshControl()
             } else {
                 // error state
                 self.viewInput?.showErrorState()
+                self.viewInput?.endRefreshControl()
             }
         }
     }
