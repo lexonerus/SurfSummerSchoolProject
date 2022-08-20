@@ -13,3 +13,6 @@
 ## Архитекура построения приложения MVP-C
 
 ![Login](/Pictures/arch.png)
+
+## Скриншоты
+<img src="/Pictures/001.png" width="216" height="494">
