@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Network
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,20 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     let favoriteService = FavoriteService.shared
     let profileService = ProfileService.shared
+    let connectionService = ConnectionService.shared
+    
     
     
     // MARK: App lifecycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
+        connectionService.startMonitoring()
         favoriteService.loadDataFromUserDefaults()
         profileService.loadDataFromUserDefaults()
-
         startApplicationProcess()
-        
         return true
     }
+    
     
     func applicationWillTerminate(_ application: UIApplication) {
         print("App will terminated")

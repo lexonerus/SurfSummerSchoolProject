@@ -64,6 +64,7 @@
 		568BDF2828A7EB9800080E3F /* ErrorStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568BDF2728A7EB9800080E3F /* ErrorStateView.xib */; };
 		568BDF2A28A7EBCD00080E3F /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BDF2928A7EBCD00080E3F /* ErrorStateView.swift */; };
 		5699FF8328AD7ED100E4DBAF /* String+PhoneMasking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5699FF8228AD7ED100E4DBAF /* String+PhoneMasking.swift */; };
+		569D401D28B13E6D00E9D2BE /* ConnectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569D401C28B13E6D00E9D2BE /* ConnectionService.swift */; };
 		56ABCBD0289953830057D7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56ABCBCF289953830057D7AB /* AppDelegate.swift */; };
 		56ABCBD9289953850057D7AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBD8289953850057D7AB /* Assets.xcassets */; };
 		56ABCBDC289953850057D7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56ABCBDA289953850057D7AB /* LaunchScreen.storyboard */; };
@@ -159,6 +160,7 @@
 		568BDF2728A7EB9800080E3F /* ErrorStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorStateView.xib; sourceTree = "<group>"; };
 		568BDF2928A7EBCD00080E3F /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
 		5699FF8228AD7ED100E4DBAF /* String+PhoneMasking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+PhoneMasking.swift"; sourceTree = "<group>"; };
+		569D401C28B13E6D00E9D2BE /* ConnectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionService.swift; sourceTree = "<group>"; };
 		56ABCBCC289953830057D7AB /* myGalleryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myGalleryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56ABCBCF289953830057D7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56ABCBD8289953850057D7AB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		5607681828A186600010B977 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				569D401B28B13E5500E9D2BE /* ConnectionService */,
 				568AD70228AF8A8E00CFA8CF /* ProfileService */,
 				56275C3428A2E72F00FFCF18 /* FavoriteService */,
 				5699FF8128AD7EAF00E4DBAF /* PhoneMaskingService */,
@@ -519,6 +522,14 @@
 				5699FF8228AD7ED100E4DBAF /* String+PhoneMasking.swift */,
 			);
 			path = PhoneMaskingService;
+			sourceTree = "<group>";
+		};
+		569D401B28B13E5500E9D2BE /* ConnectionService */ = {
+			isa = PBXGroup;
+			children = (
+				569D401C28B13E6D00E9D2BE /* ConnectionService.swift */,
+			);
+			path = ConnectionService;
 			sourceTree = "<group>";
 		};
 		56ABCBC3289953830057D7AB = {
@@ -785,6 +796,7 @@
 				56E6B8D6289DC5FF00FC7650 /* DetailsViewController.swift in Sources */,
 				56C894BA28A9442500377088 /* FavoriteViewOutput.swift in Sources */,
 				56C894B428A943E600377088 /* FavoriteViewPresenter.swift in Sources */,
+				569D401D28B13E6D00E9D2BE /* ConnectionService.swift in Sources */,
 				56C894B828A9440D00377088 /* FavoriteViewInput.swift in Sources */,
 				5607682D28A186600010B977 /* AuthRequestModel.swift in Sources */,
 				5607683928A186600010B977 /* TokenContainer.swift in Sources */,

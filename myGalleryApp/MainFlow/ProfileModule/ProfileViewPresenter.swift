@@ -18,6 +18,7 @@ class ProfileViewPresenter {
     let profileService: ProfileService!
     weak var viewInput: ProfileViewInput?
     private var isFirstRequest = false
+
     
     // MARK: Initializers
     init(view: ProfileViewController, model: ProfileModel, mainModel: MainModel, authService: AuthService, favoriteService: FavoriteService, profileService: ProfileService) {
@@ -34,7 +35,6 @@ class ProfileViewPresenter {
         self.viewInput = viewInput
     }
     func clearAllUserData() {
-        URLCache.shared.removeAllCachedResponses()
         mainModel.clearModel()
         favoriteService.clearService()
         profileService.clearService()
@@ -62,18 +62,25 @@ extension ProfileViewPresenter: ProfileViewOutput {
         return model.item!.email
     }
     func logout() {
-        DispatchQueue.main.async {
-            self.authService.performLogoutRequest() { [weak self] result in
-                switch result {
-                case .success:
-                    self?.clearAllUserData()
-                    self?.viewInput?.exitMainFlow()
-                case .failure:
-                    // TODO: Cannot logout state
-                    self?.viewInput?.toggleWarningMessage()
-                    print(result)
+        if ConnectionService.shared.isConnected {
+            DispatchQueue.main.async {
+                self.authService.performLogoutRequest() { [weak self] result in
+                    switch result {
+                    case .success:
+                        self?.clearAllUserData()
+                        self?.viewInput?.exitMainFlow()
+                    case .failure:
+                        // TODO: Cannot logout state
+                        self?.viewInput?.toggleWarningMessage()
+                        print(result)
+                    }
                 }
             }
+        } else {
+            DispatchQueue.main.async {
+                self.viewInput?.toggleWarningMessage()
+            }
         }
+
     }
 }

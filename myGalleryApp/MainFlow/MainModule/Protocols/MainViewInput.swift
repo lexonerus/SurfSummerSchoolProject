@@ -13,4 +13,5 @@ protocol MainViewInput: AnyObject {
     func stopLoading()
     func showErrorState()
     func endRefreshControl()
+    func toggleWarningMessage()
 }

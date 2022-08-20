@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
     weak var coordinator: TabCoordinatorDelegate?
     weak var viewOutput: MainViewOutput?
     private var defaultView: UIView?
+    private var isWarningShows = false
+    var isDarkContentBackground = false
     
     // MARK: Views
     @IBOutlet private weak var mainCollectionView: UICollectionView!
@@ -21,20 +23,26 @@ class MainViewController: UIViewController {
     
     // MARK: Programmatically views
     private let refreshControl = UIRefreshControl()
+    private var redView = UIView()
     
     // MARK: MainViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(redView)
+        
         configureNavigationBar()
         presenter.setViewInput(viewInput: self)
         self.viewOutput = presenter
         configureAppearance()
+        configureRedView()
         defaultView = self.view
         viewOutput?.activateActivityIndicator()
-        DispatchQueue.global(qos: .userInteractive).async {
+        
+        DispatchQueue.global(qos: .background).async {
             self.viewOutput?.configureModel()
             self.viewOutput?.reloadData()
-        } 
+            
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,7 +51,6 @@ class MainViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
 
     // MARK: Actions
@@ -58,12 +65,27 @@ class MainViewController: UIViewController {
     }
     @IBAction func failButtonPressed(_ sender: Any) {
         viewOutput?.reloadData()
+        mainCollectionView.isHidden = true
     }
     
 }
 
 // MARK: Private Methods
 private extension MainViewController {
+    @objc func hideWarning() {
+        redView.isHidden = true
+        statusBarEnterLightBackground()
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)]
+        title = "Главная"
+    }
+    func statusBarEnterDarkBackground() {
+        isDarkContentBackground = true
+        self.navigationController?.navigationBar.barStyle = .black
+    }
+    func statusBarEnterLightBackground() {
+        isDarkContentBackground = false
+        self.navigationController?.navigationBar.barStyle = .default
+    }
     func configureNavigationBar() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "item-search"),
@@ -79,10 +101,18 @@ private extension MainViewController {
             self?.mainCollectionView.isHidden = true
             self?.mainCollectionView.dataSource = self
             self?.mainCollectionView.delegate = self
-            // регистрация ячейки:
             self?.mainCollectionView.register(UINib(nibName: "\(MainCollectionViewCell.self)", bundle: .main), forCellWithReuseIdentifier: "\(MainCollectionViewCell.self)")
             self?.mainCollectionView.contentInset = CollectionViewConstants.contentInset
         }
+    }
+    func configureRedView() {
+        redView.translatesAutoresizingMaskIntoConstraints = false
+        redView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        redView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60).isActive = true
+        redView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        redView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        redView.backgroundColor = AppColors.attentionRed
+        redView.isHidden = true
     }
 }
 
@@ -98,7 +128,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             let item = viewOutput!.presentPicture(index: indexPath.item)
                 cell.title      = item.title
                 cell.isFavorite = item.isFavorite
-                cell.imageUrlInString = item.imageUrlInString
                 cell.itemImage = item.itemImage
                 cell.heartButton.tag = item.id
                 cell.heartButton.addTarget(self, action: #selector(self.favoriteButtonTapped(sender:)), for: .touchUpInside)
@@ -132,6 +161,7 @@ extension MainViewController: MainViewInput {
             errorState.frame = self.view.bounds
             errorState.delegate = self
             self.view = errorState
+            
         }
 
     }
@@ -161,9 +191,22 @@ extension MainViewController: MainViewInput {
         }
 
     }
+    func toggleWarningMessage() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseInOut], animations: {
+                self.statusBarEnterDarkBackground()
+                self.redView.isHidden = false
+                //self.redView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+                self.title = "Отсутствует интернет соединение \n Попробуйте позже"
+                self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 14)]
+                self.redView.backgroundColor = AppColors.attentionRed
+                self.loadViewIfNeeded()
+            })
+            let _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.hideWarning), userInfo: nil, repeats: false)
+        }
+    }
     
 }
-
 extension MainViewController: ErrorStateDelegate {
     func refresh() {
         viewOutput?.reloadData()
@@ -171,5 +214,4 @@ extension MainViewController: ErrorStateDelegate {
     }
 
 }
-
 

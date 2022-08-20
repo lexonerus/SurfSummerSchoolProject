@@ -16,4 +16,5 @@ protocol MainViewOutput: AnyObject {
     func countItems() -> Int
     func reloadData()
     func configureModel()
+    func prepateImages()
 }

@@ -35,7 +35,7 @@ final class MainModel {
                         itemImage: UIImage(named: "placeholder")!,
                         imageUrlInString: pictureModel.photoUrl,
                         title: pictureModel.title,
-                        isFavorite: (self?.favoriteService.checkIsFavorite(id: Int(pictureModel.id)!))!,
+                        isFavorite: self!.favoriteService.checkIsFavorite(id: Int(pictureModel.id)!),
                         content: pictureModel.content,
                         dateCreate: pictureModel.date
                     )

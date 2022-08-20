@@ -26,23 +26,32 @@ class MainViewPresenter {
     func setViewInput(viewInput: MainViewInput?) {
         self.viewInput = viewInput
     }
+    func loadImagesForReuse() {
+        DispatchQueue.global(qos: .background).async {
+            self.model.didItemsUpdated = { [weak self] in
+                for item in self!.model.items {
+                    let url = URL(string: item.imageUrlInString)
+                    self!.model.loadImage(from: url!, with: item.id) { done in
+                        print("image loaded")
+                        self!.viewInput?.updateCollection()
+                    }
+                    
+                }
+                
+            }
+        }
+    }
 
 }
 
 // MARK: MainViewOutput delegate methods
 extension MainViewPresenter: MainViewOutput {
+    func prepateImages() {
+        loadImagesForReuse()
+    }
     func configureModel() {
-        model.didItemsUpdated = { [weak self] in
-            //self?.viewInput?.startLoading()
-
-            for item in self!.model.items {
-                let url = URL(string: item.imageUrlInString)
-                self!.model.loadImage(from: url!, with: item.id) { done in
-
-                }
-            }
-            self?.viewInput?.updateCollection()
-        }
+        loadImagesForReuse()
+        
     }
     func activateActivityIndicator() {
         viewInput?.startLoading()
@@ -70,16 +79,24 @@ extension MainViewPresenter: MainViewOutput {
         return model.items.count
     }
     func reloadData() {
-        model.getPosts { done in
-            if done {
-                // normal state
-                self.viewInput?.stopLoading()
-                self.viewInput?.endRefreshControl()
-            } else {
-                // error state
-                self.viewInput?.showErrorState()
-                self.viewInput?.endRefreshControl()
+        if ConnectionService.shared.isConnected {
+            model.getPosts { done in
+                if done {
+                    // normal state
+                    self.viewInput?.stopLoading()
+                    self.viewInput?.endRefreshControl()
+                    self.prepateImages()
+                }
+                else {
+                    return
+                }
             }
+        } else {
+            // error state
+            self.viewInput?.showErrorState()
+            //self.viewInput?.toggleWarningMessage()
+            self.viewInput?.endRefreshControl()
         }
     }
+
 }
