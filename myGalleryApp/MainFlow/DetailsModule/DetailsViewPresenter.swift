@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DetailsViewPresenter {
+final class DetailsViewPresenter {
     
     // MARK: Properties
     private let view:   DetailsViewController

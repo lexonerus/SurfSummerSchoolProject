@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProfileViewPresenter {
+final class ProfileViewPresenter {
     
     // MARK: Properties
     let view:                   ProfileViewController

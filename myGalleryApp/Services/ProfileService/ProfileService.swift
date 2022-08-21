@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProfileService {
+final class ProfileService {
     
     // MARK: Properties
     static let shared   = ProfileService()

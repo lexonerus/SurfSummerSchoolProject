@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LoginPagePresenter {
+final class LoginPagePresenter {
     
     // MARK: Properties
     let view:           LoginPageViewController

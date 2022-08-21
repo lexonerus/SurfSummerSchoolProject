@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoriteViewController: UIViewController {
+final class FavoriteViewController: UIViewController {
 
     // MARK: Views
     @IBOutlet weak var tableView: UITableView!

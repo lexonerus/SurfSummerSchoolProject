@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
+final class SearchViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: Views
     @IBOutlet private weak var searchBar:   UISearchBar!

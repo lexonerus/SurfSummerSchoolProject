@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SearchViewPresenter {
+final class SearchViewPresenter {
     
     // MARK: Properties
     let view:               SearchViewController

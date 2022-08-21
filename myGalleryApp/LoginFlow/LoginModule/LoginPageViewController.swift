@@ -8,7 +8,7 @@
 import UIKit
 
 
-class LoginPageViewController: UIViewController {
+final class LoginPageViewController: UIViewController {
     
     // MARK: Views
     @IBOutlet private weak var eyeButton:       UIButton!

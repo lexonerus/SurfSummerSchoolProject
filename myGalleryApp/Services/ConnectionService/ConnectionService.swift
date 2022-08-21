@@ -8,7 +8,7 @@
 import Foundation
 import Network
 
-class ConnectionService {
+final class ConnectionService {
     
     // MARK: Properties
     static let shared            = ConnectionService()

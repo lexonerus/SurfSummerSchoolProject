@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FavoriteViewPresenter {
+final class FavoriteViewPresenter {
     
     // MARK: Properties
     let view:           FavoriteViewController

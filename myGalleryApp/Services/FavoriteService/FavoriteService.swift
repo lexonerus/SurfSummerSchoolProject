@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FavoriteService {
+final class FavoriteService {
     
     // MARK: Properties
     let defaults            = UserDefaults.standard

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit.UIImage
 
-class Picture {  
+final class Picture {  
     
     // MARK: Properties
     let id:                 Int

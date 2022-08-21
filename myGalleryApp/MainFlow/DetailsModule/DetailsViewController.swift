@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailsViewController: UITableViewController, UIGestureRecognizerDelegate {
+final class DetailsViewController: UITableViewController, UIGestureRecognizerDelegate {
         
     // MARK: Properties
     var presenter:                   DetailsViewPresenter?

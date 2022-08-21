@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MainViewPresenter {
+final class MainViewPresenter {
     
     // MARK: Properties
     let view:           MainViewController
